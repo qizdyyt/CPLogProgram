@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HBRemindViewController">
+            <connections>
+                <outlet property="scrollView" destination="Cck-GS-lrs" id="hjJ-PW-QL5"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="Cck-GS-lrs">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Cck-GS-lrs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="O5l-Yb-f5R"/>
+                <constraint firstItem="Cck-GS-lrs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Q4f-7x-OJB"/>
+                <constraint firstAttribute="bottom" secondItem="Cck-GS-lrs" secondAttribute="bottom" id="b6Y-ah-rIG"/>
+                <constraint firstAttribute="trailing" secondItem="Cck-GS-lrs" secondAttribute="trailing" id="eAd-Wh-1VC"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="Cck-GS-lrs"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="O5l-Yb-f5R"/>
+                    <exclude reference="Q4f-7x-OJB"/>
+                    <exclude reference="b6Y-ah-rIG"/>
+                    <exclude reference="eAd-Wh-1VC"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="Cck-GS-lrs"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="O5l-Yb-f5R"/>
+                    <include reference="Q4f-7x-OJB"/>
+                    <include reference="b6Y-ah-rIG"/>
+                    <include reference="eAd-Wh-1VC"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>

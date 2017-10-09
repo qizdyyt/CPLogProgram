@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HBSettingViewController">
+            <connections>
+                <outlet property="setTabelView" destination="d2C-9t-jrp" id="kvh-bK-IJd"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="48" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="d2C-9t-jrp">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="separatorColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="9Qn-cU-jNQ"/>
+                        <outlet property="delegate" destination="-1" id="Ksa-ek-EPW"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="d2C-9t-jrp" secondAttribute="bottom" constant="39" id="9E3-WM-0uu">
+                    <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                </constraint>
+                <constraint firstItem="d2C-9t-jrp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="FCH-h8-x5Z"/>
+                <constraint firstItem="d2C-9t-jrp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="N6G-gu-Xv9"/>
+                <constraint firstAttribute="trailing" secondItem="d2C-9t-jrp" secondAttribute="trailing" id="ZoC-7f-lZc"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="d2C-9t-jrp"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="9E3-WM-0uu"/>
+                    <exclude reference="N6G-gu-Xv9"/>
+                    <exclude reference="ZoC-7f-lZc"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="d2C-9t-jrp"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="9E3-WM-0uu"/>
+                    <include reference="N6G-gu-Xv9"/>
+                    <include reference="ZoC-7f-lZc"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>

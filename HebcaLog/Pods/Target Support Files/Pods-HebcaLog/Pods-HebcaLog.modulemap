@@ -1,0 +1,6 @@
+framework module Pods_HebcaLog {
+  umbrella header "Pods-HebcaLog-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,296 @@
+///Users/harisucici/Desktop/HebcaLog_iOS/HebcaLog.xcodeproj
+//  HBSettingViewController.m
+//  HebcaLog
+//
+//  Created by 周超 on 15/3/15.
+//  Copyright (c) 2015年 hebca. All rights reserved.
+//
+
+#import "HBDoorlistViewController.h"
+//#import "HBPasswordViewController.h"
+//#import "HBAboutViewController.h"
+#import "HBMLogLoginViewController.h"
+#import "HBInviteUserViewController.h"
+#import "HBCommonUtil.h"
+#import "HBFileManager.h"
+#import "ToastUIView.h"
+#import "AppDelegate.h"
+#import <QuartzCore/QuartzCore.h>
+#import <AddressBook/AddressBook.h>
+#import "HBCommonUtil.h"
+#import "HBServerInterface.h"
+#import "AppDelegate.h"
+#import "HBLocationService.h"
+#import "ToastUIView.h"
+#import "HBServerConfig.h"
+#import "HBServerInterface.h"
+
+@interface HBDoorlistViewController ()
+
+@end
+
+@implementation HBDoorlistViewController
+{
+    NSString *userid;
+    NSString *updateUrlStr;
+    HBServerConnect *serverConnect;
+//    HBServerConnect *serverConnect1;
+//    HBServerConnect *serverConnect2;
+    HBLocationService *locationService;
+    NSMutableArray *doorList;
+//    int *doorListCount;
+}
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    
+    
+    userid = [HBCommonUtil getUserId];
+    
+    serverConnect = [[HBServerConnect alloc] init];
+//    serverConnect2 = [[HBServerConnect alloc] init];
+    [self doList];
+    
+    [self configNavigationBar];
+    [self.setTabelView setSeparatorInset:UIEdgeInsetsZero];
+    
+    if ([UIScreen mainScreen].bounds.size.height > 480) {
+        self.setTabelView.scrollEnabled = NO;
+        self.setTabelView.rowHeight = 60.0;
+    } else {
+        self.setTabelView.scrollEnabled = YES;
+        self.setTabelView.rowHeight = 48.0;
+    }
+    
+    [self showUserHeadImage];
+  
+}
+
+
+- (void)doList {
+    MBProgressHUD *hud = [[MBProgressHUD alloc] init];
+    hud.labelText = @"获取列表...";
+    [self.view addSubview:hud];
+    
+    __block HBDoorListInfo *errorMsg = nil;
+    [hud showAnimated:YES whileExecutingBlock:^{
+//        errorMsg = [self attendActCheckout];
+        doorList = [self attendActCheckout];
+    }completionBlock:^{
+        [hud removeFromSuperview];
+        self.setTabelView.reloadData;
+        if (errorMsg) {
+            [HBCommonUtil showAttention:errorMsg sender:self];
+            return;
+        }
+
+        [HBCommonUtil updateAttendState:NO];
+        [self.view makeToast:@"获取列表成功"];
+    }];
+}
+
+- (NSMutableArray *)attendActCheckout
+{
+    NSMutableArray *serverAttend = [serverConnect getDoorListInfo:userid];
+
+    return serverAttend;
+}
+
+- (void)doOpen:(HBDoorListInfo *)doorListInfo {
+    
+    //为保证打卡获取到最新位置，打卡时先获取一下最新位置
+    [locationService locateUserCurrentPosition];
+    while (locationService.inLocating) {
+    }
+
+    HBLocation *location = [HBCommonUtil getUserLocation];
+  
+        HBDoorListInfo *tempDoorListInfo = doorListInfo;
+        MBProgressHUD *hud = [[MBProgressHUD alloc] init];
+        hud.labelText = @"正在开门...";
+        [self.view addSubview:hud];
+        
+        __block NSString *errorMsg = nil;
+        [hud showAnimated:YES whileExecutingBlock:^{
+            errorMsg = [self sendDoorOpen:tempDoorListInfo];
+        }completionBlock:^{
+            [hud removeFromSuperview];
+            
+            if (errorMsg) {
+                [HBCommonUtil showAttention:errorMsg sender:self];
+                return;
+            }
+            
+            [HBCommonUtil updateAttendState:YES];
+            
+            [self.view makeToast:@"指令发送成功"];
+        }];
+    }
+
+
+- (NSString *)sendDoorOpen:(HBDoorListInfo *)doorListInfo
+{
+    HBDoorListInfo *tempDoorListInfo = doorListInfo;
+    //按键开门时先获取一下最新位置
+    [locationService locateUserCurrentPosition];
+    while (locationService.inLocating) {
+    }
+    
+    HBLocation *location = [HBCommonUtil getUserLocation];
+    
+    HBSendDoorOpenInfo *sendDoorOpenInfo = [[HBSendDoorOpenInfo alloc] init];
+    sendDoorOpenInfo.userId = userid;
+    sendDoorOpenInfo.longitude = location.longitude;
+
+    sendDoorOpenInfo.latitude  = location.latitude;
+    sendDoorOpenInfo.address   = location.address;
+    sendDoorOpenInfo.CID   = tempDoorListInfo.CID;
+    sendDoorOpenInfo.IID   = tempDoorListInfo.IID;
+    sendDoorOpenInfo.IState   = @"1";
+    
+
+    NSInteger result = [serverConnect getDoorOpenInfo2:sendDoorOpenInfo];
+    if (result != HM_OK) {
+        return [serverConnect getLastErrorMessage];
+    }
+    
+    return nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    NSString *userName = [HBCommonUtil getUserName];
+    NSString *deptName = [HBCommonUtil getDeptName];
+    
+    self.userNameLabel.text = userName;
+    self.divNameLabel.text = deptName;
+    
+    self.userHeadImg.layer.cornerRadius = 1.0;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)showUserHeadImage
+{
+    UIImage *image = [HBCommonUtil getUserHead:userid];
+    if (image) {
+        [self.userHeadImg setImage:image forState:UIControlStateNormal];
+    }
+}
+
+
+#pragma mark - tableview
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return doorList.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CertIdentifier = @"CellIdentifier";
+    UITableViewCell *cell  = [tableView dequeueReusableCellWithIdentifier:CertIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CertIdentifier];
+    }
+    cell.textLabel.font = [UIFont systemFontOfSize:17.0];
+    HBDoorListInfo *doorListInfo  = doorList[indexPath.row];
+    cell.textLabel.text = doorListInfo.Iname;
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    HBDoorListInfo *doorListInfo  = doorList[indexPath.row];
+    NSString *tempCID = doorListInfo.CID;
+    [self doOpen:doorListInfo];
+
+}
+
+
+- (IBAction)exitAccount:(id)sender {
+    
+}
+
+
+
+- (IBAction)setNotificationEnabled:(id)sender {
+}
+
+
+
+- (IBAction)setBugReport:(id)sender {
+    
+}
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 100 &&  buttonIndex == 1) {
+        NSURL *downloadUrl = [NSURL URLWithString:updateUrlStr];
+        //NSURL *downloadUrl = [NSURL URLWithString:@"itms-services://?action=download-manifest&amp;url=https://dn-hebca-kuaiban.qbox.me/kuaiban.plist"];
+        [[UIApplication sharedApplication]openURL:downloadUrl];
+    }
+}
+
+- (void)willPresentAlertView:(UIAlertView *)alertView
+{
+    for( UIView * view in alertView.subviews )
+    {
+        if( [view isKindOfClass:[UILabel class]] )
+        {
+            UILabel* label = (UILabel*) view;
+            
+            label.textAlignment = NSTextAlignmentLeft;
+        }
+    }
+}
+
+#pragma mark - LeveyPopListView delegates
+
+
+- (void)myPopListViewDidCancel
+{
+}
+
+
+- (void)exitApplication {
+    
+    [UIView beginAnimations:@"exitApplication" context:nil];
+    
+    [UIView setAnimationDuration:0.3];
+    
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationTransition:UIViewAnimationTransitionNone forView:self.view cache:NO];
+    
+    [UIView setAnimationDidStopSelector:@selector(animationFinished:finished:context:)];
+    
+    self.view.bounds = CGRectMake(0, 0, 0, 0);
+    
+    [UIView commitAnimations];
+    
+}
+
+- (void)animationFinished:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+    
+    if ([animationID compare:@"exitApplication"] == 0) {
+        exit(0);
+    }
+}
+
+
+@end
