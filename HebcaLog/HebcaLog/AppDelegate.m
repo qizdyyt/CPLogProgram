@@ -19,7 +19,7 @@
 
 @implementation AppDelegate
 {
-    HBUpdateInfo *updateInfo;
+//    HBUpdateInfo *updateInfo;
 }
 
 
@@ -29,34 +29,38 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     UINavigationController *nav = nil;
+    HBHomepageViewController *homepageVC = [[HBHomepageViewController alloc] init];
+    nav = [[UINavigationController alloc] initWithRootViewController:homepageVC];
     
-    //如果没有证书，则直接跳转到首次登陆界面
-    NSArray *certList = [HBMiddleWare getCertList:HB_SIGN_CERT forDeviceType:HB_SOFT_DEVICE];
-    if (0 == [certList count]) {
-        HBFirstOpenViewController *registVC = [[HBFirstOpenViewController alloc] init];
-        registVC.window = self.window;
-        nav = [[UINavigationController alloc] initWithRootViewController:registVC];
-        self.window.rootViewController = nav;
-    }
-    else {
-        //增加根据已登录状态判断，打开登录界面，还是进入首页
-        BOOL loginState = [[HBCommonUtil getUserLoginState] boolValue];
-        if (loginState) {
-            //加载用户默认配置
-            NSString *certCN = [HBCommonUtil getUserLoginCert];
-            [HBCommonUtil loadUserConfigFromDefaults:certCN];
-            
-            HBHomepageViewController *homepageVC = [[HBHomepageViewController alloc] init];
-            nav = [[UINavigationController alloc] initWithRootViewController:homepageVC];
-            
-            self.window.rootViewController = nav;
-        }
-        else {
-            HBMLogLoginViewController *loginViewController = [[HBMLogLoginViewController alloc] init];
-            loginViewController.window = self.window;
-            self.window.rootViewController = loginViewController;
-        }
-    }
+    self.window.rootViewController = nav;
+    
+//    //如果没有证书，则直接跳转到首次登陆界面
+//    NSArray *certList = [HBMiddleWare getCertList:HB_SIGN_CERT forDeviceType:HB_SOFT_DEVICE];
+//    if (0 == [certList count]) {
+//        HBFirstOpenViewController *registVC = [[HBFirstOpenViewController alloc] init];
+//        registVC.window = self.window;
+//        nav = [[UINavigationController alloc] initWithRootViewController:registVC];
+//        self.window.rootViewController = nav;
+//    }
+//    else {
+//        //增加根据已登录状态判断，打开登录界面，还是进入首页
+//        BOOL loginState = [[HBCommonUtil getUserLoginState] boolValue];
+//        if (loginState) {
+//            //加载用户默认配置
+//            NSString *certCN = [HBCommonUtil getUserLoginCert];
+//            [HBCommonUtil loadUserConfigFromDefaults:certCN];
+//
+//            HBHomepageViewController *homepageVC = [[HBHomepageViewController alloc] init];
+//            nav = [[UINavigationController alloc] initWithRootViewController:homepageVC];
+//
+//            self.window.rootViewController = nav;
+//        }
+//        else {
+//            HBMLogLoginViewController *loginViewController = [[HBMLogLoginViewController alloc] init];
+//            loginViewController.window = self.window;
+//            self.window.rootViewController = loginViewController;
+//        }
+//    }
     
     [self.window makeKeyAndVisible];
     
@@ -65,19 +69,7 @@
     {
         [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
     }
-    
-    //检查更新
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *currVersion = [HBCommonUtil getAppBuildVersion];
-        
-        HBServerConnect *serverConnect = [[HBServerConnect alloc] init];
-        updateInfo = [serverConnect checkUpdate:currVersion];
-        if (updateInfo && updateInfo.isupdate) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self showUpdateAlert];
-            });
-        }
-    });
+    /**** 这里把检查更新删除 ****/
     
     return YES;
 }
@@ -129,52 +121,17 @@
     }
 }
 
-- (void)showUpdateAlert
-{
-    NSString *updateMsg = [NSString stringWithFormat:@"发现新版本，是否现在升级？\n更新说明：\n%@", updateInfo.updateDesc];
-    if (SYSTEM_VERSION_HIGHER(8.0)) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"升级提示"
-                                                                                 message:updateMsg
-                                                                          preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"以后再说" style:UIAlertActionStyleCancel handler:nil];
-        [alertController addAction:cancelAction];
-        
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"升级" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-            NSURL *downloadUrl = [NSURL URLWithString:updateInfo.downloadurl];
-            //NSURL *downloadUrl = [NSURL URLWithString:@"itms-services://?action=download-manifest&amp;url=https://dn-hebca-kuaiban.qbox.me/test1.plist"];
-            [[UIApplication sharedApplication]openURL:downloadUrl];
-            
-            //退出前保存默认配置
-            [HBCommonUtil recordConfiguration];
-            
-            [self exitApplication];
-        }];
-        [alertController addAction:okAction];
-        
-        [self.window.rootViewController presentViewController:alertController animated:YES completion:nil];
-    }
-    else {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"升级提示"
-                                                            message:updateMsg
-                                                           delegate:self
-                                                  cancelButtonTitle:@"以后再说"
-                                                  otherButtonTitles:@"升级", nil];
-        alertView.tag = 100;
-        
-        [alertView show];
-    }
-}
+/**** 这里把检查更新删除 ****/
 
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (alertView.tag == 100 &&  buttonIndex == 1) {
-        NSURL *downloadUrl = [NSURL URLWithString:updateInfo.downloadurl];
-        //NSURL *downloadUrl = [NSURL URLWithString:@"itms-services://?action=download-manifest&amp;url=https://dn-hebca-kuaiban.qbox.me/test.plist"];
-        [[UIApplication sharedApplication]openURL:downloadUrl];
-    }
-}
+//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//    if (alertView.tag == 100 &&  buttonIndex == 1) {
+//        NSURL *downloadUrl = [NSURL URLWithString:updateInfo.downloadurl];
+//        //NSURL *downloadUrl = [NSURL URLWithString:@"itms-services://?action=download-manifest&amp;url=https://dn-hebca-kuaiban.qbox.me/test.plist"];
+//        [[UIApplication sharedApplication]openURL:downloadUrl];
+//    }
+//}
 
 - (HBLocationService *)getLocationService
 {

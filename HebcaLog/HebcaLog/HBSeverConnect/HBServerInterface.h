@@ -12,36 +12,17 @@
 
 //Func: getUserInfo
 //Reply -获取到的用户信息
-@interface HBUserInfo : NSObject
-@property (nonatomic, copy)NSString *userId;    //用户id
-@property (nonatomic, copy)NSString *userName;  //用户名称
-@property (nonatomic, copy)NSString *phone;     //手机号
-@property (nonatomic, copy)NSString *idNum;     //身份证号
-@property (nonatomic, copy)NSString *divname;   //单位名称
-@property (nonatomic, copy)NSString *certCN;    //已绑定的证书CN号，未绑定时为空串
-@end
-
+//@interface HBUserInfo : NSObject
+/***** 这个模型移动出去 ****/
+//@end
+#import "HBUserInfo.h"
 
 //Func: loginWithParam
 //Input -登录参数
-@interface HBLoginParam : NSObject
-@property (nonatomic, copy)NSString *cert;      //签名证书（base64编码）
-@property (nonatomic, copy)NSString *random;    //随机串
-@property (nonatomic, copy)NSString *randomSign;//签名后随机串
-@property (nonatomic, copy)NSString *userName;  //用户名 绑定证书时使用，可以为空
-@property (nonatomic, copy)NSString *password;  //密码，绑定证书时使用，可以为空
-@property (nonatomic, copy)NSString *divid;     //单位ID
-@property (nonatomic, copy)NSString *deviceId;  //设备串号 （用户名和证书、证书和设备串号 都是一一对应）
-@property (nonatomic, copy)NSString *pkgVersion;//软件版本号
-@end
+#import "HBLoginParam.h"
+
 //Reply -登录返回信息
-@interface HBLoginReply : NSObject
-@property (nonatomic, copy)NSString *userId;    //用户id
-@property (nonatomic, copy)NSString *userName;  //用户名称
-@property (nonatomic, copy)NSString *deptId;    //部门id
-@property (nonatomic, copy)NSString *deptName;  //部门名称
-@property (nonatomic, copy)NSString *clientRole; //客户端角色
-@end
+#import "HBLoginReply.h"
 
 
 //Func: attendAct:

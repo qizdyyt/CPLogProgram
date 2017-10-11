@@ -9,14 +9,6 @@
 #import "HBServerInterface.h"
 #import "HBCommonUtil.h"
 
-@implementation HBUserInfo : NSObject
-@end
-
-@implementation HBLoginParam : NSObject
-@end
-
-@implementation HBLoginReply : NSObject
-@end
 
 @implementation HBAttendInfo : NSObject
 @end
