@@ -29,312 +29,186 @@
 //Input -考勤信息
 //Func1: getLastAttendInfo:
 //Reply -上次考勤信息
-@interface HBAttendInfo : NSObject
-@property (nonatomic, copy)NSString *userId;    //用户id （打卡函数入参）
-@property (nonatomic, copy)NSString *time;      //打卡时间 （获取上次打卡信息出参）
-@property (nonatomic, copy)NSString *longitude; //经度
-@property (nonatomic, copy)NSString *latitude;  //纬度
-@property (nonatomic, copy)NSString *address;   //打卡地址
-@property (nonatomic, assign)NSInteger type;    //打卡类型 1-上班  2-下班
-@end
-
+//@interface HBAttendInfo : NSObject
+//
+//@end
+#import "HBAttendInfo.h"
 
 //Func: doorList:
 //Input -考勤信息
 //Func1: getDoorListInfo:
 //Reply -门禁列表
-@interface HBDoorListInfo : NSObject
-@property (nonatomic, copy)NSString *CID;    //
-@property (nonatomic, copy)NSString *IID;    //
-@property (nonatomic, copy)NSString *IState; //
-@property (nonatomic, copy)NSString *Iname;  //
-@property (nonatomic, copy)NSString *Online;  //
-@end
-
+//@interface HBDoorListInfo : NSObject
+//
+//@end
+#import "HBDoorListInfo.h"
 
 //Func: sendDoorOpenAct:
 //Input -App开门
 //Func1: getDoorListInfo:
 //Reply -App开门结果
 
-@interface HBSendDoorOpenInfo : NSObject
-@property (nonatomic, copy)NSString *userId;    //用户id （打卡函数入参）
-@property (nonatomic, copy)NSString *time;      //打卡时间 （获取上次打卡信息出参）
-@property (nonatomic, copy)NSString *longitude; //经度
-@property (nonatomic, copy)NSString *latitude;  //纬度
-@property (nonatomic, copy)NSString *address;   //打卡地址
-@property (nonatomic, copy)NSString *CID;   //
-@property (nonatomic, copy)NSString *IID;   //
-@property (nonatomic, copy)NSString *IState;   //
-@end
+//@interface HBSendDoorOpenInfo : NSObject
+//
+//@end
+#import "HBSendDoorOpenInfo.h"
 
 //Func: getAttendStatistics:
 //Input -查询配置信息
-@interface HBAttendRequesInfo : NSObject
-@property (nonatomic, copy)NSString *userid;    //用户id
-@property (nonatomic, copy)NSString *getuserid; //待查看用户id
-@property (nonatomic, copy)NSString *date;      //考勤截止日期（不传默认当月）
-@property (nonatomic, assign)BOOL badonly;      //是否仅查看异常的考勤信息 NO-返回所有考勤信息 YES-仅返回异常的考勤信息。
-@property (nonatomic, assign)NSInteger pagenum; //第几页
-@property (nonatomic, assign)NSInteger pagesize;//每页显示条数
-@end
-//Reply_sub 打卡记录
-@interface HBAttendRecord : NSObject
-@property (nonatomic, copy)NSString *date;      //考勤日期
-@property (nonatomic, copy)NSString *worktime;    //工作时长
-@property (nonatomic, assign)BOOL isbad;        //是否考勤异常 NO-考勤正常 YES-考勤异常
-@property (nonatomic, copy)NSMutableArray *attendlist;//打卡列表  打卡信息：HBAttendInfo *（出参）
-@end
-//Reply -考勤统计数据
-@interface HBAttendStatisticInfo : NSObject
-@property (nonatomic, copy)NSString *userid;    //打卡人
-@property (nonatomic, copy)NSString *userName;  //打卡人姓名
-@property (nonatomic, assign)NSInteger baddays; //本月考勤异常天数
-@property (nonatomic, copy)NSMutableArray *records; //打卡记录 HBAttendRecord *
-@end
+//@interface HBAttendRequesInfo : NSObject
+//
+//@end
+#import "HBAttendRequesInfo.h"
 
+//Reply_sub 打卡记录
+//@interface HBAttendRecord : NSObject
+//
+//@end
+#import "HBAttendRecord.h"
+
+//Reply -考勤统计数据
+//@interface HBAttendStatisticInfo : NSObject
+//
+//@end
+#import "HBAttendStatisticInfo.h"
 
 //Func: sendMsg:
 //Input -待发送的消息信息
 //Func1: getMsgList
 //Reply_sub 获取到的消息
-@interface HBMessageInfo : NSObject
-@property (nonatomic, copy)NSString *userid;    //用户id
-@property (nonatomic, copy)NSString *username;
-@property (nonatomic, copy)NSString *content;   //消息内容
-@property (nonatomic, copy)NSString *image;     //消息图片      -------------------------------?????
-@property (nonatomic, copy)NSString *receivers; //接收人列表
-@property (nonatomic, copy)NSString *longitude; //经度
-@property (nonatomic, copy)NSString *latitude;  //纬度
-@property (nonatomic, copy)NSString *address;   //地址
-@property (nonatomic, copy)NSString *msgid;     //消息id func1出参
-@property (nonatomic, copy)NSString *time;      //发布时间 func1出参
-@property (nonatomic, copy)NSMutableArray *replies; //消息回复列表 func1出参  -HBReply *
-@end
+//@interface HBMessageInfo : NSObject
+//
+//@end
+#import "HBMessageInfo.h"
+
 //Reply_sub 接收到的回复消息
-@interface HBReply : NSObject
-@property (nonatomic, copy)NSString *msgid;     //消息ID
-@property (nonatomic, copy)NSString *content;   //消息内容
-@property (nonatomic, copy)NSString *senderid;  //回复者ID
-@property (nonatomic, copy)NSString *sendername;//回复者姓名
-@property (nonatomic, copy)NSString *time;      //发布时间
-@end
+//@interface HBReply : NSObject
+//
+//@end
+#import "HBReply.h"
 
 //Func  getMsgList
 //Reply
 
-@interface HBUserMessage : NSObject
-@property (nonatomic, copy) NSArray *messageList;   //消息列表
-@property (nonatomic, copy) NSArray *users;         //发消息的用户列表
-@property (nonatomic, copy) NSData *jsonData;       //服务端读取的JSON数据
-@end
+//@interface HBUserMessage : NSObject
+//
+//@end
+#import "HBUserMessage.h"
 
 
 //Func  getMsgList
 //Input 消息请求信息
-@interface HBMsgRequestInfo : NSObject
-@property (nonatomic, copy)NSString *userid;    //用户id
-@property (nonatomic, copy)NSString *getuserid; //待查看用户id
-@property (nonatomic, assign)NSInteger pagenum; //第几页
-@property (nonatomic, assign)NSInteger pagesize;//每页显示条数
-@end
-
+//@interface HBMsgRequestInfo : NSObject
+//
+//@end
+#import "HBMsgRequestInfo.h"
 
 //Func replyMsg
 //Input 回复的消息内容
-@interface HBReplyContent : NSObject
-@property (nonatomic, copy)NSString *userid;    //用户id
-@property (nonatomic, copy)NSString *replyid;   //被回复消息id
-@property (nonatomic, copy)NSString *replyto;
-@property (nonatomic, copy)NSString *content;   //回复内容
-@end
+//@interface HBReplyContent : NSObject
+//
+//@end
+#import "HBReplyContent.h"
 
 
 //Func writeJournal
 //Input 日志信息
 //Func1 getJournalList
 //Reply_sub 获取到的日志信息
-@interface HBJournalInfo : NSObject
-@property (nonatomic, copy)NSString *userid;    //登录用户id
-@property (nonatomic, copy)NSString *content;   //日志内容
-@property (nonatomic, copy)NSString *image;     //日志图片
-@property (nonatomic, copy)NSString *longitude; //经度
-@property (nonatomic, copy)NSString *latitude;  //纬度
-@property (nonatomic, copy)NSString *address;   //地址
-@property (nonatomic, copy)NSString *costtime;  //耗费工时，保留字段，暂不使用
-@property (nonatomic, copy)NSString *journalId; //日志id  func1-输出参数
-@property (nonatomic, copy)NSString *userName;  //用户姓名 func1-输出参数
-@property (nonatomic, copy)NSString *time;      //发布时间 func1-输出参数
-@property (nonatomic, copy)NSMutableArray *replies; //消息回复 HBReply* func1-输出参数
-@end
+//@interface HBJournalInfo : NSObject
+//
+//@end
+#import "HBJournalInfo.h"
 
 
 //Func getJournalList
 //Input 日志请求信息
-@interface HBJournalRequestInfo : NSObject
-@property (nonatomic, copy)NSString *userid;    //用户id
-@property (nonatomic, copy)NSString *getuserid; //待查看用户id
-@property (nonatomic, copy)NSString *date;      //日志终止日期
-@property (nonatomic, assign)NSInteger pagenum; //第几页
-@property (nonatomic, assign)NSInteger pagesize;//每页显示条数
-@end
-
+//@interface HBJournalRequestInfo : NSObject
+//
+//@end
+#import "HBJournalRequestInfo.h"
 
 //Func  getJrnlList
 //Reply
 
-@interface HBUserJournal : NSObject
-@property (nonatomic, copy) NSArray *journalList;   //日志列表
-@property (nonatomic, copy) NSArray *users;         //发日志的用户列表
-@property (nonatomic, copy) NSData *jsonData;       //服务端读取的JSON数据
-@end
-
+//@interface HBUserJournal : NSObject
+//@end
+#import "HBUserJournal.h"
 
 //Func sendPosition
 //Input 用户位置信息
 //Func1 getPositions
 //Reply 获取到的用户位置信息
-@interface HBPosition : NSObject
-@property (nonatomic, copy)NSString *userid;    //用户id
-@property (nonatomic, copy)NSString *longitude; //经度
-@property (nonatomic, copy)NSString *latitude;  //纬度
-@property (nonatomic, copy)NSString *address;   //地址
-@property (nonatomic,assign)NSInteger forcesend; //是否强制上传
-@property (nonatomic, copy)NSString *username;  //用户姓名 Func1 返回参数
-@property (nonatomic, copy)NSString *time;      //该点定位时间 Func1 返回参数
-@end
-
+//@interface HBPosition : NSObject
+//@end
+#import "HBPosition.h"
 
 //Func getContacts
 //Input 联系人请求信息
-@interface HBContactRequest : NSObject
-@property (nonatomic, copy) NSString *userid;    //用户id
-@property (nonatomic, copy) NSString *signcert;  //签名证书
-@property (nonatomic, copy) NSData *signdata;  //签名数据
-@property (nonatomic, copy) NSString *lastupdated;//上次更新联系人列表的时间
-@end
+//@interface HBContactRequest : NSObject
+//@end
+#import "HBContactRequest.h"
 //Reply_sub
-@interface HBContactDept : NSObject
-@property (nonatomic, copy) NSString *deptid;    //部门id
-@property (nonatomic, copy) NSString *deptname;  //部门名称
-@property (nonatomic, copy) NSMutableArray *depts; //部门列表 HBContactDept*
-@property (nonatomic, copy) NSMutableArray *contacts; //联系人列表 HBContact*
-@property (nonatomic, strong) HBContactDept * parentGroup;    //上级分组
-@property (nonatomic, assign) BOOL selected;     //该组是否为选中状态
-@end
+//@interface HBContactDept : NSObject
+//@end
+#import "HBContactDept.h"
 //Reply_sub
-@interface HBContact : NSObject
-@property (nonatomic, copy) NSString *userid;    //用户id
-@property (nonatomic, copy) NSString *username;  //用户姓名
-@property (nonatomic, copy) NSString *phone;     //手机号码
-@property (nonatomic, copy) NSString *telephone;     //坐机号码
-@property (nonatomic, copy) NSString *extension;     //分机号码
-
-
-@property (nonatomic, strong) HBContactDept * parentGroup;    //上级分组
-@property (nonatomic, assign) BOOL selected;     //该组是否为选中状态
-@end
+//@interface HBContact : NSObject
+//@end
+#import "HBContact.h"
 //Reply
-@interface HBContactInfo : NSObject
-@property (nonatomic, assign) BOOL modified;   //是否需要更新本地的联系人缓存文件 YES-需要更新 NO-不需要更新
-@property (nonatomic, copy) NSString *updatedTime; //联系人列表的更新时间	需要更新时返回
-@property (nonatomic, copy) NSMutableArray *depts; //部门列表 HBContactDept*
-@property (nonatomic, copy) NSData *jsonData; //用以保存联系人到本地
-@end
-
+//@interface HBContactInfo : NSObject
+//@end
+#import "HBContactInfo.h"
 
 //Func checkUpdate
 //Reply 更新信息
-@interface HBUpdateInfo : NSObject
-@property (nonatomic, assign)BOOL isupdate;     //是否有更新 YES-有  NO-没有
-@property (nonatomic, assign)BOOL isforceupdate;//是否强制升级 YES-是
-@property (nonatomic, copy)NSString *downloadurl;//下载地址	若无更新的版本，则此字段为空
-@property (nonatomic, copy)NSString *updateDesc;//升级描述	此字段可以为空
-@end
-
+//@interface HBUpdateInfo : NSObject
+//@end
+#import "HBUpdateInfo.h"
 
 //Func bugreport
 //Input bug信息
-@interface HBBugInfo : NSObject
-@property (nonatomic, copy)NSString *devicetype;    //
-@property (nonatomic, copy)NSString *platform;      //
-@property (nonatomic, copy)NSString *phoneid;       //
-@property (nonatomic, copy)NSString *packagename;   //
-@property (nonatomic, copy)NSString *packageversion;//
-@property (nonatomic, copy)NSString *exceptiontime; //
-@property (nonatomic, copy)NSString *stacktrace;    //
-@end
-
+//@interface HBBugInfo : NSObject
+//@end
+#import "HBBugInfo.h"
 
 //Func registUnit
 //Input 注册信息
-@interface HBRegistRequest : NSObject
-@property (nonatomic, copy) NSString *username;     //用户登录名
-@property (nonatomic, copy) NSString *password;     //密码
-@property (nonatomic, copy) NSString *divname;      //单位名称
-@property (nonatomic, copy) NSString *name;         //用户姓名
-@property (nonatomic, copy) NSString *mobilephone;  //手机号
-@property (nonatomic, copy) NSString *identitycard; //身份证号码
-@property (nonatomic, copy) NSString *scertcn;      //已经存在的签名证书CN号
-@property (nonatomic, copy) NSString *code;         //短信验证码
-@end
-//Output 注册返回信息
-@interface HBRegistReply : NSObject
-@property (nonatomic, copy) NSString *divid;        //单位ID
-@property (nonatomic, copy) NSString *acceptNo;     //订单号
-@end
+//@interface HBRegistRequest : NSObject
+//@end
+#import "HBRegistRequest.h"
 
+//Output 注册返回信息
+//@interface HBRegistReply : NSObject
+//@end
+#import "HBRegistReply.h"
 
 //Func uploadCustomConfig
 //Input 上传注册信息
-@interface HBCustomConfig : NSObject
-@property (nonatomic, copy) NSString *userid;       //用户ID
-@property (nonatomic, copy) NSString *key;          //参数标识
-@property (nonatomic, copy) NSString *value;        //参数值（若参数为文件类型（如设置用户头像），则此字段为空）
-@property (nonatomic, copy) NSString *attachment;   //附件（上传文件时使用, 所填值为文件保存路径）
-@property (nonatomic, copy) NSString *descript;     //参数描述
-@end
-
+//@interface HBCustomConfig : NSObject
+//@end
+#import "HBCustomConfig.h"
 
 //Func: sendMeeting:
 //Input -待发送的消息信息
 //Func1: getMeetingList
 //Reply_sub 获取到的消息
-@interface HBMeetingInfo : NSObject
-@property (nonatomic, copy)NSString *userid;    //用户id
-@property (nonatomic, copy)NSString *username;
-@property (nonatomic, copy)NSString *content;   //会议内容
-@property (nonatomic, copy)NSString *image;     //会议图片      -------------------------------?????
-@property (nonatomic, copy)NSString *receivers;
-@property (nonatomic, copy)NSString *meetingman; //与会人列表
-@property (nonatomic, assign)NSInteger leavecount; //请假人数
-@property (nonatomic, assign)NSInteger signcount;  //签到人数
-@property (nonatomic, copy)NSString *longitude; //经度
-@property (nonatomic, copy)NSString *latitude;  //纬度
-@property (nonatomic, copy)NSString *address;   //地址
-@property (nonatomic, copy)NSString *meetid;    //会议id func1出参
-@property (nonatomic, copy)NSString *time;      //发布时间 func1出参
-@property (nonatomic, copy)NSMutableArray *replies; //消息回复列表 func1出参  -HBReply *
-@end
+//@interface HBMeetingInfo : NSObject
+//@end
+#import "HBMeetingInfo.h"
 
 //Func  getMeetList
 //Reply
-@interface HBUserMeeting : NSObject
-@property (nonatomic, copy) NSArray *meetingList;   //会议列表
-@property (nonatomic, copy) NSArray *users;         //发消息的用户列表
-@property (nonatomic, copy) NSData *jsonData;       //服务端读取的JSON数据
-@end
-
+//@interface HBUserMeeting : NSObject
+//@end
+#import "HBUserMeeting.h"
 
 //Func  getMeetList
 //Input 消息请求信息
-@interface HBMeetRequestInfo : NSObject
-@property (nonatomic, copy)NSString *userid;    //用户id
-@property (nonatomic, copy)NSString *getuserid; //待查看用户id
-@property (nonatomic, assign)NSInteger pagenum; //第几页
-@property (nonatomic, assign)NSInteger pagesize;//每页显示条数
-@end
-
+//@interface HBMeetRequestInfo : NSObject
+//@end
+#import "HBMeetRequestInfo.h"
 
 
 
