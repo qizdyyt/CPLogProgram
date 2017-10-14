@@ -283,19 +283,19 @@
     loginParam.deviceId = self.deviceId;
     loginParam.pkgVersion = [NSString stringWithFormat:@"v%@", [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey]];
 
-    HBLoginReply *loginReply = [serverConnect loginWithParam:loginParam];
-    if (IS_NULL(loginReply)) {
-        return [serverConnect getLastErrorMessage];
-    }
+//    HBLoginReply *loginReply = [serverConnect loginWithParam:loginParam];
+//    if (IS_NULL(loginReply)) {
+//        return [serverConnect getLastErrorMessage];
+//    }
     
 //    [HBCommonUtil upDateUserLoginState:certCN state:YES];
     
     HBUserConfig *userConfig = [[HBUserConfig alloc] init];
-    userConfig.userId   = loginReply.userId;
-    userConfig.userName = loginReply.userName;
-    userConfig.deptId   = loginReply.deptId;
-    userConfig.deptName = loginReply.deptName;
-    userConfig.clientrole = [loginReply.clientRole integerValue];   //当前服务端未使用；若后续使用此字段，注意返回值类型
+//    userConfig.userId   = loginReply.userId;
+//    userConfig.userName = loginReply.userName;
+//    userConfig.deptId   = loginReply.deptId;
+//    userConfig.deptName = loginReply.deptName;
+//    userConfig.clientrole = [loginReply.clientRole integerValue];   //当前服务端未使用；若后续使用此字段，注意返回值类型
 //    userConfig.certCN   = certCN;
     
     [HBCommonUtil updateUserConfig:userConfig];

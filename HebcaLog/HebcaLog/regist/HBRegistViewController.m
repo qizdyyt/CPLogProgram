@@ -155,12 +155,12 @@
 - (NSString *)requstNewApplication
 {
     HBServerConnect *serverConnect = [[HBServerConnect alloc] init];
-    HBUserInfo *userInfo = [serverConnect getUserInfo:self.userIdTF.text
-                                             password:self.passswordTF.text
-                                                divID:self.unitIdTF.text];
-    if (nil == userInfo) {
-        return [serverConnect getLastErrorMessage];
-    }
+//    HBUserInfo *userInfo = [serverConnect getUserInfo:self.userIdTF.text
+//                                             password:self.passswordTF.text
+//                                                divID:self.unitIdTF.text];
+//    if (nil == userInfo) {
+//        return [serverConnect getLastErrorMessage];
+//    }
     
     //提交新办证书申请
 //    _appNo = [self makeOnlineBusinessNewRequest:userInfo];

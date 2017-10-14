@@ -59,16 +59,6 @@
 //    self.loginNameTF.text = [[_certList objectAtIndex:0] getSubjectItem:HB_DN_COMMON_NAME];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 
 #pragma mark - UITextFieldViewDelegate
 
@@ -200,8 +190,8 @@
 
 - (NSString *)certLogin {
     //准备登录参数
-//    NSString *certCN = [logCert getSubjectItem:HB_DN_GIVEN_NAME];
     HBLoginParam *loginParam = [[HBLoginParam alloc] init];
+//    NSString *certCN = [logCert getSubjectItem:HB_DN_GIVEN_NAME];
 //    loginParam.cert = [logCert getBase64CertData];
 //
 //    NSString *randomStr = [self getRandomString];
@@ -214,26 +204,26 @@
 //    loginParam.pkgVersion = [NSString stringWithFormat:@"v%@", [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey]];
     
     HBServerConnect *serverConnect = [[HBServerConnect alloc] init];
-    HBLoginReply *logReply = [serverConnect loginWithParam:loginParam];
-    if (nil == logReply) {
-        if (HM_NETWORK_UNREACHABLE == [serverConnect getLastError]) {
-            return @"无法连接服务器，请检查您的网络状态";
-        }
-        return [serverConnect getLastErrorMessage];
-    }
+//    HBLoginReply *logReply = [serverConnect loginWithParam:loginParam];
+//    if (nil == logReply) {
+//        if (HM_NETWORK_UNREACHABLE == [serverConnect getLastError]) {
+//            return @"无法连接服务器，请检查您的网络状态";
+//        }
+//        return [serverConnect getLastErrorMessage];
+//    }
     
-    if (-1 == [logReply.userName intValue]) {
-        return @"证书未绑定用户";
-    }
+//    if (-1 == [logReply.userName intValue]) {
+//        return @"证书未绑定用户";
+//    }
     
 //    [HBCommonUtil upDateUserLoginState:certCN state:YES];
     
     HBUserConfig *userConfig = [[HBUserConfig alloc] init];
-    userConfig.userId   = logReply.userId;
-    userConfig.userName = logReply.userName;
-    userConfig.deptId   = logReply.deptId;
-    userConfig.deptName = logReply.deptName;
-    userConfig.clientrole = [logReply.clientRole integerValue];   //TODO：当前服务端未使用；若后续使用此字段，注意返回值类型
+//    userConfig.userId   = logReply.userId;
+//    userConfig.userName = logReply.userName;
+//    userConfig.deptId   = logReply.deptId;
+//    userConfig.deptName = logReply.deptName;
+//    userConfig.clientrole = [logReply.clientRole integerValue];   //TODO：当前服务端未使用；若后续使用此字段，注意返回值类型
 //    userConfig.certCN   = certCN;
     
     [HBCommonUtil updateUserConfig:userConfig];

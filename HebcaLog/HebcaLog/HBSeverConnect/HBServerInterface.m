@@ -12,81 +12,81 @@
 
 @implementation HBServerConnect (HBServerInterface)
 
--(HBUserInfo *)getUserInfo:(NSString *)user password:(NSString *)password divID:(NSString *)divId
-{
-    if (nil == user || nil == password || nil == divId) {
-        HM_SET_ERROR(HM_PARAMETER_INVALID);
-        return nil;
-    }
+//-(HBUserInfo *)getUserInfo:(NSString *)user password:(NSString *)password divID:(NSString *)divId
+//{
+//    if (nil == user || nil == password || nil == divId) {
+//        HM_SET_ERROR(HM_PARAMETER_INVALID);
+//        return nil;
+//    }
+//
+//    NSString *param = [NSString stringWithFormat:@"username=%@&password=%@&divid=%@", user, password, divId];
+//
+//    NSHTTPURLResponse *response = nil;
+//    NSError *error = nil;
+//    NSData *received = [self httpSynPostRequest:@"getUser.action" parameter:param response:&response error:&error];
+//    if (IS_NULL(received)||0==[received length]) {
+//        HM_SET_ERROR_MSG(HM_NETWORK_UNREACHABLE, ERROR_MESSAGE(error));
+//        return nil;
+//    }
+//
+//    NSDictionary *retnDic = [self getServerInfoData:received];
+//    if (IS_NULL(retnDic)) {
+//        return nil;
+//    }
     
-    NSString *param = [NSString stringWithFormat:@"username=%@&password=%@&divid=%@", user, password, divId];
+//    HBUserInfo *userInfo = [[HBUserInfo alloc] init];
+//    userInfo.userId =   [retnDic objectForKey:@"userid"];
+//    userInfo.userName = [retnDic objectForKey:@"name"];
+//    userInfo.phone =    [retnDic objectForKey:@"mobilephone"];
+//    userInfo.idNum =    [retnDic objectForKey:@"identitycard"];
+//    userInfo.certCN =   [retnDic objectForKey:@"certcn"];
+//    userInfo.divname =  [retnDic objectForKey:@"divname"];
     
-    NSHTTPURLResponse *response = nil;
-    NSError *error = nil;
-    NSData *received = [self httpSynPostRequest:@"getUser.action" parameter:param response:&response error:&error];
-    if (IS_NULL(received)||0==[received length]) {
-        HM_SET_ERROR_MSG(HM_NETWORK_UNREACHABLE, ERROR_MESSAGE(error));
-        return nil;
-    }
-    
-    NSDictionary *retnDic = [self getServerInfoData:received];
-    if (IS_NULL(retnDic)) {
-        return nil;
-    }
-    
-    HBUserInfo *userInfo = [[HBUserInfo alloc] init];
-    userInfo.userId =   [retnDic objectForKey:@"userid"];
-    userInfo.userName = [retnDic objectForKey:@"name"];
-    userInfo.phone =    [retnDic objectForKey:@"mobilephone"];
-    userInfo.idNum =    [retnDic objectForKey:@"identitycard"];
-    userInfo.certCN =   [retnDic objectForKey:@"certcn"];
-    userInfo.divname =  [retnDic objectForKey:@"divname"];
-    
-    return userInfo;
-}
+//    return userInfo;
+//}
 
 
--(HBLoginReply *)loginWithParam:(HBLoginParam *)loginParam
-{
-    if (IS_NULL(loginParam)) {
-        HM_SET_ERROR_MSG(HM_PARAMETER_INVALID, HM_PARAMETER_INVALID_MSG);
-        return nil;
-    }
-    
-    NSMutableArray *paramDic = [NSMutableArray array];
-    [paramDic addObject: MAKE_PARAM(@"cert", loginParam.cert)];
-    [paramDic addObject: MAKE_PARAM(@"random", loginParam.random)];
-    [paramDic addObject: MAKE_PARAM(@"randomsign", loginParam.randomSign)];
-    [paramDic addObject: MAKE_PARAM(@"username", loginParam.userName)];
-    [paramDic addObject: MAKE_PARAM(@"password", loginParam.password)];
-    [paramDic addObject: MAKE_PARAM(@"divid", loginParam.divid)];
-    [paramDic addObject: MAKE_PARAM(@"deviceid", loginParam.deviceId)];
-    [paramDic addObject: MAKE_PARAM(@"packageversion", loginParam.pkgVersion)];
-    NSString *param = [paramDic componentsJoinedByString:@"&"];
-    
-    NSHTTPURLResponse *response = nil;
-    NSError *error = nil;
-    NSData *received = [self httpSynGetRequest:@"login.action" parameter:param response:&response error:&error];
-    
-    if (IS_NULL(received)||0==[received length]) {
-        HM_SET_ERROR_MSG(HM_NETWORK_UNREACHABLE, ERROR_MESSAGE(error));
-        return nil;
-    }
-    
-    NSDictionary *retnDic = [self getServerInfoData:received];
-    if (IS_NULL(retnDic)) {
-        return nil;
-    }
-    
-    HBLoginReply *reply = [[HBLoginReply alloc] init];
-    reply.userId =      [retnDic objectForKey:@"userid"];
-    reply.userName =    [retnDic objectForKey:@"name"];
-    reply.deptId =      [retnDic objectForKey:@"deptid"];
-    reply.deptName =    [retnDic objectForKey:@"deptname"];
-    reply.clientRole =  [retnDic objectForKey:@"clientrole"];
-    
-    return reply;
-}
+//-(HBLoginReply *)loginWithParam:(HBLoginParam *)loginParam
+//{
+//    if (IS_NULL(loginParam)) {
+//        HM_SET_ERROR_MSG(HM_PARAMETER_INVALID, HM_PARAMETER_INVALID_MSG);
+//        return nil;
+//    }
+//
+//    NSMutableArray *paramDic = [NSMutableArray array];
+//    [paramDic addObject: MAKE_PARAM(@"cert", loginParam.cert)];
+//    [paramDic addObject: MAKE_PARAM(@"random", loginParam.random)];
+//    [paramDic addObject: MAKE_PARAM(@"randomsign", loginParam.randomSign)];
+//    [paramDic addObject: MAKE_PARAM(@"username", loginParam.userName)];
+//    [paramDic addObject: MAKE_PARAM(@"password", loginParam.password)];
+//    [paramDic addObject: MAKE_PARAM(@"divid", loginParam.divid)];
+//    [paramDic addObject: MAKE_PARAM(@"deviceid", loginParam.deviceId)];
+//    [paramDic addObject: MAKE_PARAM(@"packageversion", loginParam.pkgVersion)];
+//    NSString *param = [paramDic componentsJoinedByString:@"&"];
+//
+//    NSHTTPURLResponse *response = nil;
+//    NSError *error = nil;
+//    NSData *received = [self httpSynGetRequest:@"login.action" parameter:param response:&response error:&error];
+//
+//    if (IS_NULL(received)||0==[received length]) {
+//        HM_SET_ERROR_MSG(HM_NETWORK_UNREACHABLE, ERROR_MESSAGE(error));
+//        return nil;
+//    }
+//
+//    NSDictionary *retnDic = [self getServerInfoData:received];
+//    if (IS_NULL(retnDic)) {
+//        return nil;
+//    }
+//
+//    HBLoginReply *reply = [[HBLoginReply alloc] init];
+//    reply.userId =      [retnDic objectForKey:@"userid"];
+//    reply.userName =    [retnDic objectForKey:@"name"];
+//    reply.deptId =      [retnDic objectForKey:@"deptid"];
+//    reply.deptName =    [retnDic objectForKey:@"deptname"];
+//    reply.clientRole =  [retnDic objectForKey:@"clientrole"];
+//
+//    return reply;
+//}
 
 -(NSInteger)bindPushID:(NSString *)certCN pushID:(NSString *)pushID
 {

@@ -224,7 +224,7 @@
  *参数： username	用户英文名 password密码 divid单位id
  *返回： HBUserInfo *
  */
--(HBUserInfo *)getUserInfo:(NSString *)user password:(NSString *)password divID:(NSString *)divId;
+//-(HBUserInfo *)getUserInfo:(NSString *)user password:(NSString *)password divID:(NSString *)divId;
 
 
 /*2.3.8.2 登录
@@ -233,7 +233,7 @@
  *参数： HBLoginParam *
  *返回： HBLoginReply *
  */
--(HBLoginReply *)loginWithParam:(HBLoginParam *)param;
+//-(HBLoginReply *)loginWithParam:(HBLoginParam *)param;
 
 
 /*2.3.8.3	绑定推送ID
