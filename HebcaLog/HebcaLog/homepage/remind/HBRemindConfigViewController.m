@@ -8,6 +8,7 @@
 
 #import "HBRemindConfigViewController.h"
 #import "HBCommonUtil.h"
+#import "HBErrorCode.h"//去掉证书，HBCommonUtil.h不再包含errorcode
 #import "ToastUIView.h"
 
 #import <QuartzCore/QuartzCore.h>

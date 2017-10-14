@@ -389,65 +389,66 @@ NSString *g_updateUrl = nil;
     return tempFrame;
 }
 
-+ (HBDevice *)getSoftDevice {
-    [HBMiddleWare reloadDevice];
-    
-    HBDevice *device = [HBMiddleWare getDevice:HB_SOFT_DEVICE];
-    if (IS_NULL(device)) //初次登陆，设备为空，需要重新创建
-    {
-        NSInteger createRslt = [HBMiddleWare createSoftDevice:@"SoftToken"];
-        if (createRslt != HM_OK) {
-            NSLog(@"[error]创建软设备失败");
-            return nil;
-        }
-        
-        device = [HBMiddleWare getDevice:HB_SOFT_DEVICE];
-        if (IS_NULL(device)) {
-            NSLog(@"[error]创建软设备失败");
-            return nil;
-        }
-        
-        NSInteger initRslt = [device initDevice:@"123456" tokenLabel:@"SoftToken"];
-        if (initRslt != HM_OK) {
-            NSLog(@"[error][%s]初始化软设备失败", __FUNCTION__);
-            return nil;
-        }
-        
-        [HBMiddleWare reloadDevice];
-        
-        device = [HBMiddleWare getDevice:HB_SOFT_DEVICE];
-        [device loginDevice:@"123456"];
-        [HBCommonUtil recordPasswordToDefaults:@"123456"];
-    }
-    else {
-        [HBCommonUtil loginDevice:device];
-    }
-    
-    return device;
-}
+//下面到451行都是证书相关，去掉了
+//+ (HBDevice *)getSoftDevice {
+//    [HBMiddleWare reloadDevice];
+//
+//    HBDevice *device = [HBMiddleWare getDevice:HB_SOFT_DEVICE];
+//    if (IS_NULL(device)) //初次登陆，设备为空，需要重新创建
+//    {
+//        NSInteger createRslt = [HBMiddleWare createSoftDevice:@"SoftToken"];
+//        if (createRslt != HM_OK) {
+//            NSLog(@"[error]创建软设备失败");
+//            return nil;
+//        }
+//
+//        device = [HBMiddleWare getDevice:HB_SOFT_DEVICE];
+//        if (IS_NULL(device)) {
+//            NSLog(@"[error]创建软设备失败");
+//            return nil;
+//        }
+//
+//        NSInteger initRslt = [device initDevice:@"123456" tokenLabel:@"SoftToken"];
+//        if (initRslt != HM_OK) {
+//            NSLog(@"[error][%s]初始化软设备失败", __FUNCTION__);
+//            return nil;
+//        }
+//
+//        [HBMiddleWare reloadDevice];
+//
+//        device = [HBMiddleWare getDevice:HB_SOFT_DEVICE];
+//        [device loginDevice:@"123456"];
+//        [HBCommonUtil recordPasswordToDefaults:@"123456"];
+//    }
+//    else {
+//        [HBCommonUtil loginDevice:device];
+//    }
+//
+//    return device;
+//}
 
-+ (NSInteger)loginDevice:(HBDevice *)device withUI:(id)sender
-{
-    NSInteger result = 0;
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
-        result = [device loginDeviceWithUI:self];
-    }
-    else {
-        result = [device loginDeviceWithUI];
-    }
+//+ (NSInteger)loginDevice:(HBDevice *)device withUI:(id)sender
+//{
+//    NSInteger result = 0;
+//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+//        result = [device loginDeviceWithUI:self];
+//    }
+//    else {
+//        result = [device loginDeviceWithUI];
+//    }
+//
+//    return result;
+//}
 
-    return result;
-}
-
-+ (void)loginDevice:(HBDevice *)device
-{
-    [device loginDevice:[HBCommonUtil getPasswordFromDefaults]];
-}
-
-+ (void)loginCert:(HBCert *)cert
-{
-    [cert loginDevice:[HBCommonUtil getPasswordFromDefaults]];
-}
+//+ (void)loginDevice:(HBDevice *)device
+//{
+//    [device loginDevice:[HBCommonUtil getPasswordFromDefaults]];
+//}
+//
+//+ (void)loginCert:(HBCert *)cert
+//{
+//    [cert loginDevice:[HBCommonUtil getPasswordFromDefaults]];
+//}
 
 //------------------------UserDefaults用户数据----------------------//
 /*userInfo = 
@@ -1113,27 +1114,27 @@ NSString *g_updateUrl = nil;
         HBServerConnect *serverConnect = [[HBServerConnect alloc] init];
         
         NSString *userId = [HBCommonUtil getUserId];
-        HBCert *cert = nil;
-        NSArray *certList = [HBMiddleWare getCertList:HB_SIGN_CERT forDeviceType:HB_SOFT_DEVICE];
-        for (HBCert *item in certList) {
-            NSString *certCN = [item getSubjectItem:HB_DN_GIVEN_NAME];
-            if ([certCN isEqualToString:[HBCommonUtil getCertCN]]) {
-                cert = item;
-                break;
-            }
-        }
+//        HBCert *cert = nil;
+//        NSArray *certList = [HBMiddleWare getCertList:HB_SIGN_CERT forDeviceType:HB_SOFT_DEVICE];
+//        for (HBCert *item in certList) {
+//            NSString *certCN = [item getSubjectItem:HB_DN_GIVEN_NAME];
+//            if ([certCN isEqualToString:[HBCommonUtil getCertCN]]) {
+//                cert = item;
+//                break;
+//            }
+//        }
         
-        [HBCommonUtil loginCert:cert];
-        NSString *signCert = [cert getBase64CertData];
-        [cert signDataInit:HB_SHA1];
-        NSString *signStr = [NSString stringWithFormat:@"%@", userId];
-        NSData *signedData = [cert signData:[signStr dataUsingEncoding:NSUTF8StringEncoding]];
+//        [HBCommonUtil loginCert:cert];
+//        NSString *signCert = [cert getBase64CertData];
+//        [cert signDataInit:HB_SHA1];
+//        NSString *signStr = [NSString stringWithFormat:@"%@", userId];
+//        NSData *signedData = [cert signData:[signStr dataUsingEncoding:NSUTF8StringEncoding]];
         
         
         HBContactRequest *request = [[HBContactRequest alloc] init];
         request.userid = userId;
-        request.signcert = signCert;
-        request.signdata = signedData;
+//        request.signcert = signCert;
+//        request.signdata = signedData;
         request.lastupdated = [HBCommonUtil getLastUpdateTime];
         
         contactInfo = [serverConnect getContacts:request];

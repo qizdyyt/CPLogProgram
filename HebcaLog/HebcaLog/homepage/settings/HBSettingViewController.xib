@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HBSettingViewController">
@@ -17,11 +21,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5E-W7-zaV">
-                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                    <rect key="frame" x="100" y="16" width="120" height="32"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="32" id="BWM-DA-a0Z"/>
                         <constraint firstAttribute="width" constant="120" id="QcL-xG-hhS"/>
@@ -43,13 +47,13 @@
                     </variation>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DepartMent" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6Q-1w-WSQ">
-                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                    <rect key="frame" x="100" y="59" width="120" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="BSz-Rg-GX5"/>
                         <constraint firstAttribute="width" constant="120" id="m3c-ZY-Iua"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                     <variation key="default">
                         <mask key="constraints">
@@ -65,7 +69,7 @@
                     </variation>
                 </label>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="XAb-Bv-fr4">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="bNr-nY-zPu"/>
                     </constraints>
@@ -78,8 +82,8 @@
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="QrT-LA-Ovz"/>
                     </items>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="barTintColor" red="0.59999999999999998" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="barTintColor" red="0.59999999999999998" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="bNr-nY-zPu"/>
@@ -92,7 +96,7 @@
                     </variation>
                 </toolbar>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJ6-OP-OXA">
-                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                    <rect key="frame" x="16" y="16" width="64" height="64"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="64" id="ZFl-gU-rcm"/>
                         <constraint firstAttribute="height" constant="64" id="lea-ZN-Mku"/>
@@ -115,7 +119,7 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="divider.png" translatesAutoresizingMaskIntoConstraints="NO" id="4Ln-cq-BIG">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <rect key="frame" x="0.0" y="103" width="375" height="1"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="ZxL-ij-obO"/>
                     </constraints>
@@ -131,8 +135,8 @@
                     </variation>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="48" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="d2C-9t-jrp">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="0.0" y="104" width="375" height="519"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="separatorColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="9Qn-cU-jNQ"/>
@@ -140,7 +144,7 @@
                     </connections>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="eJ6-OP-OXA" firstAttribute="top" secondItem="l5E-W7-zaV" secondAttribute="top" id="2eX-nL-Cxv"/>
                 <constraint firstItem="l5E-W7-zaV" firstAttribute="leading" secondItem="eJ6-OP-OXA" secondAttribute="trailing" constant="20" id="306-fr-r7O"/>
@@ -171,11 +175,15 @@
                     <exclude reference="d2C-9t-jrp"/>
                 </mask>
                 <mask key="constraints">
+                    <exclude reference="Tz1-zc-fgR"/>
+                    <exclude reference="306-fr-r7O"/>
                     <exclude reference="2eX-nL-Cxv"/>
                     <exclude reference="3Ae-Iz-GCq"/>
                     <exclude reference="AVK-ig-ZAK"/>
                     <exclude reference="Yz2-BX-84s"/>
-                    <exclude reference="306-fr-r7O"/>
+                    <exclude reference="D2B-au-1Rh"/>
+                    <exclude reference="XCS-pI-reo"/>
+                    <exclude reference="tby-ML-JZT"/>
                     <exclude reference="VqZ-Nv-fX3"/>
                     <exclude reference="WEw-KV-8Pc"/>
                     <exclude reference="9E3-WM-0uu"/>
@@ -183,10 +191,6 @@
                     <exclude reference="T0L-Gh-Wdg"/>
                     <exclude reference="ZoC-7f-lZc"/>
                     <exclude reference="tMc-wd-hea"/>
-                    <exclude reference="Tz1-zc-fgR"/>
-                    <exclude reference="D2B-au-1Rh"/>
-                    <exclude reference="XCS-pI-reo"/>
-                    <exclude reference="tby-ML-JZT"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -199,11 +203,15 @@
                     <include reference="d2C-9t-jrp"/>
                 </mask>
                 <mask key="constraints">
+                    <include reference="Tz1-zc-fgR"/>
+                    <include reference="306-fr-r7O"/>
                     <include reference="2eX-nL-Cxv"/>
                     <include reference="3Ae-Iz-GCq"/>
                     <include reference="AVK-ig-ZAK"/>
                     <include reference="Yz2-BX-84s"/>
-                    <include reference="306-fr-r7O"/>
+                    <include reference="D2B-au-1Rh"/>
+                    <include reference="XCS-pI-reo"/>
+                    <include reference="tby-ML-JZT"/>
                     <include reference="VqZ-Nv-fX3"/>
                     <include reference="WEw-KV-8Pc"/>
                     <include reference="9E3-WM-0uu"/>
@@ -211,10 +219,6 @@
                     <include reference="T0L-Gh-Wdg"/>
                     <include reference="ZoC-7f-lZc"/>
                     <include reference="tMc-wd-hea"/>
-                    <include reference="Tz1-zc-fgR"/>
-                    <include reference="D2B-au-1Rh"/>
-                    <include reference="XCS-pI-reo"/>
-                    <include reference="tby-ML-JZT"/>
                 </mask>
             </variation>
         </view>

@@ -481,27 +481,28 @@
     HBFileManager *fm = [[HBFileManager alloc] init];
     HBContactInfo *contactInfo = [fm getContactFromLocalFile];
     if (!contactInfo) {
-        HBCert *cert = nil;
-        NSArray *certList = [HBMiddleWare getCertList:HB_SIGN_CERT forDeviceType:HB_SOFT_DEVICE];
-        for (HBCert *item in certList) {
-            NSString *certCN = [item getSubjectItem:HB_DN_GIVEN_NAME];
-            if ([certCN isEqualToString:_certCN]) {
-                cert = item;
-                break;
-            }
-        }
+        //MARK: 涉及证书部分删掉
+//        HBCert *cert = nil;
+//        NSArray *certList = [HBMiddleWare getCertList:HB_SIGN_CERT forDeviceType:HB_SOFT_DEVICE];
+//        for (HBCert *item in certList) {
+//            NSString *certCN = [item getSubjectItem:HB_DN_GIVEN_NAME];
+//            if ([certCN isEqualToString:_certCN]) {
+//                cert = item;
+//                break;
+//            }
+//        }
         
-        [HBCommonUtil loginCert:cert];
-        NSString *signCert = [cert getBase64CertData];
-        [cert signDataInit:HB_SHA1];
-        NSString *signStr = [NSString stringWithFormat:@"%@", _userId];
-        NSData *signedData = [cert signData:[signStr dataUsingEncoding:NSUTF8StringEncoding]];
+//        [HBCommonUtil loginCert:cert];
+//        NSString *signCert = [cert getBase64CertData];
+//        [cert signDataInit:HB_SHA1];
+//        NSString *signStr = [NSString stringWithFormat:@"%@", _userId];
+//        NSData *signedData = [cert signData:[signStr dataUsingEncoding:NSUTF8StringEncoding]];
         
         HBServerConnect *serverConnet = [[HBServerConnect alloc] init];
         HBContactRequest *request = [[HBContactRequest alloc] init];
         request.userid = _userId;
-        request.signcert = signCert;
-        request.signdata = signedData;
+//        request.signcert = signCert;
+//        request.signdata = signedData;
         request.lastupdated = [HBCommonUtil getLastUpdateTime];
         
         contactInfo = [serverConnet getContacts:request];

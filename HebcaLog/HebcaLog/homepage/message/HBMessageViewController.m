@@ -14,7 +14,9 @@
 #import "HBFileManager.h"
 #import <QuartzCore/QuartzCore.h>
 #import "MJRefresh.h"
+
 #import "HBCommonUtil.h"
+#import "HBErrorCode.h"//由于去掉证书部分，HBCommonUtil.h不再包含这个文件
 
 #define HB_GET_SERVER_MESSAGE_FAILED @"获取服务器消息记录失败"
 #define HB_GET_SERVER_JOURNAL_FAILED @"获取服务器日志记录失败"

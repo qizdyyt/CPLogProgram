@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HBInviteUserViewController">
@@ -14,11 +18,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J70-Cs-mGH">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="628" width="375" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="Jvp-pX-Tyd"/>
                     </constraints>
@@ -31,8 +35,8 @@
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Iht-E6-Irc"/>
                     </items>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="barTintColor" red="0.40000000000000002" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="barTintColor" red="0.40000000000000002" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="Jvp-pX-Tyd"/>
@@ -45,15 +49,15 @@
                     </variation>
                 </toolbar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xlG-9J-8eI">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="0.0" y="44" width="375" height="584"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="Rl9-Nt-rJC"/>
                         <outlet property="delegate" destination="-1" id="Xc0-M4-gDr"/>
                     </connections>
                 </tableView>
                 <searchBar contentMode="redraw" placeholder="搜索联系人" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qeh-DT-Z4r">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="VDA-rl-1Vf"/>
                     </constraints>
@@ -77,7 +81,7 @@
                     </connections>
                 </searchBar>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="xlG-9J-8eI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6Dl-VL-1fM"/>
                 <constraint firstAttribute="bottom" secondItem="J70-Cs-mGH" secondAttribute="bottom" constant="-5" id="AwK-Qe-dfh"/>
@@ -97,16 +101,16 @@
                     <exclude reference="qeh-DT-Z4r"/>
                 </mask>
                 <mask key="constraints">
+                    <exclude reference="AwK-Qe-dfh"/>
+                    <exclude reference="MwL-d0-oSR"/>
+                    <exclude reference="m8d-IA-vY7"/>
+                    <exclude reference="o0f-lj-pyi"/>
                     <exclude reference="CxW-WO-tSd"/>
                     <exclude reference="QkO-MY-YzP"/>
                     <exclude reference="lbu-MU-vS4"/>
                     <exclude reference="6Dl-VL-1fM"/>
                     <exclude reference="Ido-pw-MbG"/>
                     <exclude reference="XW8-xd-AnF"/>
-                    <exclude reference="AwK-Qe-dfh"/>
-                    <exclude reference="MwL-d0-oSR"/>
-                    <exclude reference="m8d-IA-vY7"/>
-                    <exclude reference="o0f-lj-pyi"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -116,16 +120,16 @@
                     <include reference="qeh-DT-Z4r"/>
                 </mask>
                 <mask key="constraints">
+                    <include reference="AwK-Qe-dfh"/>
+                    <include reference="MwL-d0-oSR"/>
+                    <include reference="m8d-IA-vY7"/>
+                    <include reference="o0f-lj-pyi"/>
                     <include reference="CxW-WO-tSd"/>
                     <include reference="QkO-MY-YzP"/>
                     <include reference="lbu-MU-vS4"/>
                     <include reference="6Dl-VL-1fM"/>
                     <include reference="Ido-pw-MbG"/>
                     <include reference="XW8-xd-AnF"/>
-                    <include reference="AwK-Qe-dfh"/>
-                    <include reference="MwL-d0-oSR"/>
-                    <include reference="m8d-IA-vY7"/>
-                    <include reference="o0f-lj-pyi"/>
                 </mask>
             </variation>
         </view>

@@ -12,8 +12,9 @@
 #import "HBServerInterface.h"
 #import "HBServerConfig.h"
 #import "HBOnlineBusiness.h"
-#import "HBMiddleWare.h"
+//#import "HBMiddleWare.h"
 #import "HBCommonUtil.h"
+#import "HBErrorCode.h"//HBCommonUtil.h不再包含他
 #import "ToastUIView.h"
 
 @interface HBRegistViewController ()
@@ -22,7 +23,7 @@
 
 @implementation HBRegistViewController
 {
-    HBOnlineBusiness *onlineBusiness;
+//    HBOnlineBusiness *onlineBusiness;//在线新办证书，去掉功能
     NSString *_appNo;
 }
 
@@ -119,7 +120,7 @@
         return;
     }
     
-    onlineBusiness = [[HBOnlineBusiness alloc] initWithServerURL:MLOG_ONLINE_SERVER_URL];
+//    onlineBusiness = [[HBOnlineBusiness alloc] initWithServerURL:MLOG_ONLINE_SERVER_URL];
     
     NSString *userName = self.userIdTF.text;
     NSString *password = self.passswordTF.text;
@@ -162,54 +163,54 @@
     }
     
     //提交新办证书申请
-    _appNo = [self makeOnlineBusinessNewRequest:userInfo];
-    if (nil == _appNo) {
-        return [HBMiddleWare lastErrorMessage];
-    }
+//    _appNo = [self makeOnlineBusinessNewRequest:userInfo];
+//    if (nil == _appNo) {
+//        return [HBMiddleWare lastErrorMessage];
+//    }
     
-    HB_ONLINE_BUSINESS_STATUS status = [onlineBusiness queryBusinessStatus:_appNo];
-    if (status != HB_ONLINE_STATUS_NO_INSTALL) {
-        return @"申请待审批，请联系管理员处理";
-    }
+//    HB_ONLINE_BUSINESS_STATUS status = [onlineBusiness queryBusinessStatus:_appNo];
+//    if (status != HB_ONLINE_STATUS_NO_INSTALL) {
+//        return @"申请待审批，请联系管理员处理";
+//    }
     
     //请求短信验证码
-    NSInteger result = [onlineBusiness requestVerificationCode:_appNo];
-    if (result != HB_OK) {
-        return @"请求验证短信失败";
-    }
+//    NSInteger result = [onlineBusiness requestVerificationCode:_appNo];
+//    if (result != HB_OK) {
+//        return @"请求验证短信失败";
+//    }
     
     return nil;
 }
-
--(NSString *)makeOnlineBusinessNewRequest:(HBUserInfo *)userInfo
-{
-    NSDictionary *formDataDic = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 userInfo.userName,     @"OPERATORNAME",    //经办人 NO
-                                 userInfo.phone,        @"OPERATORPHONE",   //经办人手机号 NO
-                                 userInfo.idNum,        @"IDENTITYCARD",    //身份证号 NO
-                                 userInfo.userName,     @"USERNAME",        //用户名称 NO
-                                 userInfo.divname,      @"DIVID",           //单位名称 NO
-                                 [HBCommonUtil getDeviceIdentifier], @"SERIALNUMBER",//设备串号
-                                 nil];
-    
-    HB_ONLINE_BUSINESS_TYPE businessType = HB_ONLINE_NEW;
-    //获取填报要素
-    NSArray *formInfo = [onlineBusiness getApplicationFormInfo:MLOG_PROJECT_ID type:businessType];
-    if (nil == formInfo) {
-        return nil;
-    }
-    
-    //填写申请单
-    for (HBApplicationItem *item in formInfo) {
-        [item setApplicationItemData:[formDataDic objectForKey:[item getItemName]]];
-    }
-    
-    //提交申请单
-    NSString *acceptNo = [onlineBusiness submitApplicationForm:MLOG_PROJECT_ID applicationForm:formInfo businessType:businessType];
-    if (nil == acceptNo) {
-        return nil;
-    }
-    
-    return acceptNo;
-}
+/*********  新办证书相关方法去掉  **********/
+//-(NSString *)makeOnlineBusinessNewRequest:(HBUserInfo *)userInfo
+//{
+//    NSDictionary *formDataDic = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                 userInfo.userName,     @"OPERATORNAME",    //经办人 NO
+//                                 userInfo.phone,        @"OPERATORPHONE",   //经办人手机号 NO
+//                                 userInfo.idNum,        @"IDENTITYCARD",    //身份证号 NO
+//                                 userInfo.userName,     @"USERNAME",        //用户名称 NO
+//                                 userInfo.divname,      @"DIVID",           //单位名称 NO
+//                                 [HBCommonUtil getDeviceIdentifier], @"SERIALNUMBER",//设备串号
+//                                 nil];
+//
+//    HB_ONLINE_BUSINESS_TYPE businessType = HB_ONLINE_NEW;
+//    //获取填报要素
+//    NSArray *formInfo = [onlineBusiness getApplicationFormInfo:MLOG_PROJECT_ID type:businessType];
+//    if (nil == formInfo) {
+//        return nil;
+//    }
+//
+//    //填写申请单
+//    for (HBApplicationItem *item in formInfo) {
+//        [item setApplicationItemData:[formDataDic objectForKey:[item getItemName]]];
+//    }
+//
+//    //提交申请单
+//    NSString *acceptNo = [onlineBusiness submitApplicationForm:MLOG_PROJECT_ID applicationForm:formInfo businessType:businessType];
+//    if (nil == acceptNo) {
+//        return nil;
+//    }
+//
+//    return acceptNo;
+//}
 @end

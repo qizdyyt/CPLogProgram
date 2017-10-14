@@ -25,7 +25,7 @@
     NSArray *_certList;
     NSInteger _chooseItem;
     NSMutableArray *_popViewOptions;
-    HBCert *logCert;
+//    HBCert *logCert;
 }
 
 - (void)viewDidLoad {
@@ -47,15 +47,16 @@
 {
     [super viewWillAppear:animated];
     
-    [HBMiddleWare reloadDevice];
-    _certList = [HBMiddleWare getCertList:HB_SIGN_CERT forDeviceType:HB_SOFT_DEVICE];
+    //MARK: 涉及证书，删掉
+//    [HBMiddleWare reloadDevice];
+//    _certList = [HBMiddleWare getCertList:HB_SIGN_CERT forDeviceType:HB_SOFT_DEVICE];
     if (0 == [_certList count]) {
         self.loginNameTF.text = nil;
         self.loginNameTF.userInteractionEnabled = NO;
         return;
     }
     
-    self.loginNameTF.text = [[_certList objectAtIndex:0] getSubjectItem:HB_DN_COMMON_NAME];
+//    self.loginNameTF.text = [[_certList objectAtIndex:0] getSubjectItem:HB_DN_COMMON_NAME];
 }
 
 /*
@@ -125,10 +126,10 @@
     [self.passwordTF resignFirstResponder];
     
     _popViewOptions = [[NSMutableArray alloc] init];
-    for (HBCert *cert in _certList) {
-        NSString *certCN = [cert getSubjectItem:HB_DN_COMMON_NAME];
-        [_popViewOptions addObject:@{@"text":certCN}];
-    }
+//    for (HBCert *cert in _certList) {
+//        NSString *certCN = [cert getSubjectItem:HB_DN_COMMON_NAME];
+//        [_popViewOptions addObject:@{@"text":certCN}];
+//    }
     
     
     HBPopListView *lplv = [[HBPopListView alloc] initWithTitle:@"选择证书" options:_popViewOptions];
@@ -165,13 +166,13 @@
     }
     
     //验证证书密码
-    logCert = [_certList objectAtIndex:_chooseItem];
-    NSInteger result = [logCert loginDevice:self.passwordTF.text];
-    if (result != HM_OK) {
-        NSString *errorMsg = [HBMiddleWare lastErrorMessage];
-        [HBCommonUtil showAttention:errorMsg sender:self];
-        return;
-    }
+//    logCert = [_certList objectAtIndex:_chooseItem];
+//    NSInteger result = [logCert loginDevice:self.passwordTF.text];
+//    if (result != HM_OK) {
+//        NSString *errorMsg = [HBMiddleWare lastErrorMessage];
+//        [HBCommonUtil showAttention:errorMsg sender:self];
+//        return;
+//    }
     [HBCommonUtil recordPasswordToDefaults:self.passwordTF.text];
     
     //登录
@@ -199,18 +200,18 @@
 
 - (NSString *)certLogin {
     //准备登录参数
-    NSString *certCN = [logCert getSubjectItem:HB_DN_GIVEN_NAME];
+//    NSString *certCN = [logCert getSubjectItem:HB_DN_GIVEN_NAME];
     HBLoginParam *loginParam = [[HBLoginParam alloc] init];
-    loginParam.cert = [logCert getBase64CertData];
+//    loginParam.cert = [logCert getBase64CertData];
+//
+//    NSString *randomStr = [self getRandomString];
+//    [logCert signDataInit:HB_SHA1];
+//    NSData *signedData = [logCert signData:[randomStr dataUsingEncoding:NSUTF8StringEncoding]];
     
-    NSString *randomStr = [self getRandomString];
-    [logCert signDataInit:HB_SHA1];
-    NSData *signedData = [logCert signData:[randomStr dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    loginParam.random = randomStr;
-    loginParam.randomSign = [HBMiddleWare base64Encode:signedData];
-    loginParam.deviceId = [HBCommonUtil getDeviceIdentifier];
-    loginParam.pkgVersion = [NSString stringWithFormat:@"v%@", [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey]];
+//    loginParam.random = randomStr;
+//    loginParam.randomSign = [HBMiddleWare base64Encode:signedData];
+//    loginParam.deviceId = [HBCommonUtil getDeviceIdentifier];
+//    loginParam.pkgVersion = [NSString stringWithFormat:@"v%@", [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey]];
     
     HBServerConnect *serverConnect = [[HBServerConnect alloc] init];
     HBLoginReply *logReply = [serverConnect loginWithParam:loginParam];
@@ -225,7 +226,7 @@
         return @"证书未绑定用户";
     }
     
-    [HBCommonUtil upDateUserLoginState:certCN state:YES];
+//    [HBCommonUtil upDateUserLoginState:certCN state:YES];
     
     HBUserConfig *userConfig = [[HBUserConfig alloc] init];
     userConfig.userId   = logReply.userId;
@@ -233,7 +234,7 @@
     userConfig.deptId   = logReply.deptId;
     userConfig.deptName = logReply.deptName;
     userConfig.clientrole = [logReply.clientRole integerValue];   //TODO：当前服务端未使用；若后续使用此字段，注意返回值类型
-    userConfig.certCN   = certCN;
+//    userConfig.certCN   = certCN;
     
     [HBCommonUtil updateUserConfig:userConfig];
     [HBCommonUtil recordUSerConfigToDefaults];

@@ -8,6 +8,7 @@
 
 #import "HBServerInterface.h"
 #import "HBCommonUtil.h"
+#import "HBErrorCode.h"//HBCommonUtil.h不再包含他
 
 @implementation HBServerConnect (HBServerInterface)
 
@@ -961,7 +962,7 @@
 - (NSString *)getCustomConfigWithUserid:(NSString *)userid withKey:(NSString *)key
 {
     if (IS_NULL(userid) || IS_NULL_STRING(key)) {
-        HB_SET_ERROR_MESSAGE(HM_PARAMETER_INVALID, HM_PARAMETER_INVALID_MSG);
+//        HB_SET_ERROR_MESSAGE(HM_PARAMETER_INVALID, HM_PARAMETER_INVALID_MSG);
         return nil;
     }
     

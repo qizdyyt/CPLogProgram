@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "../include/HBMiddleWare.h"
+//#import "../include/HBMiddleWare.h"
 #import "../include/HBCert.h"
 #import "../include/HBDevice.h"
 
@@ -107,10 +107,10 @@
 
 
 //------------------------证书设备----------------------//
-+ (HBDevice *)getSoftDevice;
-+ (NSInteger)loginDevice:(HBDevice *)device withUI:(id)sender;
-+ (void)loginDevice:(HBDevice *)device;
-+ (void)loginCert:(HBCert *)Cert;
+//+ (HBDevice *)getSoftDevice;
+//+ (NSInteger)loginDevice:(HBDevice *)device withUI:(id)sender;
+//+ (void)loginDevice:(HBDevice *)device;
+//+ (void)loginCert:(HBCert *)Cert;
 
 
 //------------------------用户默认配置----------------------//

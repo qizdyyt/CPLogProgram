@@ -268,70 +268,70 @@
     hud.labelText = @"正在注册";
     [self.view addSubview:hud];
     
-    __block NSString *message = nil;
-    [hud showAnimated:YES whileExecutingBlock:^{
-        //注册
-        HBRegistRequest *request = [[HBRegistRequest alloc] init];
-        request.username = userNameTF.text;
-        request.password = passwordTF.text;
-        request.divname  = companyTF.text;
-        request.name     = userNameTF.text;
-        request.mobilephone = phoneNumTF.text;
-        request.identitycard = @"130000000000000000";
-        request.scertcn = @"";
-        request.code = verifyCodeTF.text;
-        
-        HBRegistReply* reply = [serverConnect registUnit:request];
-        if (!reply) {
-            message = [serverConnect getLastErrorMessage];
-            return;
-        }
-        
-        //安装证书
-        NSString *acceptNo = reply.acceptNo;
-        NSString *divid    = reply.divid;
-        
-        if (IS_NULL_STRING(acceptNo)) {
-            message = @"获取申请单号失败";
-            return;
-        }
-        if (IS_NULL_STRING(divid)) {
-            message = @"获取单位ID失败";
-            return;
-        }
-        
-        HBOnlineBusiness *onlineBussiness = [[HBOnlineBusiness alloc] initWithServerURL:MLOG_ONLINE_SERVER_URL];
-        
-        //获取设备 若为第一次安装，手机没有设备，则新建
-        HBDevice *device = [HBCommonUtil getSoftDevice];
-        if (IS_NULL(device)) {
-            message = @"获取设备失败";
-            return;
-        }
-        [HBCommonUtil loginDevice:device];
-        
-        //构造短信验证码
-        NSString *verifyCode = [HBCommonUtil getVerifyCode];
-        
-        //安装证书
-        NSInteger installRslt = [onlineBussiness certInstall:acceptNo verificationCode:verifyCode ansymmtricAlg:HB_RSA_1024 device:device];
-        if (HM_OK != installRslt) {
-            message = HB_LAST_ERROR_MESSAGE;
-            return;
-        }
-        
-    }completionBlock:^{
-        [hud removeFromSuperview];
-        
-        if(message) {
-            [HBCommonUtil showAttention:errorMsg sender:self];
-            return;
-        }
-        
-        HBMLogLoginViewController *loginVC = [[HBMLogLoginViewController alloc] init];
-        loginVC.window = self.window;
-        [self presentViewController:loginVC animated:YES completion:nil];
-    }];
+//    __block NSString *message = nil;
+//    [hud showAnimated:YES whileExecutingBlock:^{
+//        //注册
+//        HBRegistRequest *request = [[HBRegistRequest alloc] init];
+//        request.username = userNameTF.text;
+//        request.password = passwordTF.text;
+//        request.divname  = companyTF.text;
+//        request.name     = userNameTF.text;
+//        request.mobilephone = phoneNumTF.text;
+//        request.identitycard = @"130000000000000000";
+//        request.scertcn = @"";
+//        request.code = verifyCodeTF.text;
+//
+//        HBRegistReply* reply = [serverConnect registUnit:request];
+//        if (!reply) {
+//            message = [serverConnect getLastErrorMessage];
+//            return;
+//        }
+//
+//        //安装证书
+//        NSString *acceptNo = reply.acceptNo;
+//        NSString *divid    = reply.divid;
+//
+//        if (IS_NULL_STRING(acceptNo)) {
+//            message = @"获取申请单号失败";
+//            return;
+//        }
+//        if (IS_NULL_STRING(divid)) {
+//            message = @"获取单位ID失败";
+//            return;
+//        }
+//
+//        HBOnlineBusiness *onlineBussiness = [[HBOnlineBusiness alloc] initWithServerURL:MLOG_ONLINE_SERVER_URL];
+//
+//        //获取设备 若为第一次安装，手机没有设备，则新建
+//        HBDevice *device = [HBCommonUtil getSoftDevice];
+//        if (IS_NULL(device)) {
+//            message = @"获取设备失败";
+//            return;
+//        }
+//        [HBCommonUtil loginDevice:device];
+//
+//        //构造短信验证码
+//        NSString *verifyCode = [HBCommonUtil getVerifyCode];
+//
+//        //安装证书
+//        NSInteger installRslt = [onlineBussiness certInstall:acceptNo verificationCode:verifyCode ansymmtricAlg:HB_RSA_1024 device:device];
+//        if (HM_OK != installRslt) {
+//            message = HB_LAST_ERROR_MESSAGE;
+//            return;
+//        }
+//
+//    }completionBlock:^{
+//        [hud removeFromSuperview];
+//
+//        if(message) {
+//            [HBCommonUtil showAttention:errorMsg sender:self];
+//            return;
+//        }
+//
+//        HBMLogLoginViewController *loginVC = [[HBMLogLoginViewController alloc] init];
+//        loginVC.window = self.window;
+//        [self presentViewController:loginVC animated:YES completion:nil];
+//    }];
 }
 
 - (NSString *)checkInputs

@@ -84,25 +84,26 @@
     }
     
     //获取登录用的证书密码
-    NSString *certCN = [HBCommonUtil getCertCN];
-    HBCert *logCert = nil;
-    NSArray *certList = [HBMiddleWare getCertList:HB_SIGN_CERT forDeviceType:HB_ALL_DEVICE];
-    for (HBCert *cert in certList) {
-        if ([[cert getSubjectItem:HB_DN_GIVEN_NAME] isEqualToString:certCN]) {
-            logCert = cert;
-            break;
-        }
-    }
-    HBDevice *device = [logCert getDevice];
-    
-    //中间件修改密码
-    NSInteger hr = [device changeUserPin:oldPassword newPin:newPassword];
-    if (hr != HB_OK)
-    {
-        NSString *errorMsg = [HBMiddleWare lastErrorMessage];
-        [self.view makeToast:errorMsg];
-        return;
-    }
+    //MARK: 涉及证书，全部删掉
+//    NSString *certCN = [HBCommonUtil getCertCN];
+//    HBCert *logCert = nil;
+//    NSArray *certList = [HBMiddleWare getCertList:HB_SIGN_CERT forDeviceType:HB_ALL_DEVICE];
+//    for (HBCert *cert in certList) {
+//        if ([[cert getSubjectItem:HB_DN_GIVEN_NAME] isEqualToString:certCN]) {
+//            logCert = cert;
+//            break;
+//        }
+//    }
+//    HBDevice *device = [logCert getDevice];
+//
+//    //中间件修改密码
+//    NSInteger hr = [device changeUserPin:oldPassword newPin:newPassword];
+//    if (hr != HB_OK)
+//    {
+//        NSString *errorMsg = [HBMiddleWare lastErrorMessage];
+//        [self.view makeToast:errorMsg];
+//        return;
+//    }
     
     [HBCommonUtil recordPasswordToDefaults:newPassword];
     

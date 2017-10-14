@@ -9,7 +9,8 @@
 #import "HBVerifyViewController.h"
 #import "HBRegistViewController.h"
 #import "HBOnlineBusiness.h"
-#import "HBMiddleWare.h"
+//#import "HBMiddleWare.h"//不再包含errorcode
+#import "HBErrorCode.h"
 #import "HBServerInterface.h"
 #import "../base/HBCommonUtil.h"
 #import "HBHomepageViewController.h"
@@ -21,7 +22,7 @@
 
 @implementation HBVerifyViewController
 {
-    HBOnlineBusiness *_onlineBussiness;
+//    HBOnlineBusiness *_onlineBussiness;//证书去掉
     NSArray  *_oldCertList;
     NSInteger _secBtnType; //0-重新申请 1-登录系统
 }
@@ -30,7 +31,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    _onlineBussiness = [[HBOnlineBusiness alloc] initWithServerURL:MLOG_ONLINE_SERVER_URL];
+//    _onlineBussiness = [[HBOnlineBusiness alloc] initWithServerURL:MLOG_ONLINE_SERVER_URL];
     
     _secBtnType = 0;
     
@@ -143,7 +144,7 @@
     __block NSInteger result;
     [hud showAnimated:YES whileExecutingBlock:^{
         //重新发送短信
-        result = [_onlineBussiness requestVerificationCode:self.acceptNumber];
+//        result = [_onlineBussiness requestVerificationCode:self.acceptNumber];
     } completionBlock:^{
         [hud removeFromSuperview];
         
@@ -169,10 +170,10 @@
     
     __block NSString *error = nil;
     [hud showAnimated:YES whileExecutingBlock:^{
-        _oldCertList = [HBMiddleWare getCertList:HB_SIGN_CERT forDeviceType:HB_SOFT_DEVICE];
+//        _oldCertList = [HBMiddleWare getCertList:HB_SIGN_CERT forDeviceType:HB_SOFT_DEVICE];
         
         //验证短信、安装证书
-        error = [self verifyAndInstall];
+//        error = [self verifyAndInstall];
     } completionBlock:^{
         [hud removeFromSuperview];
         
@@ -195,84 +196,87 @@
     }];
 }
 
-- (NSString *)verifyAndInstall
-{
-    //验证短信验证码；
-    NSInteger checkResult = [_onlineBussiness checkVerificationCode:self.acceptNumber verificationCode:self.verifyCodeTF.text];
-    if (HM_OK != checkResult) {
-        return @"验证码验证失败";
-    }
-    
-    //获取设备 若为第一次安装，手机没有设备，则新建
-    HBDevice *device = [HBCommonUtil getSoftDevice];
-    if (IS_NULL(device)) {
-        return @"获取设备失败";
-    }
-    [HBCommonUtil loginDevice:device];
-    
-    //安装证书
-    NSString *acceptNum = self.acceptNumber;
-    NSString *verifyCode = self.verifyCodeTF.text;
-    NSInteger installRslt = [_onlineBussiness certInstall:acceptNum verificationCode:verifyCode ansymmtricAlg:HB_RSA_1024 device:device];
-    if (HM_OK != installRslt) {
-        return @"安装证书失败";
-    }
-    
-    return nil;
-}
+//- (NSString *)verifyAndInstall
+//{
+//    //验证短信验证码；
+//    NSInteger checkResult = [_onlineBussiness checkVerificationCode:self.acceptNumber verificationCode:self.verifyCodeTF.text];
+//    if (HM_OK != checkResult) {
+//        return @"验证码验证失败";
+//    }
+//
+//    //获取设备 若为第一次安装，手机没有设备，则新建
+//    HBDevice *device = [HBCommonUtil getSoftDevice];
+//    if (IS_NULL(device)) {
+//        return @"获取设备失败";
+//    }
+//    [HBCommonUtil loginDevice:device];
+//
+//    //安装证书
+//    NSString *acceptNum = self.acceptNumber;
+//    NSString *verifyCode = self.verifyCodeTF.text;
+//    NSInteger installRslt = [_onlineBussiness certInstall:acceptNum verificationCode:verifyCode ansymmtricAlg:HB_RSA_1024 device:device];
+//    if (HM_OK != installRslt) {
+//        return @"安装证书失败";
+//    }
+//
+//    return nil;
+//}
+
+//MARK: 登录方法需要按照需求后续修改
+/////************ 登录方法需要按照需求后续修改 ***********////
 
 - (NSString *)userLogin
 {
-    [HBMiddleWare reloadDevice];
-    NSArray *newcertList = [HBMiddleWare getCertList:HB_SIGN_CERT forDeviceType:HB_SOFT_DEVICE];
+//    [HBMiddleWare reloadDevice];
+//    NSArray *newcertList = [HBMiddleWare getCertList:HB_SIGN_CERT forDeviceType:HB_SOFT_DEVICE];
     
-    HBCert *newCert = nil;
-    if (newcertList.count == 1) {
-        newCert = [newcertList objectAtIndex:0];
-    }
-    else if (newcertList.count > 1){
-        for (HBCert *cert in newcertList) {
-            NSString *certG = [cert getSubjectItem:HB_DN_GIVEN_NAME];
-            BOOL found = NO;
-            
-            for (HBCert *oldCert in _oldCertList) {
-                NSString *oldCertG = [oldCert getSubjectItem:HB_DN_GIVEN_NAME];
-                
-                if ([certG isEqualToString:oldCertG]) {
-                    found = YES;
-                    break;
-                }
-            }
-            
-            if (found) { //找到后，停止查找
-                continue;
-            }
-            else { //没有找到，说明为新的
-                newCert = cert;
-                break;
-            }
-        }
-    }
+//    HBCert *newCert = nil;
+//    if (newcertList.count == 1) {
+//        newCert = [newcertList objectAtIndex:0];
+//    }
+//    else if (newcertList.count > 1){
+//        for (HBCert *cert in newcertList) {
+//            NSString *certG = [cert getSubjectItem:HB_DN_GIVEN_NAME];
+//            BOOL found = NO;
+//
+//            for (HBCert *oldCert in _oldCertList) {
+//                NSString *oldCertG = [oldCert getSubjectItem:HB_DN_GIVEN_NAME];
+//
+//                if ([certG isEqualToString:oldCertG]) {
+//                    found = YES;
+//                    break;
+//                }
+//            }
+//
+//            if (found) { //找到后，停止查找
+//                continue;
+//            }
+//            else { //没有找到，说明为新的
+//                newCert = cert;
+//                break;
+//            }
+//        }
+//    }
     
-    if (IS_NULL(newCert)) {
-        return @"没有找到证书";
-    }
-    [HBCommonUtil loginCert:newCert];
-    NSString *certData = [newCert getBase64CertData];
-    NSString *certCN = [newCert getSubjectItem:HB_DN_GIVEN_NAME];
-    //对随机数串进行签名
-    NSString *random = [self getRandomString];
-    NSData *randomData = [random dataUsingEncoding:NSUTF8StringEncoding];
-    [newCert signDataInit:HB_SHA1];
-    NSString *randomSign = [HBMiddleWare base64Encode:[newCert signData:randomData]];
+//    if (IS_NULL(newCert)) {
+//        return @"没有找到证书";
+//    }
+//    [HBCommonUtil loginCert:newCert];
+//    NSString *certData = [newCert getBase64CertData];
+//    NSString *certCN = [newCert getSubjectItem:HB_DN_GIVEN_NAME];
+//    //对随机数串进行签名
+//    NSString *random = [self getRandomString];
+//    NSData *randomData = [random dataUsingEncoding:NSUTF8StringEncoding];
+//    [newCert signDataInit:HB_SHA1];
+//    NSString *randomSign = [HBMiddleWare base64Encode:[newCert signData:randomData]];
     
     //登录
     HBServerConnect *serverConnect = [[HBServerConnect alloc] init];
     HBLoginParam *loginParam = [[HBLoginParam alloc] init];
     
-    loginParam.cert     = certData;
-    loginParam.random   = random;
-    loginParam.randomSign = randomSign;
+//    loginParam.cert     = certData;
+//    loginParam.random   = random;
+//    loginParam.randomSign = randomSign;
     loginParam.userName = self.username;
     loginParam.password = self.password;
     loginParam.divid    = self.divid;
@@ -284,7 +288,7 @@
         return [serverConnect getLastErrorMessage];
     }
     
-    [HBCommonUtil upDateUserLoginState:certCN state:YES];
+//    [HBCommonUtil upDateUserLoginState:certCN state:YES];
     
     HBUserConfig *userConfig = [[HBUserConfig alloc] init];
     userConfig.userId   = loginReply.userId;
@@ -292,13 +296,14 @@
     userConfig.deptId   = loginReply.deptId;
     userConfig.deptName = loginReply.deptName;
     userConfig.clientrole = [loginReply.clientRole integerValue];   //当前服务端未使用；若后续使用此字段，注意返回值类型
-    userConfig.certCN   = certCN;
+//    userConfig.certCN   = certCN;
     
     [HBCommonUtil updateUserConfig:userConfig];
     
     return nil;
 }
 
+//MARK: 可能没啥用，但也没影响，暂时没去
 - (NSString *)getRandomString
 {
     //获取时间

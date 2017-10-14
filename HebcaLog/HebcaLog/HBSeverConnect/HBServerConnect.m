@@ -429,8 +429,8 @@
     }
     
     NSData *utfData = [original dataUsingEncoding:NSUTF8StringEncoding];
-    
-    return [HBMiddleWare base64Encode:utfData];
+#pragma mark 涉及b64加密应该没啥用了，可以找替换
+    return @"涉及b64加密应该没啥用了，可以找替换";
 }
 
 -(NSString *)decodingWithUnicode:(NSString *)original

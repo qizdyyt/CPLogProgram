@@ -121,27 +121,28 @@
 - (void) getContactInfoAsync {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         //检查服务端联系人是否需要更新，是则将联系人写入本地文件
-        HBCert *cert = nil;
-        NSArray *certList = [HBMiddleWare getCertList:HB_SIGN_CERT forDeviceType:HB_SOFT_DEVICE];
-        for (HBCert *item in certList) {
-            NSString *certCN = [item getSubjectItem:HB_DN_GIVEN_NAME];
-            if ([certCN isEqualToString:[HBCommonUtil getCertCN]]) {
-                cert = item;
-                break;
-            }
-        }
+        //MARK: 涉及证书部分删掉
+//        HBCert *cert = nil;
+//        NSArray *certList = [HBMiddleWare getCertList:HB_SIGN_CERT forDeviceType:HB_SOFT_DEVICE];
+//        for (HBCert *item in certList) {
+//            NSString *certCN = [item getSubjectItem:HB_DN_GIVEN_NAME];
+//            if ([certCN isEqualToString:[HBCommonUtil getCertCN]]) {
+//                cert = item;
+//                break;
+//            }
+//        }
         
-        [HBCommonUtil loginCert:cert];
-        NSString *signCert = [cert getBase64CertData];
-        [cert signDataInit:HB_SHA1];
-        NSString *signStr = [NSString stringWithFormat:@"%@", _userId];
-        NSData *signedData = [cert signData:[signStr dataUsingEncoding:NSUTF8StringEncoding]];
+//        [HBCommonUtil loginCert:cert];
+//        NSString *signCert = [cert getBase64CertData];
+//        [cert signDataInit:HB_SHA1];
+//        NSString *signStr = [NSString stringWithFormat:@"%@", _userId];
+//        NSData *signedData = [cert signData:[signStr dataUsingEncoding:NSUTF8StringEncoding]];
         
         
         HBContactRequest *request = [[HBContactRequest alloc] init];
         request.userid = _userId;
-        request.signcert = signCert;
-        request.signdata = signedData;
+//        request.signcert = signCert;
+//        request.signdata = signedData;
         request.lastupdated = [HBCommonUtil getLastUpdateTime];
         
         HBContactInfo *contactInfo = [_serverConnect getContacts:request];

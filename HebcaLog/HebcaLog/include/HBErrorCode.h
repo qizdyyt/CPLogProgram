@@ -67,7 +67,7 @@
 /*不支持的功能*/
 #define HB_NOT_SUPPORT_FUNCTION 0x800A0011
 #define HB_NOT_SUPPORT_FUNCTION_MSG @"不支持的功能"
-/*未找到签名密钥对*/	
+/*未找到签名密钥对*/    
 #define HB_NO_FIND_SIGN_KEYPAIR 0x800A0012
 #define HB_NO_FIND_SIGN_KEYPAIR_MSG @"未找到签名密钥对"
 /*未找到加密密钥对*/
@@ -135,3 +135,4 @@ NSString * GetDefaultErrorMessage(NSInteger error);
 
 
 #endif
+
