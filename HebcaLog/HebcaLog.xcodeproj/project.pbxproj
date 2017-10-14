@@ -438,12 +438,12 @@
 		5F5292991B344CB600178F56 /* list_checkbox_sl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_checkbox_sl.png; sourceTree = "<group>"; };
 		5F55633A1A80A959006A4A40 /* libhbmiddlewarearm.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libhbmiddlewarearm.a; path = lib/libhbmiddlewarearm.a; sourceTree = "<group>"; };
 		5F55633B1A80A959006A4A40 /* libhbmiddlewarei386.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libhbmiddlewarei386.a; path = lib/libhbmiddlewarei386.a; sourceTree = "<group>"; };
-		5F55633F1A80B9DE006A4A40 /* HBVerifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HBVerifyViewController.h; path = regist/HBVerifyViewController.h; sourceTree = "<group>"; };
-		5F5563401A80B9DE006A4A40 /* HBVerifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HBVerifyViewController.m; path = regist/HBVerifyViewController.m; sourceTree = "<group>"; };
-		5F5563411A80B9DE006A4A40 /* HBVerifyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HBVerifyViewController.xib; path = regist/HBVerifyViewController.xib; sourceTree = "<group>"; };
-		5F5935B11AF8595400A5473F /* HBFirstOpenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HBFirstOpenViewController.h; path = regist/HBFirstOpenViewController.h; sourceTree = "<group>"; };
-		5F5935B21AF8595400A5473F /* HBFirstOpenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HBFirstOpenViewController.m; path = regist/HBFirstOpenViewController.m; sourceTree = "<group>"; };
-		5F5935B31AF8595400A5473F /* HBFirstOpenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HBFirstOpenViewController.xib; path = regist/HBFirstOpenViewController.xib; sourceTree = "<group>"; };
+		5F55633F1A80B9DE006A4A40 /* HBVerifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBVerifyViewController.h; sourceTree = "<group>"; };
+		5F5563401A80B9DE006A4A40 /* HBVerifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBVerifyViewController.m; sourceTree = "<group>"; };
+		5F5563411A80B9DE006A4A40 /* HBVerifyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HBVerifyViewController.xib; sourceTree = "<group>"; };
+		5F5935B11AF8595400A5473F /* HBFirstOpenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBFirstOpenViewController.h; sourceTree = "<group>"; };
+		5F5935B21AF8595400A5473F /* HBFirstOpenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBFirstOpenViewController.m; sourceTree = "<group>"; };
+		5F5935B31AF8595400A5473F /* HBFirstOpenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HBFirstOpenViewController.xib; sourceTree = "<group>"; };
 		5F5935B61AF8669300A5473F /* bg_admin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_admin.png; sourceTree = "<group>"; };
 		5F5935B71AF8669300A5473F /* btn_received_null.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_received_null.png; sourceTree = "<group>"; };
 		5F5935B81AF8669300A5473F /* btn_received.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_received.png; sourceTree = "<group>"; };
@@ -811,6 +811,19 @@
 			name = Modal;
 			sourceTree = "<group>";
 		};
+		2EC3B6F21F91FC7600D93072 /* Del */ = {
+			isa = PBXGroup;
+			children = (
+				5F5935B11AF8595400A5473F /* HBFirstOpenViewController.h */,
+				5F5935B21AF8595400A5473F /* HBFirstOpenViewController.m */,
+				5F5935B31AF8595400A5473F /* HBFirstOpenViewController.xib */,
+				5F55633F1A80B9DE006A4A40 /* HBVerifyViewController.h */,
+				5F5563401A80B9DE006A4A40 /* HBVerifyViewController.m */,
+				5F5563411A80B9DE006A4A40 /* HBVerifyViewController.xib */,
+			);
+			path = Del;
+			sourceTree = "<group>";
+		};
 		3488267888D26237816605FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -987,21 +1000,16 @@
 		5F55633E1A80B2CC006A4A40 /* Regist */ = {
 			isa = PBXGroup;
 			children = (
-				5FCFB34C1A748F9800FA033F /* HBMLogLoginViewController.h */,
-				5FCFB34D1A748F9800FA033F /* HBMLogLoginViewController.m */,
-				5FCFB34E1A748F9800FA033F /* HBMLogLoginViewController.xib */,
-				5F5935B11AF8595400A5473F /* HBFirstOpenViewController.h */,
-				5F5935B21AF8595400A5473F /* HBFirstOpenViewController.m */,
-				5F5935B31AF8595400A5473F /* HBFirstOpenViewController.xib */,
+				2EC3B6F21F91FC7600D93072 /* Del */,
 				5F5935C31AF893E200A5473F /* HBAdminViewController.h */,
 				5F5935C41AF893E200A5473F /* HBAdminViewController.m */,
 				5F5935C51AF893E200A5473F /* HBAdminViewController.xib */,
+				5FCFB34C1A748F9800FA033F /* HBMLogLoginViewController.h */,
+				5FCFB34D1A748F9800FA033F /* HBMLogLoginViewController.m */,
+				5FCFB34E1A748F9800FA033F /* HBMLogLoginViewController.xib */,
 				5F658C8F1ADE413E00BAB848 /* HBRegistViewController.h */,
 				5F658C901ADE413E00BAB848 /* HBRegistViewController.m */,
 				5F658C911ADE413E00BAB848 /* HBRegistViewController.xib */,
-				5F55633F1A80B9DE006A4A40 /* HBVerifyViewController.h */,
-				5F5563401A80B9DE006A4A40 /* HBVerifyViewController.m */,
-				5F5563411A80B9DE006A4A40 /* HBVerifyViewController.xib */,
 			);
 			name = Regist;
 			sourceTree = "<group>";

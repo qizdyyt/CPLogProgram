@@ -7,11 +7,14 @@
 //
 
 #import "AppDelegate.h"
-#import "HBMLogLoginViewController.h"
+//#import "HBMLogLoginViewController.h"
 #import "HBHomepageViewController.h"
-#import "HBFirstOpenViewController.h"
+//#import "HBFirstOpenViewController.h"
 #import "HBCommonUtil.h"
 #import "HBServerInterface.h"
+
+#import "HBAdminViewController.h"
+#import "HBRegistViewController.h"
 
 @interface AppDelegate ()
 
@@ -29,38 +32,16 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     UINavigationController *nav = nil;
-    HBHomepageViewController *homepageVC = [[HBHomepageViewController alloc] init];
-    nav = [[UINavigationController alloc] initWithRootViewController:homepageVC];
-    
+    //增加根据已登录状态判断，打开登录界面，还是进入首页
+    BOOL loginState = [[HBCommonUtil getUserLoginState] boolValue];
+    if (loginState) {
+        HBHomepageViewController *homepageVC = [[HBHomepageViewController alloc] init];
+        nav = [[UINavigationController alloc] initWithRootViewController:homepageVC];
+    }else {
+        HBAdminViewController *adminVC = [[HBAdminViewController alloc] init];
+        nav = [[UINavigationController alloc] initWithRootViewController:adminVC];
+    }
     self.window.rootViewController = nav;
-    
-//    //如果没有证书，则直接跳转到首次登陆界面
-//    NSArray *certList = [HBMiddleWare getCertList:HB_SIGN_CERT forDeviceType:HB_SOFT_DEVICE];
-//    if (0 == [certList count]) {
-//        HBFirstOpenViewController *registVC = [[HBFirstOpenViewController alloc] init];
-//        registVC.window = self.window;
-//        nav = [[UINavigationController alloc] initWithRootViewController:registVC];
-//        self.window.rootViewController = nav;
-//    }
-//    else {
-//        //增加根据已登录状态判断，打开登录界面，还是进入首页
-//        BOOL loginState = [[HBCommonUtil getUserLoginState] boolValue];
-//        if (loginState) {
-//            //加载用户默认配置
-//            NSString *certCN = [HBCommonUtil getUserLoginCert];
-//            [HBCommonUtil loadUserConfigFromDefaults:certCN];
-//
-//            HBHomepageViewController *homepageVC = [[HBHomepageViewController alloc] init];
-//            nav = [[UINavigationController alloc] initWithRootViewController:homepageVC];
-//
-//            self.window.rootViewController = nav;
-//        }
-//        else {
-//            HBMLogLoginViewController *loginViewController = [[HBMLogLoginViewController alloc] init];
-//            loginViewController.window = self.window;
-//            self.window.rootViewController = loginViewController;
-//        }
-//    }
     
     [self.window makeKeyAndVisible];
     

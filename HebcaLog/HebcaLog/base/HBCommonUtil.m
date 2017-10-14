@@ -465,6 +465,7 @@ NSString *g_updateUrl = nil;
  
  */
 
+///获取用户登录状态
 + (NSNumber *)getUserLoginState
 {
     NSUserDefaults * _userDefaults = [NSUserDefaults standardUserDefaults];
@@ -476,24 +477,12 @@ NSString *g_updateUrl = nil;
     
     return loginState;
 }
-
-+ (NSString *)getUserLoginCert
+///更新用户登录状态
++ (void)upDateUserLoginState:(BOOL)login
 {
-    NSUserDefaults * _userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *userInfo = [_userDefaults objectForKey:USER_DEFAULTS_USER_INFO];
-    if (!userInfo) {
-        return nil;
-    }
-    NSString *loginCert = [userInfo objectForKey:USER_LOGIN_CERT];
-    
-    return loginCert;
-}
-
-+ (void)upDateUserLoginState:(NSString *)certCN state:(BOOL)login
-{
-    if (certCN == nil || [certCN length] == 0) {
-        return;
-    }
+//    if (certCN == nil || [certCN length] == 0) {
+//        return;
+//    }
     
     NSUserDefaults * _userDefaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *userInfo =[NSMutableDictionary dictionaryWithDictionary:[_userDefaults objectForKey:USER_DEFAULTS_USER_INFO]];
@@ -503,11 +492,25 @@ NSString *g_updateUrl = nil;
     
     NSNumber *state = [NSNumber numberWithBool:login];
     [userInfo setObject:state forKey:USER_LOGIN_STATE];
-    [userInfo setObject:certCN forKey:USER_LOGIN_CERT];
+//    [userInfo setObject:certCN forKey:USER_LOGIN_CERT];
     
     [_userDefaults setObject:[userInfo copy] forKey:USER_DEFAULTS_USER_INFO];
     [_userDefaults synchronize];
 }
+
+//+ (NSString *)getUserLoginCert
+//{
+//    NSUserDefaults * _userDefaults = [NSUserDefaults standardUserDefaults];
+//    NSDictionary *userInfo = [_userDefaults objectForKey:USER_DEFAULTS_USER_INFO];
+//    if (!userInfo) {
+//        return nil;
+//    }
+//    NSString *loginCert = [userInfo objectForKey:USER_LOGIN_CERT];
+//
+//    return loginCert;
+//}
+
+
 
 //+ (Int)getUser
 
