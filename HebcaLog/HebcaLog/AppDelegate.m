@@ -13,7 +13,7 @@
 #import "HBCommonUtil.h"
 #import "HBServerInterface.h"
 
-#import "HBAdminViewController.h"
+#import "HBMLogLoginViewController.h"
 #import "HBRegistViewController.h"
 
 @interface AppDelegate ()
@@ -38,8 +38,13 @@
         HBHomepageViewController *homepageVC = [[HBHomepageViewController alloc] init];
         nav = [[UINavigationController alloc] initWithRootViewController:homepageVC];
     }else {
-        HBAdminViewController *adminVC = [[HBAdminViewController alloc] init];
-        nav = [[UINavigationController alloc] initWithRootViewController:adminVC];
+        HBMLogLoginViewController *loginVC = [[HBMLogLoginViewController alloc] init];
+        nav = [[UINavigationController alloc] initWithRootViewController:loginVC];
+
+    }
+    if (nav) {
+        nav.navigationBar.tintColor = [UIColor blackColor];
+        nav.navigationBar.translucent = false;
     }
     self.window.rootViewController = nav;
     

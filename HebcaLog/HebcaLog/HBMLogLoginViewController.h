@@ -6,6 +6,11 @@
 //  Copyright (c) 2015年 hebca. All rights reserved.
 //
 
+/////////************////////////////
+
+//登录界面
+
+////////////////////************/////////
 #import <UIKit/UIKit.h>
 #import "HBPopoverController.h"
 #import "HBPopListView.h"
@@ -21,6 +26,11 @@
 
 - (IBAction)registBtnPressed:(id)sender;
 - (IBAction)loginButtonPressed:(id)sender;
+
+- (IBAction)resetButtonPressed:(id)sender;
+
+
+
 - (IBAction)certChoose:(id)sender;
 
 - (IBAction)testFunc:(id)sender;

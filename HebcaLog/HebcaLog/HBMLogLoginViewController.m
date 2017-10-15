@@ -22,7 +22,7 @@
 
 @implementation HBMLogLoginViewController
 {
-    NSArray *_certList;
+//    NSArray *_certList;
     NSInteger _chooseItem;
     NSMutableArray *_popViewOptions;
 //    HBCert *logCert;
@@ -46,17 +46,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    //MARK: 涉及证书，删掉
-//    [HBMiddleWare reloadDevice];
-//    _certList = [HBMiddleWare getCertList:HB_SIGN_CERT forDeviceType:HB_SOFT_DEVICE];
-    if (0 == [_certList count]) {
-        self.loginNameTF.text = nil;
-        self.loginNameTF.userInteractionEnabled = NO;
-        return;
-    }
-    
-//    self.loginNameTF.text = [[_certList objectAtIndex:0] getSubjectItem:HB_DN_COMMON_NAME];
+    [self.navigationController setNavigationBarHidden:true animated:true];
 }
 
 
@@ -137,16 +127,16 @@
 
 - (IBAction)loginButtonPressed:(id)sender {
     //是否有证书
-    if (0 == _certList) {
-        HBRegistViewController *registViewControl = [[HBRegistViewController alloc] init];
-        [self presentViewController:registViewControl animated:YES completion:nil];
-        return;
-    }
+//    if (0 == _certList) {
+//        HBRegistViewController *registViewControl = [[HBRegistViewController alloc] init];
+//        [self presentViewController:registViewControl animated:YES completion:nil];
+//        return;
+//    }
     
-    if (self.loginNameTF.text == nil || self.loginNameTF.text.length == 0) {
-        [self.view makeToast:@"请选择证书"];
-        return;
-    }
+//    if (self.loginNameTF.text == nil || self.loginNameTF.text.length == 0) {
+//        [self.view makeToast:@"请选择证书"];
+//        return;
+//    }
     
     //本地验证密码
     if (self.passwordTF.text == nil || 0 == [self.passwordTF.text length])
@@ -186,6 +176,9 @@
         //[self.navigationController pushViewController:homepageControl animated:YES];
         
     }];
+}
+
+- (IBAction)resetButtonPressed:(id)sender {
 }
 
 - (NSString *)certLogin {
