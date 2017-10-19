@@ -52,14 +52,6 @@
 
 #pragma mark - UITextFieldViewDelegate
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    if (10 == textField.tag) {
-        return NO;
-    }
-    return YES;
-}
-
 //开始编辑输入框的时候，软键盘出现，执行此事件
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {

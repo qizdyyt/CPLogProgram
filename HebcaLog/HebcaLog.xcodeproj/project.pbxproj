@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		163E5EEDED1EF61C461C7778 /* Pods_HebcaLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463B4D31D29D6F1D7E96B5A1 /* Pods_HebcaLog.framework */; };
+		2E5380E31F98E4A7004FFD80 /* UIView+IBConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5380E21F98E4A7004FFD80 /* UIView+IBConfiguration.m */; };
 		2EBB20EE1F8E54E20099B150 /* DEL_AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBB20ED1F8E54E20099B150 /* DEL_AppDelegate.m */; };
 		2EBB20F21F8E55DB0099B150 /* UserDefaultTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBB20F11F8E55DB0099B150 /* UserDefaultTool.m */; };
 		2EBB20FA1F8E60550099B150 /* HBUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBB20F91F8E60550099B150 /* HBUserInfo.m */; };
@@ -292,6 +293,8 @@
 
 /* Begin PBXFileReference section */
 		060B1B3F62DBE81D53576431 /* Pods-HebcaLog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HebcaLog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HebcaLog/Pods-HebcaLog.debug.xcconfig"; sourceTree = "<group>"; };
+		2E5380E11F98E4A7004FFD80 /* UIView+IBConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+IBConfiguration.h"; sourceTree = "<group>"; };
+		2E5380E21F98E4A7004FFD80 /* UIView+IBConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+IBConfiguration.m"; sourceTree = "<group>"; };
 		2EBB20EC1F8E54E20099B150 /* DEL_AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DEL_AppDelegate.h; sourceTree = "<group>"; };
 		2EBB20ED1F8E54E20099B150 /* DEL_AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DEL_AppDelegate.m; sourceTree = "<group>"; };
 		2EBB20F01F8E55DB0099B150 /* UserDefaultTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDefaultTool.h; sourceTree = "<group>"; };
@@ -735,6 +738,8 @@
 			children = (
 				2EBB20F01F8E55DB0099B150 /* UserDefaultTool.h */,
 				2EBB20F11F8E55DB0099B150 /* UserDefaultTool.m */,
+				2E5380E11F98E4A7004FFD80 /* UIView+IBConfiguration.h */,
+				2E5380E21F98E4A7004FFD80 /* UIView+IBConfiguration.m */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -1749,10 +1754,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HebcaLog/Pods-HebcaLog-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/QMUIKit/QMUIKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QMUIKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1776,6 +1783,7 @@
 				5F5563421A80B9DE006A4A40 /* HBVerifyViewController.m in Sources */,
 				8D2D61511CA3E07600F4E771 /* HBDoorlistViewController.m in Sources */,
 				5F71F3F21ADB5CFD00FDECBC /* HBDatepickerView.m in Sources */,
+				2E5380E31F98E4A7004FFD80 /* UIView+IBConfiguration.m in Sources */,
 				2ECB9AA71F8F173C003859C0 /* HBAttendInfo.m in Sources */,
 				2ECB9AEF1F8F4AD8003859C0 /* HBMeetingInfo.m in Sources */,
 				5F7627151AA19A0E0088A4C4 /* HBNewMsgViewController.m in Sources */,
@@ -1938,7 +1946,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1973,7 +1981,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
+#import "QMUIKit.h"
 
 @interface HBAdminViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, MBProgressHUDDelegate>
 

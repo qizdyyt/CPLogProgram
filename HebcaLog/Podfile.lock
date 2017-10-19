@@ -1,6 +1,7 @@
 PODS:
   - BmobSDK (2.2.3):
     - WechatOpenSDK (~> 1.7.7)
+  - IQKeyboardManager (5.0.4)
   - QMUIKit (2.0.0):
     - QMUIKit/QMUIComponents (= 2.0.0)
     - QMUIKit/QMUICore (= 2.0.0)
@@ -185,13 +186,15 @@ PODS:
 
 DEPENDENCIES:
   - BmobSDK
+  - IQKeyboardManager
   - QMUIKit
 
 SPEC CHECKSUMS:
   BmobSDK: dd61cf835d063303fb53b29465fcb3e9718b36f2
+  IQKeyboardManager: 1df9c0f147af1681cfb2d9977bc30309d45a7e76
   QMUIKit: 337d8c689c36223bd78f85bed57a62af5ec6707a
   WechatOpenSDK: 1fe7e3b07db860d6a936c3ff4a5aba6b890958d9
 
-PODFILE CHECKSUM: b6ca0aa1096d15793ec9d93da40df8231b770c0c
+PODFILE CHECKSUM: 174199d8f1d36c17b4d21c951019c985be343ce1
 
 COCOAPODS: 1.3.1
