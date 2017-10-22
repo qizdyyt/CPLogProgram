@@ -7,9 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
-
+/********
+ 
+ 主要使用于用户各类信息从userdefault的读取和存储
+ 
+ ********/
 @interface UserDefaultTool : NSObject<NSCopying, NSMutableCopying>
 
 +(instancetype) shareUserDefaultTool;
-+ (NSNumber *)getUserLoginState;
+///获取用户登录状态
++ (BOOL)getUserLoginState;
+///
++ (void)upDateUserLoginState:(BOOL)login;
+
++ (NSString *)getPasswordFromDefaults;
++ (void)recordPasswordToDefaults:(NSString *)password;
+
+
 @end

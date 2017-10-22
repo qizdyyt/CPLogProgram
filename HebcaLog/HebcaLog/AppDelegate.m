@@ -33,7 +33,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     UINavigationController *nav = nil;
     //增加根据已登录状态判断，打开登录界面，还是进入首页
-    BOOL loginState = [[HBCommonUtil getUserLoginState] boolValue];
+    BOOL loginState = [UserDefaultTool getUserLoginState];
     if (loginState) {
         HBHomepageViewController *homepageVC = [[HBHomepageViewController alloc] init];
         nav = [[UINavigationController alloc] initWithRootViewController:homepageVC];
@@ -69,7 +69,7 @@
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     
-    BOOL loginState = [[HBCommonUtil getUserLoginState] boolValue];
+    BOOL loginState = [UserDefaultTool getUserLoginState];
     if (loginState) {   //如果为登录状态，则将用户配置信息保存到用户默认配置里
         [HBCommonUtil recordUSerConfigToDefaults];
     }

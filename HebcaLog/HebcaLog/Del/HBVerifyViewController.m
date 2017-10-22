@@ -12,7 +12,7 @@
 //#import "HBMiddleWare.h"//不再包含errorcode
 #import "HBErrorCode.h"
 #import "HBServerInterface.h"
-#import "../base/HBCommonUtil.h"
+#import "HBCommonUtil.h"
 #import "HBHomepageViewController.h"
 #import "AppDelegate.h"
 

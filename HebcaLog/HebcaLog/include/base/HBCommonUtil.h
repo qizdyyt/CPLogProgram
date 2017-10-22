@@ -5,12 +5,12 @@
 //  Created by hebca on 14-8-13.
 //  Copyright (c) 2014年 hebca. All rights reserved.
 //
-
+////已经开始拆分修改，原始文件见Ori文件夹////
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 //#import "../include/HBMiddleWare.h"
-#import "../include/HBCert.h"
-#import "../include/HBDevice.h"
+//#import "../include/HBCert.h"
+//#import "../include/HBDevice.h"
 
 
 
@@ -29,13 +29,7 @@
  }
  */
 
-#define USER_DEFAULTS_USER_INFO @"HBMLOG_USER_INFO"
-#define USER_LOGIN_STATE        @"HBMLog_LoginState"
-#define USER_LOGIN_CERT         @"HBMLog_LoginCert"
 
-#define USER_DEFAULTS_USER_CONFIG  @"HBMLog_User_ConfigInfo"
-#define USER_DEFAULTS_REMIND_INFO  @"HBMLog_User_RemindInfo"
-#define USER_DEFAULTS_PASSWORD     @"HBMLog_User_Password"
 
 
 @interface NSString (check)
@@ -115,13 +109,10 @@
 
 //------------------------用户默认配置----------------------//
 //登录状态/登录证书
-+ (NSNumber *)getUserLoginState;
+
 + (NSString *)getUserLoginCert;
 + (void)upDateUserLoginState:(NSString *)certCN state:(BOOL)login;
 
-
-+ (NSString *)getPasswordFromDefaults;
-+ (void)recordPasswordToDefaults:(NSString *)password;
 
 + (NSString *)getPasswordFromKeychain;
 + (void)recordPasswordToKeychain:(NSString *)password;

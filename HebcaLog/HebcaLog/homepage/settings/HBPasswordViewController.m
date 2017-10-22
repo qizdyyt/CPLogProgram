@@ -12,6 +12,8 @@
 #import "HBMiddleWare.h"
 #import "HBCert.h"
 
+#import "UserDefaultTool.h"
+
 @interface HBPasswordViewController ()
 
 @end
@@ -104,8 +106,9 @@
 //        [self.view makeToast:errorMsg];
 //        return;
 //    }
+//    [HBCommonUtil recordPasswordToDefaults:newPassword];
     
-    [HBCommonUtil recordPasswordToDefaults:newPassword];
+    [UserDefaultTool recordPasswordToDefaults:newPassword];
     
     [self.setVC passwordChanged];
     [self.navigationController popViewControllerAnimated:YES];

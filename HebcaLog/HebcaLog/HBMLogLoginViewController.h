@@ -31,8 +31,6 @@
 - (IBAction)resetButtonPressed:(id)sender;
 
 
-
-- (IBAction)certChoose:(id)sender;
-
-- (IBAction)testFunc:(id)sender;
+//选择证书，废弃
+//- (IBAction)certChoose:(id)sender;
 @end

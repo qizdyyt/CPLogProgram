@@ -7,7 +7,8 @@
 //
 
 #import "HBMLogLoginViewController.h"
-#import "HBRegistViewController.h"
+//#import "HBRegistViewController.h"
+#import "HBAdminViewController.h"
 #import "HBHomepageViewController.h"
 #import "HBCommonUtil.h"
 #import "HBServerConnect.h"
@@ -16,26 +17,22 @@
 
 
 #import "HBAttendInfoViewController.h"
-
 //#import "HBLocationViewController.h"
 
+@interface HBMLogLoginViewController()
+
+
+@end
 
 @implementation HBMLogLoginViewController
 {
-//    NSArray *_certList;
-    NSInteger _chooseItem;
     NSMutableArray *_popViewOptions;
-//    HBCert *logCert;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    UIImage *image = [UIImage imageNamed:@"btn_password.png"];
-    [self.passwordTF setBackground:image];
-    
-    _chooseItem = 0;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,32 +52,13 @@
 //开始编辑输入框的时候，软键盘出现，执行此事件
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    CGRect frame = textField.frame;
-    CGFloat keyboardHeight = 220;
-    int offset = keyboardHeight - (self.view.frame.size.height - frame.origin.y - frame.size.height);
-    
-    NSTimeInterval animationDuration = 0.30f;
-    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
-    [UIView setAnimationDuration:animationDuration];
-    
-    //将视图的Y坐标向上移动offset个单位，以使下面腾出地方用于软键盘的显示
-    if(offset > 0) {
-        self.view.frame = CGRectMake(0.0f, -offset, self.view.frame.size.width, self.view.frame.size.height);
-    }
-    
-    [UIView commitAnimations];
+
 }
 
 //输入框编辑完成以后，将视图恢复到原始状态
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
-    NSTimeInterval animationDuration = 0.30f;
-    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
-    [UIView setAnimationDuration:animationDuration];
-    
-    self.view.frame =CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    
-    [UIView commitAnimations];
+
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -94,80 +72,70 @@
     [self.passwordTF resignFirstResponder];
 }
 
-- (IBAction)certChoose:(id)sender {
-    [self.passwordTF resignFirstResponder];
-    
-    _popViewOptions = [[NSMutableArray alloc] init];
+//证书选择方法，废弃
+//- (IBAction)certChoose:(id)sender {
+//    [self.passwordTF resignFirstResponder];
+//
+//    _popViewOptions = [[NSMutableArray alloc] init];
 //    for (HBCert *cert in _certList) {
 //        NSString *certCN = [cert getSubjectItem:HB_DN_COMMON_NAME];
 //        [_popViewOptions addObject:@{@"text":certCN}];
 //    }
     
     
-    HBPopListView *lplv = [[HBPopListView alloc] initWithTitle:@"选择证书" options:_popViewOptions];
-    lplv.canCancelFlag = YES;
-    lplv.delegate = self;
-    [self.loginNameTF resignFirstResponder];
-    [lplv showInView:self.view animated:YES];
-    
-}
+//    HBPopListView *lplv = [[HBPopListView alloc] initWithTitle:@"选择证书" options:_popViewOptions];
+//    lplv.canCancelFlag = YES;
+//    lplv.delegate = self;
+//    [self.loginNameTF resignFirstResponder];
+//    [lplv showInView:self.view animated:YES];
+//
+//}
 
 - (IBAction)registBtnPressed:(id)sender {
-    HBRegistViewController *registViewControl = [[HBRegistViewController alloc] init];
+    HBAdminViewController *registViewControl = [[HBAdminViewController alloc] init];
     [self presentViewController:registViewControl animated:YES completion:nil];
 }
 
 - (IBAction)loginButtonPressed:(id)sender {
-    //是否有证书
-//    if (0 == _certList) {
-//        HBRegistViewController *registViewControl = [[HBRegistViewController alloc] init];
-//        [self presentViewController:registViewControl animated:YES completion:nil];
-//        return;
-//    }
-    
-//    if (self.loginNameTF.text == nil || self.loginNameTF.text.length == 0) {
-//        [self.view makeToast:@"请选择证书"];
-//        return;
-//    }
-    
+    //验证用户名
+    if (self.loginNameTF.text == nil || 0 == [self.loginNameTF.text length])
+    {
+        [self.view makeToast:@"请输入手机号"];
+        return;
+    }
     //本地验证密码
     if (self.passwordTF.text == nil || 0 == [self.passwordTF.text length])
     {
         [self.view makeToast:@"请输入您的密码"];
         return;
     }
+    //开始登陆
     
-    //验证证书密码
-//    logCert = [_certList objectAtIndex:_chooseItem];
-//    NSInteger result = [logCert loginDevice:self.passwordTF.text];
-//    if (result != HM_OK) {
-//        NSString *errorMsg = [HBMiddleWare lastErrorMessage];
-//        [HBCommonUtil showAttention:errorMsg sender:self];
-//        return;
-//    }
-    [HBCommonUtil recordPasswordToDefaults:self.passwordTF.text];
+//    [HBCommonUtil recordPasswordToDefaults:self.passwordTF.text];
+    [UserDefaultTool recordPasswordToDefaults:self.passwordTF.text];
     
     //登录
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
-    hud.labelText = @"正在登录";
-    [self.view addSubview:hud];
-    __block NSString *error = nil;
-    [hud showAnimated:YES whileExecutingBlock:^{
-        error = [self certLogin];   //登录系统
-    } completionBlock:^{
-        [hud removeFromSuperview];
-        if (nil != error) {
-            [HBCommonUtil showAttention:error sender:self];
-            return;
-        }
-        
-        HBHomepageViewController *homepageControl = [[HBHomepageViewController alloc] init];
-        UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:homepageControl];
-        self.window.rootViewController = navi;
-        
-        //[self.navigationController pushViewController:homepageControl animated:YES];
-        
-    }];
+    HBHomepageViewController *homepageControl = [[HBHomepageViewController alloc] init];
+//    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
+//    hud.labelText = @"正在登录";
+//    [self.view addSubview:hud];
+//    __block NSString *error = nil;
+//    [hud showAnimated:YES whileExecutingBlock:^{
+//        error = [self certLogin];   //登录系统
+//    } completionBlock:^{
+//        [hud removeFromSuperview];
+//        if (nil != error) {
+//            [HBCommonUtil showAttention:error sender:self];
+//            return;
+//        }
+//
+//        HBHomepageViewController *homepageControl = [[HBHomepageViewController alloc] init];
+//        UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:homepageControl];
+//        self.window.rootViewController = navi;
+//
+//        //[self.navigationController pushViewController:homepageControl animated:YES];
+//
+//    }];
 }
 
 - (IBAction)resetButtonPressed:(id)sender {
@@ -226,18 +194,12 @@
         self.loginNameTF.text = [[_popViewOptions objectAtIndex:anIndex] objectForKey:@"text"];
     }
     
-    _chooseItem = anIndex;
+//    _chooseItem = anIndex;
 }
 
 - (void)myPopListViewDidCancel
 {
     
-}
-
-- (IBAction)testFunc:(id)sender {
-    HBHomepageViewController *homepage = [[HBHomepageViewController alloc] init];
-    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:homepage];
-    self.window.rootViewController = navi;
 }
 
 - (NSString *)getRandomString
