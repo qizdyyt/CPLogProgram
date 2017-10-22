@@ -136,7 +136,7 @@
         return nil;
     }
     
-    NSString *certCN = [HBCommonUtil getCertCN];
+    NSString *certCN = [UserDefaultTool getCertCN];
     NSArray *userNotifyList = [notifyRecords objectForKey:certCN];
     if (userNotifyList == nil || [userNotifyList count] == 0) {
         return nil;
@@ -455,7 +455,7 @@
 
 - (void)removeFromUserDefault:(NSString *)notifyId
 {
-    NSString *certCN = [HBCommonUtil getCertCN];
+    NSString *certCN = [UserDefaultTool getCertCN];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *notifyRecords = [NSMutableDictionary dictionaryWithDictionary:[defaults objectForKey:USER_DEFAULTS_REMIND_INFO]];
@@ -490,7 +490,7 @@
 
 - (void)removeLocalNotification:(NSString *)notifyId
 {
-    NSString *userid = [HBCommonUtil getUserId];
+    NSString *userid = [UserDefaultTool getUserId];
     
     //获取本地推送数组
     UIApplication *app = [UIApplication sharedApplication];

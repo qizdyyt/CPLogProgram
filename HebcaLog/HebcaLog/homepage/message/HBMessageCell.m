@@ -58,7 +58,7 @@ static NSString *replyCellIdentity = @"HBReplyCell";
     cell.msgIndex = self.msgIndex;
     cell.rplIndex = indexPath.row;
     
-    NSString *userName = [HBCommonUtil getUserName];
+    NSString *userName = [UserDefaultTool getUserName];
     [reply.sendername stringByReplacingOccurrencesOfString:userName withString:@"我"];
     
     NSString *title = nil;

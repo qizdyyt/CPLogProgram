@@ -33,7 +33,7 @@
     _serverConnect = [[HBServerConnect alloc] init];
     locationService = [HBLocationService locationService];
     
-    _userId = [HBCommonUtil getUserId];
+    _userId = [UserDefaultTool getUserId];
     
     [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(showCurrTime) userInfo:nil repeats:YES];
 }

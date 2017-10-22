@@ -298,7 +298,7 @@
 //    userConfig.clientrole = [loginReply.clientRole integerValue];   //当前服务端未使用；若后续使用此字段，注意返回值类型
 //    userConfig.certCN   = certCN;
     
-    [HBCommonUtil updateUserConfig:userConfig];
+    [UserDefaultTool updateUserConfig:userConfig];
     
     return nil;
 }

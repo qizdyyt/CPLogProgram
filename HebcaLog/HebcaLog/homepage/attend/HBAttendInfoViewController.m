@@ -38,7 +38,7 @@
     [self configNavigationBar2];
     
     _serverConnect = [[HBServerConnect alloc] init];
-    _userId = [HBCommonUtil getUserId];
+    _userId = [UserDefaultTool getUserId];
     queryUserId = _userId;
     
     [self initViewItems];
@@ -196,7 +196,7 @@
 {
     self.title = @"考勤查询";
     
-    self.nameLabel.text = [HBCommonUtil getUserName];
+    self.nameLabel.text = [UserDefaultTool getUserName];
     _settedDate =   [HBCommonUtil getDateWithYMD:[NSDate date]];
     self.dateLabel.text = _settedDate;
     

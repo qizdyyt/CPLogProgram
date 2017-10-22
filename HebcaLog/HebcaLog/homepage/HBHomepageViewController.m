@@ -45,7 +45,7 @@
     [self userNewNavigatorBar];
     
     firstLogin = YES;
-    _userId = [HBCommonUtil getUserId];
+    _userId = [UserDefaultTool getUserId];
     journalTeamAuthorStatus = HB_UNDETERMINED;
     
     // 要使用百度地图，请先启动BaiduMapManager

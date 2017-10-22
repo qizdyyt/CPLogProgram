@@ -48,32 +48,16 @@
 
 
 //位置 经度、纬度、地址
-@interface HBLocation : NSObject
-
-@property (nonatomic, copy)NSString *latitude;
-@property (nonatomic, copy)NSString *longitude;
-@property (nonatomic, copy)NSString *address;
-
-@end
+//@interface HBLocation : NSObject
+#import "HBLocation.h"
+//@end
 
 
 //用户配置信息
-@interface HBUserConfig : NSObject
+//@interface HBUserConfig : NSObject
+#import "HBUserConfig.h"
 
-@property (nonatomic, assign)BOOL attendState; //上班状态：YES-上班； NO-下班；
-@property (nonatomic, assign)BOOL hasHeadImg;  //是否有头像
-@property (nonatomic, assign)NSInteger clientrole; //客户端角色 未使用
-@property (nonatomic, copy)NSString *userId;
-@property (nonatomic, copy)NSString *userName;
-@property (nonatomic, copy)NSString *deptId;
-@property (nonatomic, copy)NSString *deptName;
-@property (nonatomic, copy)NSString *certCN;
-@property (nonatomic, copy)NSString *lastUpdate;
-@property (nonatomic, retain)HBLocation *location;
-
-- (id)init;
-
-@end
+//@end
 
 
 @interface HBCommonUtil : NSObject
@@ -113,22 +97,12 @@
 + (NSString *)getUserLoginCert;
 + (void)upDateUserLoginState:(NSString *)certCN state:(BOOL)login;
 
-
 + (NSString *)getPasswordFromKeychain;
 + (void)recordPasswordToKeychain:(NSString *)password;
 
 
 //------------------------存取用户信息----------------------//
-//获取用户信息
-+ (void)loadUserConfigFromDefaults:(NSString *)certCN;
-+ (void)updateUserConfig:(HBUserConfig *)userConfig;
-+ (void)recordUSerConfigToDefaults;
 
-+ (NSString *)getUserId;
-+ (NSString *)getUserName;
-+ (NSString *)getDeptId;
-+ (NSString *)getDeptName;
-+ (NSString *)getCertCN;
 
 //上班状态
 + (BOOL)getAttendState:(NSString *)userid;

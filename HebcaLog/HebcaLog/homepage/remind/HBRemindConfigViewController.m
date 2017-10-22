@@ -455,7 +455,7 @@
         notification.alertBody = _textViewNull?@"":self.RemindTextView.text;
         
         //设置userinfo 方便在之后需要撤销的时候使用
-        NSString *userid = [HBCommonUtil getUserId];
+        NSString *userid = [UserDefaultTool getUserId];
         NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:userid, @"userid", notifyID, @"id", nil];
         notification.userInfo = info;
         
@@ -540,7 +540,7 @@
 
 - (void)recordNotificationToUerdefault:(NSDictionary *)notificationDic
 {
-    NSString *certCN = [HBCommonUtil getCertCN];
+    NSString *certCN = [UserDefaultTool getCertCN];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *notifyRecords = [NSMutableDictionary dictionaryWithDictionary:[defaults objectForKey:USER_DEFAULTS_REMIND_INFO]];

@@ -111,7 +111,7 @@
         
         //上传用户位置信息
         HBPosition *positionInfo = [[HBPosition alloc] init];
-        positionInfo.userid = [HBCommonUtil getUserId];
+        positionInfo.userid = [UserDefaultTool getUserId];
         positionInfo.latitude = location.latitude;
         positionInfo.longitude = location.longitude;
         positionInfo.address = location.address;

@@ -53,7 +53,7 @@
     
     secondsCountDown = 5;
 //    time = 0;
-    userid = [HBCommonUtil getUserId];
+    userid = [UserDefaultTool getUserId];
 
     serverConnect = [[HBServerConnect alloc] init];
     [self doList];

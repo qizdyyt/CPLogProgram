@@ -28,7 +28,7 @@
 }
 
 + (HB_AUTHOR_STATUS)getServerTeamAuthority: (HB_AUTHOR_TYPE)optype {
-    NSString *userid = [HBCommonUtil getUserId];
+    NSString *userid = [UserDefaultTool getUserId];
     HB_AUTHOR_STATUS status = HB_UNDETERMINED;
     
     HBServerConnect *serverConnect = [[HBServerConnect alloc] init];

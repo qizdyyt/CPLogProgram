@@ -29,7 +29,7 @@
         _fileManager = [[NSFileManager alloc] init];
         NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString * documentsDirectory = [paths objectAtIndex:0];
-        NSString *userFolder = [NSString stringWithFormat:@"%@/", [HBCommonUtil getUserId]];
+        NSString *userFolder = [NSString stringWithFormat:@"%@/", [UserDefaultTool getUserId]];
         _rootPath = [documentsDirectory stringByAppendingPathComponent:userFolder];
         
         BOOL isDir = YES;

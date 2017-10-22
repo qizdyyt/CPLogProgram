@@ -171,8 +171,8 @@
         NSString *longitude = _location.longitude;
         NSString *latitude  = _location.latitude;
         NSString *address   = _location.address;
-        NSString *userId = [HBCommonUtil getUserId];
-        NSString *userName = [HBCommonUtil getUserName];
+        NSString *userId = [UserDefaultTool getUserId];
+        NSString *userName = [UserDefaultTool getUserName];
         NSString *content = self.textContentView.text;
         
         HBJournalInfo *journal = [[HBJournalInfo alloc] init];
@@ -222,8 +222,8 @@
         NSString *longitude = _location.latitude;
         NSString *latitude  = _location.latitude;
         NSString *address   = _location.address;
-        NSString *userId = [HBCommonUtil getUserId];
-        NSString *userName = [HBCommonUtil getUserName];
+        NSString *userId = [UserDefaultTool getUserId];
+        NSString *userName = [UserDefaultTool getUserName];
         NSString *content = self.textContentView.text;
         
         if (0 == self.type) {

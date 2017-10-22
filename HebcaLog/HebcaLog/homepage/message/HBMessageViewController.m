@@ -67,7 +67,7 @@ static NSString *cellIdentifier = @"messageCellIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _userid = [HBCommonUtil getUserId];
+    _userid = [UserDefaultTool getUserId];
     _authUserList = nil;
     _blockCount = 1;
     reachedEnd = NO;

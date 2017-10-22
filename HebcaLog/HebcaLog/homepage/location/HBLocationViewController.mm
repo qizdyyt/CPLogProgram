@@ -195,7 +195,7 @@
         [getUserIds addObject:userId];
     }
     
-    NSMutableArray *userPositions = [serverConnect getPositions:[HBCommonUtil getUserId] requestUsers:[getUserIds copy]];
+    NSMutableArray *userPositions = [serverConnect getPositions:[UserDefaultTool getUserId] requestUsers:[getUserIds copy]];
     if (!userPositions || ![userPositions count]) {
         [self.view makeToast:@"获取用户位置失败"];
         return;

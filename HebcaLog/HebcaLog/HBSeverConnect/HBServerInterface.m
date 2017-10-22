@@ -1053,7 +1053,7 @@
     }
     
     NSMutableArray *paramDic = [NSMutableArray array];
-    [paramDic addObject:MAKE_PARAM(@"userid", [HBCommonUtil getUserId])];
+    [paramDic addObject:MAKE_PARAM(@"userid", [UserDefaultTool getUserId])];
     [paramDic addObject:MAKE_PARAM(@"names", names)];
     [paramDic addObject:MAKE_PARAM(@"mobilephones", phones)];
     NSString *param = [paramDic componentsJoinedByString:@"&"];

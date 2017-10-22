@@ -34,7 +34,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    userid = [HBCommonUtil getUserId];
+    userid = [UserDefaultTool getUserId];
     
     [self configNavigationBar];
     [self.setTabelView setSeparatorInset:UIEdgeInsetsZero];
@@ -54,8 +54,8 @@
 {
     [super viewWillAppear:animated];
     
-    NSString *userName = [HBCommonUtil getUserName];
-    NSString *deptName = [HBCommonUtil getDeptName];
+    NSString *userName = [UserDefaultTool getUserName];
+    NSString *deptName = [UserDefaultTool getDeptName];
     
     self.userNameLabel.text = userName;
     self.divNameLabel.text = deptName;
@@ -219,8 +219,8 @@
     }
     
     //更改登录状态
-    [HBCommonUtil upDateUserLoginState:[HBCommonUtil getCertCN] state:NO];
-    [HBCommonUtil recordUSerConfigToDefaults];
+    [HBCommonUtil upDateUserLoginState:[UserDefaultTool getCertCN] state:NO];
+    [UserDefaultTool recordUSerConfigToDefaults];
     
     //停止定位
     [g_mapManager stop];
@@ -391,7 +391,7 @@
         //保存配置
         AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
         appDelegate.userConfig.hasHeadImg = YES;
-        [HBCommonUtil updateUserConfig:appDelegate.userConfig];
+        [UserDefaultTool updateUserConfig:appDelegate.userConfig];
         
         //获取图片并压缩
         UIImage* image = [info objectForKey:@"UIImagePickerControllerEditedImage"];

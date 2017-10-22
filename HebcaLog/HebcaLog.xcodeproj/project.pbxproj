@@ -10,6 +10,8 @@
 		163E5EEDED1EF61C461C7778 /* Pods_HebcaLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463B4D31D29D6F1D7E96B5A1 /* Pods_HebcaLog.framework */; };
 		2E5380E31F98E4A7004FFD80 /* UIView+IBConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5380E21F98E4A7004FFD80 /* UIView+IBConfiguration.m */; };
 		2E5ABC361F9CD74900EF1366 /* Ori_HBCommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5ABC351F9CD74900EF1366 /* Ori_HBCommonUtil.m */; };
+		2E5ABC3A1F9CE82800EF1366 /* HBUserConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5ABC391F9CE82800EF1366 /* HBUserConfig.m */; };
+		2E5ABC3D1F9CE8A700EF1366 /* HBLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5ABC3C1F9CE8A700EF1366 /* HBLocation.m */; };
 		2EBB20EE1F8E54E20099B150 /* DEL_AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBB20ED1F8E54E20099B150 /* DEL_AppDelegate.m */; };
 		2EBB20F21F8E55DB0099B150 /* UserDefaultTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBB20F11F8E55DB0099B150 /* UserDefaultTool.m */; };
 		2EBB20FA1F8E60550099B150 /* HBUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBB20F91F8E60550099B150 /* HBUserInfo.m */; };
@@ -299,6 +301,10 @@
 		2E5ABC341F9CD74900EF1366 /* Ori_HBCommonUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ori_HBCommonUtil.h; sourceTree = "<group>"; };
 		2E5ABC351F9CD74900EF1366 /* Ori_HBCommonUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Ori_HBCommonUtil.m; sourceTree = "<group>"; };
 		2E5ABC371F9CDA6A00EF1366 /* PreConfig.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreConfig.pch; sourceTree = "<group>"; };
+		2E5ABC381F9CE82800EF1366 /* HBUserConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HBUserConfig.h; sourceTree = "<group>"; };
+		2E5ABC391F9CE82800EF1366 /* HBUserConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HBUserConfig.m; sourceTree = "<group>"; };
+		2E5ABC3B1F9CE8A700EF1366 /* HBLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HBLocation.h; sourceTree = "<group>"; };
+		2E5ABC3C1F9CE8A700EF1366 /* HBLocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HBLocation.m; sourceTree = "<group>"; };
 		2EBB20EC1F8E54E20099B150 /* DEL_AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DEL_AppDelegate.h; sourceTree = "<group>"; };
 		2EBB20ED1F8E54E20099B150 /* DEL_AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DEL_AppDelegate.m; sourceTree = "<group>"; };
 		2EBB20F01F8E55DB0099B150 /* UserDefaultTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDefaultTool.h; sourceTree = "<group>"; };
@@ -763,11 +769,15 @@
 				5F6C3E671A8D98B1006F72F9 /* ToastUIView */,
 				5F4859DB1AA0047A00BEE037 /* HBPopover */,
 				5FD2BFF51ACD39E400DE3640 /* HBLocationServer */,
+				5F4B16861B15AF41005EFC9A /* MJRefresh */,
 				5F38AE801A767E4C0048032F /* HBCommonUtil.h */,
 				5F38AE811A767E4C0048032F /* HBCommonUtil.m */,
 				5F1437A31D5ACF0E00461153 /* HBAuthorityUtil.h */,
 				5F1437A41D5ACF0E00461153 /* HBAuthorityUtil.m */,
-				5F4B16861B15AF41005EFC9A /* MJRefresh */,
+				2E5ABC381F9CE82800EF1366 /* HBUserConfig.h */,
+				2E5ABC391F9CE82800EF1366 /* HBUserConfig.m */,
+				2E5ABC3B1F9CE8A700EF1366 /* HBLocation.h */,
+				2E5ABC3C1F9CE8A700EF1366 /* HBLocation.m */,
 			);
 			name = base;
 			path = include/base;
@@ -1862,6 +1872,7 @@
 				2EBB20F21F8E55DB0099B150 /* UserDefaultTool.m in Sources */,
 				5F7DA47F1A7739F800E3754A /* HBMessageCell.m in Sources */,
 				5F5FACD71B12D04300503B08 /* SDWebImagePrefetcher.m in Sources */,
+				2E5ABC3A1F9CE82800EF1366 /* HBUserConfig.m in Sources */,
 				5FBC1B421AA6FF93009A8B23 /* HBAttendInfoViewController.m in Sources */,
 				5F5E58901A7FB71900422051 /* HBServerConnect.m in Sources */,
 				5F4859E61AA0047A00BEE037 /* TSPopoverController.m in Sources */,
@@ -1871,6 +1882,7 @@
 				5FF88A331AB5F36000FEE20E /* HBPasswordViewController.m in Sources */,
 				5F5FACDD1B12D04300503B08 /* UIImageView+WebCache.m in Sources */,
 				2EBB20FA1F8E60550099B150 /* HBUserInfo.m in Sources */,
+				2E5ABC3D1F9CE8A700EF1366 /* HBLocation.m in Sources */,
 				2ECB9ADA1F8F4A6F003859C0 /* HBContact.m in Sources */,
 				5FD2BFF81ACD3A9100DE3640 /* HBLocationService.m in Sources */,
 				2ECB9AE61F8F4AB5003859C0 /* HBRegistRequest.m in Sources */,

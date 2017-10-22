@@ -71,7 +71,7 @@
     
     BOOL loginState = [UserDefaultTool getUserLoginState];
     if (loginState) {   //如果为登录状态，则将用户配置信息保存到用户默认配置里
-        [HBCommonUtil recordUSerConfigToDefaults];
+        [UserDefaultTool recordUSerConfigToDefaults];
     }
 }
 

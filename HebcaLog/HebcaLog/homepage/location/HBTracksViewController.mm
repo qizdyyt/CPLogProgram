@@ -75,8 +75,8 @@
     
     _serverConnect = [[HBServerConnect alloc] init];
     _setDate = [HBCommonUtil getDateWithYMD:[NSDate date]];
-    _userid  = [HBCommonUtil getUserId];
-    _userName = [HBCommonUtil getUserName];
+    _userid  = [UserDefaultTool getUserId];
+    _userName = [UserDefaultTool getUserName];
     _settedUser = _userid;
     self.dateLabel.text = [HBCommonUtil getDateWithWeek:[NSDate date]];
     
@@ -143,7 +143,7 @@
     NSString *latitude = nil;
     NSString *longitude = nil;
     //NSString *time = nil;
-    NSString *userId  = [NSString stringWithFormat:@"%@", [HBCommonUtil getUserId]];
+    NSString *userId  = [NSString stringWithFormat:@"%@", [UserDefaultTool getUserId]];
     NSArray *requestUsers = [NSArray arrayWithObject:userId];
     NSMutableArray *positions = [_serverConnect getPositions:userId requestUsers:requestUsers];
     if ([positions count] == 0) {
@@ -174,7 +174,7 @@
     _selectContact = contact;
     _settedUser = _selectContact.userid;
     
-    _userName = [_selectContact.userid isEqual:[HBCommonUtil getUserId]] ? @"我" : _selectContact.username;
+    _userName = [_selectContact.userid isEqual:[UserDefaultTool getUserId]] ? @"我" : _selectContact.username;
     
     self.title = [NSString stringWithFormat:@"%@的轨迹", _userName];
     

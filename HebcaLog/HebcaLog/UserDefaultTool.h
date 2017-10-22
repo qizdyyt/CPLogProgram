@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HBUserConfig.h"
 /********
  
  主要使用于用户各类信息从userdefault的读取和存储
@@ -17,11 +18,22 @@
 +(instancetype) shareUserDefaultTool;
 ///获取用户登录状态
 + (BOOL)getUserLoginState;
-///
+///更新用户登录状态
 + (void)upDateUserLoginState:(BOOL)login;
-
+///获取用户密码
 + (NSString *)getPasswordFromDefaults;
+///获取用户密码
 + (void)recordPasswordToDefaults:(NSString *)password;
 
+//获取用户信息
++ (void)loadUserConfigFromDefaults:(NSString *)certCN;
++ (void)updateUserConfig:(HBUserConfig *)userConfig;
++ (void)recordUSerConfigToDefaults;
+
++ (NSString *)getUserId;
++ (NSString *)getUserName;
++ (NSString *)getDeptId;
++ (NSString *)getDeptName;
++ (NSString *)getCertCN;
 
 @end
