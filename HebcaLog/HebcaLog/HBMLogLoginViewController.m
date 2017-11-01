@@ -98,7 +98,7 @@
         
     } completionBlock:^{
         //跳转或者提示
-        
+        [hud hide:YES];
     }];
     [UserDefaultTool recordPasswordToDefaults:self.passwordTF.text];
     

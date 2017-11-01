@@ -32,6 +32,8 @@
 
 - (id)init;
 
--(void)saveToServer;
+-(void)registerToServer: (void (^) (bool isOK, NSString* msg))complete;
+-(void)login: (void (^) (bool isOK, NSString* msg))complete;
+
 
 @end
