@@ -22,10 +22,10 @@
 
 @implementation HBAdminViewController
 {
-    UITextField *loginNameTF;
+    UITextField *userNameTF;
     UITextField *passwordTF;
     UITextField *passwordReTF;
-    UITextField *userNameTF;
+//    UITextField *userNameTF;
     UITextField *companyTF;
     UITextField *phoneNumTF;
     UITextField *verifyCodeTF;
@@ -40,11 +40,11 @@
     // Do any additional setup after loading the view from its nib.
     self.baseView.layer.cornerRadius = 8.0;
     
-    loginNameTF =  [[UITextField alloc] init];
-    loginNameTF.textAlignment = NSTextAlignmentCenter;
-    loginNameTF.returnKeyType = UIReturnKeyNext;
-    loginNameTF.delegate = self;
-    loginNameTF.tag = 0;
+    userNameTF =  [[UITextField alloc] init];
+    userNameTF.textAlignment = NSTextAlignmentCenter;
+    userNameTF.returnKeyType = UIReturnKeyNext;
+    userNameTF.delegate = self;
+    userNameTF.tag = 0;
     
     passwordTF =   [[UITextField alloc] init];
     passwordTF.textAlignment = NSTextAlignmentCenter;
@@ -62,30 +62,30 @@
     passwordReTF.delegate = self;
     passwordReTF.tag = 2;
     
-    userNameTF =   [[UITextField alloc] init];
-    userNameTF.textAlignment = NSTextAlignmentCenter;
-    userNameTF.returnKeyType = UIReturnKeyNext;
-    userNameTF.delegate = self;
-    userNameTF.tag = 3;
+//    userNameTF =   [[UITextField alloc] init];
+//    userNameTF.textAlignment = NSTextAlignmentCenter;
+//    userNameTF.returnKeyType = UIReturnKeyNext;
+//    userNameTF.delegate = self;
+//    userNameTF.tag = 3;
     
     companyTF =    [[UITextField alloc] init];
     companyTF.textAlignment = NSTextAlignmentCenter;
     companyTF.returnKeyType = UIReturnKeyNext;
     companyTF.delegate = self;
-    companyTF.tag = 4;
+    companyTF.tag = 3;
     
     phoneNumTF =   [[UITextField alloc] init];
     phoneNumTF.textAlignment = NSTextAlignmentCenter;
     phoneNumTF.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
     phoneNumTF.returnKeyType = UIReturnKeyNext;
     phoneNumTF.delegate = self;
-    phoneNumTF.tag = 5;
+    phoneNumTF.tag = 4;
     
     verifyCodeTF = [[UITextField alloc] init];
     verifyCodeTF.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
     verifyCodeTF.returnKeyType = UIReturnKeyDone;
     verifyCodeTF.delegate = self;
-    verifyCodeTF.tag = 6;
+    verifyCodeTF.tag = 5;
     
     baseSize = self.baseView.frame.size;
     serverConnect = [[HBServerConnect alloc] init];
@@ -106,16 +106,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return 5;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CGSize tableviewframe = self.tableview.frame.size;
     
-    if (tableviewframe.height > 280) {
+    if (tableviewframe.height > 200) {
         self.tableview.scrollEnabled = NO;
-        cellHeight = tableviewframe.height/7;
+        cellHeight = tableviewframe.height/5;
     } else {
         cellHeight = 40;
         self.tableview.scrollEnabled = YES;
@@ -137,9 +137,9 @@
     
     switch (indexPath.row) {
         case 0:{
-            loginNameTF.frame = textFrame;
-            loginNameTF.placeholder = @"输入登录名";
-            [cell addSubview:loginNameTF];
+            userNameTF.frame = textFrame;
+            userNameTF.placeholder = @"输入用户名";
+            [cell addSubview:userNameTF];
             break;
         }
             
@@ -157,28 +157,28 @@
             break;
         }
             
-        case 3:{
-            userNameTF.frame = textFrame;
-            userNameTF.placeholder = @"您的姓名";
-            [cell addSubview:userNameTF];
-            break;
-        }
+//        case 3:{
+//            userNameTF.frame = textFrame;
+//            userNameTF.placeholder = @"您的姓名";
+//            [cell addSubview:userNameTF];
+//            break;
+//        }
             
-        case 4:{
+        case 3:{
             companyTF.frame = textFrame;
             companyTF.placeholder = @"企业名称";
             [cell addSubview:companyTF];
             break;
         }
             
-        case 5:{
+        case 4:{
             phoneNumTF.frame = textFrame;
             phoneNumTF.placeholder = @"手机号码";
             [cell addSubview:phoneNumTF];
             break;
         }
             
-        case 6:{
+        case 5:{
             UIButton *sendMsgBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, (cellHeight-30)/2, 100, 30)];
             [sendMsgBtn setImage:[UIImage imageNamed:@"btn_send_msg_word"] forState:UIControlStateNormal];
             [sendMsgBtn addTarget:self action:@selector(sendMsgBtnPressed) forControlEvents:UIControlEventTouchDown];
@@ -205,10 +205,10 @@
 
 - (void)allTextfieldResignResponder
 {
-    [loginNameTF resignFirstResponder];
+    [userNameTF resignFirstResponder];
     [passwordTF resignFirstResponder];
     [passwordReTF resignFirstResponder];
-    [userNameTF resignFirstResponder];
+//    [userNameTF resignFirstResponder];
     [companyTF resignFirstResponder];
     [phoneNumTF resignFirstResponder];
     [verifyCodeTF resignFirstResponder];
@@ -263,75 +263,37 @@
         [self.view makeToast:errorMsg];
         return;
     }
+    //加了手机号检测，没有走验证码逻辑
+    NSString *phoneNum = phoneNumTF.text;
+    if (IS_NULL_STRING(phoneNum)) {
+        [self.view makeToast:@"手机号码不能为空"];
+        return;
+    }
+    if (![phoneNum checkPhoneNumInput]) {
+        [self.view makeToast:@"您输入手机号有误，请重新输入"];
+        return;
+    }
     
-    MBProgressHUD *hud = [[MBProgressHUD alloc] init];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"正在注册";
-    [self.view addSubview:hud];
-    
-//    __block NSString *message = nil;
-//    [hud showAnimated:YES whileExecutingBlock:^{
-//        //注册
-//        HBRegistRequest *request = [[HBRegistRequest alloc] init];
-//        request.username = userNameTF.text;
-//        request.password = passwordTF.text;
-//        request.divname  = companyTF.text;
-//        request.name     = userNameTF.text;
-//        request.mobilephone = phoneNumTF.text;
-//        request.identitycard = @"130000000000000000";
-//        request.scertcn = @"";
-//        request.code = verifyCodeTF.text;
-//
-//        HBRegistReply* reply = [serverConnect registUnit:request];
-//        if (!reply) {
-//            message = [serverConnect getLastErrorMessage];
-//            return;
-//        }
-//
-//        //安装证书
-//        NSString *acceptNo = reply.acceptNo;
-//        NSString *divid    = reply.divid;
-//
-//        if (IS_NULL_STRING(acceptNo)) {
-//            message = @"获取申请单号失败";
-//            return;
-//        }
-//        if (IS_NULL_STRING(divid)) {
-//            message = @"获取单位ID失败";
-//            return;
-//        }
-//
-//        HBOnlineBusiness *onlineBussiness = [[HBOnlineBusiness alloc] initWithServerURL:MLOG_ONLINE_SERVER_URL];
-//
-//        //获取设备 若为第一次安装，手机没有设备，则新建
-//        HBDevice *device = [HBCommonUtil getSoftDevice];
-//        if (IS_NULL(device)) {
-//            message = @"获取设备失败";
-//            return;
-//        }
-//        [HBCommonUtil loginDevice:device];
-//
-//        //构造短信验证码
-//        NSString *verifyCode = [HBCommonUtil getVerifyCode];
-//
-//        //安装证书
-//        NSInteger installRslt = [onlineBussiness certInstall:acceptNo verificationCode:verifyCode ansymmtricAlg:HB_RSA_1024 device:device];
-//        if (HM_OK != installRslt) {
-//            message = HB_LAST_ERROR_MESSAGE;
-//            return;
-//        }
-//
-//    }completionBlock:^{
-//        [hud removeFromSuperview];
-//
-//        if(message) {
-//            [HBCommonUtil showAttention:errorMsg sender:self];
-//            return;
-//        }
-//
-//        HBMLogLoginViewController *loginVC = [[HBMLogLoginViewController alloc] init];
-//        loginVC.window = self.window;
-//        [self presentViewController:loginVC animated:YES completion:nil];
-//    }];
+    HBUserConfig *user = [[HBUserConfig alloc] init];
+    user.userName = userNameTF.text;
+    user.password = passwordTF.text;
+    user.phoneNumber = phoneNumTF.text;
+    user.companyID = companyTF.text;
+    [user registerToServer:^(bool isOK, NSString *msg) {
+        [hud hide:YES];
+        if (isOK) {
+            [self dismissViewControllerAnimated:true completion:^{
+                if (self.delegate != NULL && [self.delegate respondsToSelector:@selector(handleRegist:)]) {
+                    [self.delegate handleRegist:user];
+                }
+            }];
+        } else {
+            [QMUITips showWithText:[NSString stringWithFormat:@"注册失败：%@", msg] inView:self.view hideAfterDelay:1];
+            
+        }
+    }];
 }
 
 - (NSString *)checkInputs
@@ -339,7 +301,7 @@
     NSString *erroMsg = nil;
     
     //登录名
-    if (IS_NULL_STRING(loginNameTF.text)) {
+    if (IS_NULL_STRING(userNameTF.text)) {
         erroMsg = @"登录名不能为空";
     }
     
@@ -361,20 +323,20 @@
     }
     
     //姓名
-    else if (IS_NULL_STRING(userNameTF.text)) {
-        erroMsg = @"姓名不能为空";
-    }
+//    else if (IS_NULL_STRING(userNameTF.text)) {
+//        erroMsg = @"姓名不能为空";
+//    }
     //企业名称
     else if (IS_NULL_STRING(companyTF.text)) {
         erroMsg = @"企业名称不能为空";
     }
     //验证码
-    else if (IS_NULL_STRING(verifyCodeTF.text)) {
-        erroMsg = @"验证码不能为空";
-    }
-    else if (verifyCodeTF.text.length != 6) {
-        erroMsg = @"验证码长度错误";
-    }
+//    else if (IS_NULL_STRING(verifyCodeTF.text)) {
+//        erroMsg = @"验证码不能为空";
+//    }
+//    else if (verifyCodeTF.text.length != 6) {
+//        erroMsg = @"验证码长度错误";
+//    }
     
     return erroMsg;
 }
@@ -384,41 +346,11 @@
 //开始编辑输入框的时候，软键盘出现，执行此事件
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    int padding = 0;
-    
-    if (SYSTEM_VERSION_HIGHER(8.0)) {
-        padding += 54;
-    }
-    
-    if (textField.tag > 2) {
-        CGRect frame = textField.frame;
-        CGFloat keyboardHeight = 220;
-        int offset = keyboardHeight - ([UIScreen mainScreen].bounds.size.height - (130 + textField.tag*cellHeight) - frame.size.height) + padding;
-        
-        NSTimeInterval animationDuration = 0.30f;
-        [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
-        [UIView setAnimationDuration:animationDuration];
-        
-        //将视图的Y坐标向上移动offset个单位，以使下面腾出地方用于软键盘的显示
-        if(offset > 0) {
-            self.view.frame = CGRectMake(0.0f, -offset, self.view.frame.size.width, [UIScreen mainScreen].bounds.size.height);
-        }
-        
-        [UIView commitAnimations];
-    }
 }
-
 
 //输入框编辑完成以后，将视图恢复到原始状态
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
-    NSTimeInterval animationDuration = 0.30f;
-    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
-    [UIView setAnimationDuration:animationDuration];
-    
-    self.view.frame =CGRectMake(0, 0, self.view.frame.size.width, [UIScreen mainScreen].bounds.size.height);
-    
-    [UIView commitAnimations];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -434,15 +366,15 @@
             [passwordReTF becomeFirstResponder];
             break;
             
+//        case 2:
+//            [userNameTF becomeFirstResponder];
+//            break;
+//
         case 2:
-            [userNameTF becomeFirstResponder];
-            break;
-            
-        case 3:
             [companyTF becomeFirstResponder];
             break;
             
-        case 4:
+        case 3:
             [phoneNumTF becomeFirstResponder];
             break;
             

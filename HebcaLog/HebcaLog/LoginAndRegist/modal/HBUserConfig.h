@@ -16,6 +16,7 @@
 @property (nonatomic, copy)NSString *userName; //用户名
 @property (nonatomic, copy)NSString *password; //用户密码
 @property (nonatomic, copy)NSString *phoneNumber; //手机号
+@property (nonatomic, copy)NSString *companyID; //公司id
 @property (nonatomic, copy)NSString *Email; //邮箱
 
 

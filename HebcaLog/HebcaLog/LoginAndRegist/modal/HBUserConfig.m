@@ -37,7 +37,10 @@
     user.username = self.userName;
     user.password = self.password;
     user.mobilePhoneNumber = self.phoneNumber;
-    user.email = self.Email;
+    if (user.email != NULL) {
+        user.email = self.Email;
+    }
+    [user setObject:self.companyID forKey:@"companyID"];
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             complete(YES, @"注册成功");

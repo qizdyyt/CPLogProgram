@@ -8,7 +8,7 @@
 
 #import "HBMLogLoginViewController.h"
 //#import "HBRegistViewController.h"
-#import "HBAdminViewController.h"
+
 #import "HBHomepageViewController.h"
 #import "HBCommonUtil.h"
 #import "HBServerConnect.h"
@@ -21,6 +21,7 @@
 
 @interface HBMLogLoginViewController()
 @property (nonatomic, assign) bool loginSuccess;
+@property (nonatomic, strong) HBUserConfig* user;
 
 @end
 
@@ -32,7 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    self.user = [[HBUserConfig alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,7 +75,15 @@
 
 - (IBAction)registBtnPressed:(id)sender {
     HBAdminViewController *registViewControl = [[HBAdminViewController alloc] init];
+    registViewControl.delegate = self;
     [self presentViewController:registViewControl animated:YES completion:nil];
+}
+
+-(void)handleRegist:(HBUserConfig *)user {
+    self.user = user;
+    [self.loginNameTF setText:user.userName];
+    [self.passwordTF setText:user.password];
+    [QMUITips showWithText:@"注册成功" inView:self.view hideAfterDelay:1];
 }
 
 - (IBAction)loginButtonPressed:(id)sender {
@@ -91,12 +100,11 @@
         return;
     }
     //开始登陆
-    HBUserConfig *user = [[HBUserConfig alloc] init];
-    user.userName = self.loginNameTF.text;
-    user.password = self.passwordTF.text;
+    self.user.userName = self.loginNameTF.text;
+    self.user.password = self.passwordTF.text;
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"正在登录";
-    [user login:^(bool isOK, NSString *msg) {
+    [self.user login:^(bool isOK, NSString *msg) {
         if (isOK) {
             self.loginSuccess = isOK;
             [hud hide:YES];

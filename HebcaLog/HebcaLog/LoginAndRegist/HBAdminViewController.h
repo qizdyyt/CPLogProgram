@@ -10,7 +10,14 @@
 #import "MBProgressHUD.h"
 #import "QMUIKit.h"
 
+@protocol HBAdminViewControllerDelegate <NSObject>
+
+@required // 必须实现的
+-(void) handleRegist: (HBUserConfig *)user;
+@end
+
 @interface HBAdminViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, MBProgressHUDDelegate>
+
 
 @property(nonatomic,weak) UIWindow *window;
 
@@ -19,5 +26,7 @@
 
 - (IBAction)registBtnPressed:(id)sender;
 - (IBAction)backgroundTouched:(id)sender;
+
+@property (nonatomic, weak) id<HBAdminViewControllerDelegate> delegate;
 
 @end
