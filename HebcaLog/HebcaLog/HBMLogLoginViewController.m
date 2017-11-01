@@ -72,25 +72,6 @@
     [self.passwordTF resignFirstResponder];
 }
 
-//证书选择方法，废弃
-//- (IBAction)certChoose:(id)sender {
-//    [self.passwordTF resignFirstResponder];
-//
-//    _popViewOptions = [[NSMutableArray alloc] init];
-//    for (HBCert *cert in _certList) {
-//        NSString *certCN = [cert getSubjectItem:HB_DN_COMMON_NAME];
-//        [_popViewOptions addObject:@{@"text":certCN}];
-//    }
-    
-    
-//    HBPopListView *lplv = [[HBPopListView alloc] initWithTitle:@"选择证书" options:_popViewOptions];
-//    lplv.canCancelFlag = YES;
-//    lplv.delegate = self;
-//    [self.loginNameTF resignFirstResponder];
-//    [lplv showInView:self.view animated:YES];
-//
-//}
-
 - (IBAction)registBtnPressed:(id)sender {
     HBAdminViewController *registViewControl = [[HBAdminViewController alloc] init];
     [self presentViewController:registViewControl animated:YES completion:nil];
@@ -110,14 +91,21 @@
         return;
     }
     //开始登陆
-    
-//    [HBCommonUtil recordPasswordToDefaults:self.passwordTF.text];
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
+    hud.labelText = @"正在登录";
+    [hud showAnimated:YES whileExecutingBlock:^{
+        //发起登录请求
+        
+    } completionBlock:^{
+        //跳转或者提示
+        
+    }];
     [UserDefaultTool recordPasswordToDefaults:self.passwordTF.text];
     
     //登录
     HBHomepageViewController *homepageControl = [[HBHomepageViewController alloc] init];
-//    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
-//    hud.labelText = @"正在登录";
+    
+
 //    [self.view addSubview:hud];
 //    __block NSString *error = nil;
 //    [hud showAnimated:YES whileExecutingBlock:^{

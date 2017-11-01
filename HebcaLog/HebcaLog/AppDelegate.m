@@ -16,6 +16,11 @@
 #import "HBMLogLoginViewController.h"
 #import "HBRegistViewController.h"
 
+#import <AVOSCloud/AVOSCloud.h>
+
+#define APP_ID @"3QFNqdAobqq0g8ThWYb7yO7D-gzGzoHsz"
+#define APP_KEY @"Y1atwkM0hLtk90GtAroOcdSG"
+
 @interface AppDelegate ()
 
 @end
@@ -28,6 +33,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [AVOSCloud setApplicationId:APP_ID clientKey:APP_KEY];
+    [AVOSCloud setAllLogsEnabled:YES];//发布时可以注掉
+    
     g_mapManager = nil;
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

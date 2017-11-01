@@ -7,6 +7,7 @@
 //
 
 #import "HBUserConfig.h"
+#import <AVOSCloud/AVOSCloud.h>
 
 @implementation HBUserConfig : NSObject
 
@@ -27,6 +28,22 @@
     }
     
     return self;
+}
+
+-(void)saveToServer {
+    // LeanCloud - 注册
+    // https://leancloud.cn/docs/leanstorage_guide-objc.html#用户名和密码注册
+    AVUser *user = [AVUser user];
+    user.username = self.userName;
+    user.password = self.password;
+    user.email = self.Email;
+    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            
+        } else {
+            NSLog(@"注册失败 %@", error);
+        }
+    }];
 }
 
 @end

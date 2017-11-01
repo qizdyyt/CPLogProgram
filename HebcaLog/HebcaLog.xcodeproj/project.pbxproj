@@ -743,6 +743,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		2E0B7D3D1FA84B5A0039E8CB /* modal */ = {
+			isa = PBXGroup;
+			children = (
+				2E5ABC381F9CE82800EF1366 /* HBUserConfig.h */,
+				2E5ABC391F9CE82800EF1366 /* HBUserConfig.m */,
+			);
+			path = modal;
+			sourceTree = "<group>";
+		};
 		2E5ABC301F9CD62900EF1366 /* Ori */ = {
 			isa = PBXGroup;
 			children = (
@@ -774,8 +783,6 @@
 				5F38AE811A767E4C0048032F /* HBCommonUtil.m */,
 				5F1437A31D5ACF0E00461153 /* HBAuthorityUtil.h */,
 				5F1437A41D5ACF0E00461153 /* HBAuthorityUtil.m */,
-				2E5ABC381F9CE82800EF1366 /* HBUserConfig.h */,
-				2E5ABC391F9CE82800EF1366 /* HBUserConfig.m */,
 				2E5ABC3B1F9CE8A700EF1366 /* HBLocation.h */,
 				2E5ABC3C1F9CE8A700EF1366 /* HBLocation.m */,
 			);
@@ -1045,6 +1052,7 @@
 		5F55633E1A80B2CC006A4A40 /* Regist */ = {
 			isa = PBXGroup;
 			children = (
+				2E0B7D3D1FA84B5A0039E8CB /* modal */,
 				2EC3B6F41F93479900D93072 /* Ori */,
 				2EC3B6F21F91FC7600D93072 /* Del */,
 				5FCFB34C1A748F9800FA033F /* HBMLogLoginViewController.h */,

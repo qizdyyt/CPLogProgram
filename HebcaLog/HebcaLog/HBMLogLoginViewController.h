@@ -21,7 +21,7 @@
 @property(nonatomic,weak) UIWindow *window;
 @property (weak, nonatomic) IBOutlet QMUITextField *loginNameTF;
 @property (weak, nonatomic) IBOutlet QMUITextField *passwordTF;//证书密码
-
+//背景点击
 - (IBAction)backGroundTouched:(id)sender;
 //注册点击
 - (IBAction)registBtnPressed:(id)sender;

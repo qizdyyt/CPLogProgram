@@ -11,6 +11,7 @@
 #import <BaiduMapAPI/BMapKit.h>
 #import "HBLocationService.h"
 
+
 BMKMapManager* g_mapManager;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate>
