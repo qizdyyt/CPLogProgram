@@ -46,6 +46,10 @@
 		2ECB9AEF1F8F4AD8003859C0 /* HBMeetingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECB9AEE1F8F4AD8003859C0 /* HBMeetingInfo.m */; };
 		2ECB9AF21F8F4AE7003859C0 /* HBUserMeeting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECB9AF11F8F4AE7003859C0 /* HBUserMeeting.m */; };
 		2ECB9AF51F8F4AF3003859C0 /* HBMeetRequestInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECB9AF41F8F4AF3003859C0 /* HBMeetRequestInfo.m */; };
+		2EF480271FAA1780006F2D1F /* Ori_HBAdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF480251FAA1780006F2D1F /* Ori_HBAdminViewController.m */; };
+		2EF480281FAA1780006F2D1F /* Ori_HBAdminViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EF480261FAA1780006F2D1F /* Ori_HBAdminViewController.xib */; };
+		2EF480321FAA1904006F2D1F /* HBAdminViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EF4802F1FAA1903006F2D1F /* HBAdminViewController.xib */; };
+		2EF480331FAA1904006F2D1F /* HBAdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF480311FAA1904006F2D1F /* HBAdminViewController.m */; };
 		5F04A9331A723BE600D62D7F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F04A9321A723BE600D62D7F /* main.m */; };
 		5F04A9361A723BE600D62D7F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F04A9351A723BE600D62D7F /* AppDelegate.m */; };
 		5F04A94D1A723BE600D62D7F /* HebcaLogTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F04A94C1A723BE600D62D7F /* HebcaLogTests.m */; };
@@ -105,8 +109,6 @@
 		5F5935BD1AF8669300A5473F /* btn_received.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F5935B81AF8669300A5473F /* btn_received.png */; };
 		5F5935BE1AF8669300A5473F /* btn_send_msg_word.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F5935B91AF8669300A5473F /* btn_send_msg_word.png */; };
 		5F5935BF1AF8669300A5473F /* btn_send_msg.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F5935BA1AF8669300A5473F /* btn_send_msg.png */; };
-		5F5935C61AF893E200A5473F /* HBAdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5935C41AF893E200A5473F /* HBAdminViewController.m */; };
-		5F5935C71AF893E200A5473F /* HBAdminViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F5935C51AF893E200A5473F /* HBAdminViewController.xib */; };
 		5F5E58901A7FB71900422051 /* HBServerConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E588F1A7FB71900422051 /* HBServerConnect.m */; };
 		5F5E58931A7FC3C700422051 /* HBServerInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E58921A7FC3C700422051 /* HBServerInterface.m */; };
 		5F5FACCF1B12D04300503B08 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5FACAF1B12D04300503B08 /* MKAnnotationView+WebCache.m */; };
@@ -372,6 +374,12 @@
 		2ECB9AF11F8F4AE7003859C0 /* HBUserMeeting.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HBUserMeeting.m; sourceTree = "<group>"; };
 		2ECB9AF31F8F4AF3003859C0 /* HBMeetRequestInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HBMeetRequestInfo.h; sourceTree = "<group>"; };
 		2ECB9AF41F8F4AF3003859C0 /* HBMeetRequestInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HBMeetRequestInfo.m; sourceTree = "<group>"; };
+		2EF480241FAA1780006F2D1F /* Ori_HBAdminViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ori_HBAdminViewController.h; sourceTree = "<group>"; };
+		2EF480251FAA1780006F2D1F /* Ori_HBAdminViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Ori_HBAdminViewController.m; sourceTree = "<group>"; };
+		2EF480261FAA1780006F2D1F /* Ori_HBAdminViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Ori_HBAdminViewController.xib; sourceTree = "<group>"; };
+		2EF4802F1FAA1903006F2D1F /* HBAdminViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HBAdminViewController.xib; sourceTree = "<group>"; };
+		2EF480301FAA1904006F2D1F /* HBAdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBAdminViewController.h; sourceTree = "<group>"; };
+		2EF480311FAA1904006F2D1F /* HBAdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBAdminViewController.m; sourceTree = "<group>"; };
 		2F289DA3FED4E2E5441CE96D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		463B4D31D29D6F1D7E96B5A1 /* Pods_HebcaLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HebcaLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59E444896FA01B32401680BA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -462,9 +470,6 @@
 		5F5935B81AF8669300A5473F /* btn_received.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_received.png; sourceTree = "<group>"; };
 		5F5935B91AF8669300A5473F /* btn_send_msg_word.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_send_msg_word.png; sourceTree = "<group>"; };
 		5F5935BA1AF8669300A5473F /* btn_send_msg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_send_msg.png; sourceTree = "<group>"; };
-		5F5935C31AF893E200A5473F /* HBAdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HBAdminViewController.h; path = regist/HBAdminViewController.h; sourceTree = "<group>"; };
-		5F5935C41AF893E200A5473F /* HBAdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HBAdminViewController.m; path = regist/HBAdminViewController.m; sourceTree = "<group>"; };
-		5F5935C51AF893E200A5473F /* HBAdminViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HBAdminViewController.xib; path = regist/HBAdminViewController.xib; sourceTree = "<group>"; };
 		5F5E58841A7FB58900422051 /* HBAcceptNoInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBAcceptNoInfo.h; sourceTree = "<group>"; };
 		5F5E58851A7FB58900422051 /* HBApplicationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBApplicationItem.h; sourceTree = "<group>"; };
 		5F5E58861A7FB58900422051 /* HBCert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBCert.h; sourceTree = "<group>"; };
@@ -899,8 +904,27 @@
 				2EC3B6F61F93480400D93072 /* Ori_HBMLogLoginViewController.h */,
 				2EC3B6F51F93480400D93072 /* Ori_HBMLogLoginViewController.m */,
 				2EC3B6F71F93480400D93072 /* Ori_HBMLogLoginViewController.xib */,
+				2EF480241FAA1780006F2D1F /* Ori_HBAdminViewController.h */,
+				2EF480251FAA1780006F2D1F /* Ori_HBAdminViewController.m */,
+				2EF480261FAA1780006F2D1F /* Ori_HBAdminViewController.xib */,
 			);
 			path = Ori;
+			sourceTree = "<group>";
+		};
+		2EF4802E1FAA18A8006F2D1F /* LoginAndRegist */ = {
+			isa = PBXGroup;
+			children = (
+				2E0B7D3D1FA84B5A0039E8CB /* modal */,
+				2EC3B6F41F93479900D93072 /* Ori */,
+				2EC3B6F21F91FC7600D93072 /* Del */,
+				5FCFB34C1A748F9800FA033F /* HBMLogLoginViewController.h */,
+				5FCFB34D1A748F9800FA033F /* HBMLogLoginViewController.m */,
+				5FCFB34E1A748F9800FA033F /* HBMLogLoginViewController.xib */,
+				2EF480301FAA1904006F2D1F /* HBAdminViewController.h */,
+				2EF480311FAA1904006F2D1F /* HBAdminViewController.m */,
+				2EF4802F1FAA1903006F2D1F /* HBAdminViewController.xib */,
+			);
+			path = LoginAndRegist;
 			sourceTree = "<group>";
 		};
 		3488267888D26237816605FD /* Frameworks */ = {
@@ -936,8 +960,9 @@
 		5F04A92F1A723BE600D62D7F /* HebcaLog */ = {
 			isa = PBXGroup;
 			children = (
+				2EF4802E1FAA18A8006F2D1F /* LoginAndRegist */,
 				2EBB20EF1F8E55850099B150 /* Tools */,
-				5F55633E1A80B2CC006A4A40 /* Regist */,
+				5F55633E1A80B2CC006A4A40 /* Rest */,
 				5F7DA46A1A77272C00E3754A /* HomePage */,
 				5F85F8161A7893440002341B /* ServerConnection */,
 				5F5E588D1A7FB5CA00422051 /* lib */,
@@ -1049,20 +1074,11 @@
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
-		5F55633E1A80B2CC006A4A40 /* Regist */ = {
+		5F55633E1A80B2CC006A4A40 /* Rest */ = {
 			isa = PBXGroup;
 			children = (
-				2E0B7D3D1FA84B5A0039E8CB /* modal */,
-				2EC3B6F41F93479900D93072 /* Ori */,
-				2EC3B6F21F91FC7600D93072 /* Del */,
-				5FCFB34C1A748F9800FA033F /* HBMLogLoginViewController.h */,
-				5FCFB34D1A748F9800FA033F /* HBMLogLoginViewController.m */,
-				5FCFB34E1A748F9800FA033F /* HBMLogLoginViewController.xib */,
-				5F5935C31AF893E200A5473F /* HBAdminViewController.h */,
-				5F5935C41AF893E200A5473F /* HBAdminViewController.m */,
-				5F5935C51AF893E200A5473F /* HBAdminViewController.xib */,
 			);
-			name = Regist;
+			name = Rest;
 			sourceTree = "<group>";
 		};
 		5F5E58831A7FB58900422051 /* include */ = {
@@ -1574,6 +1590,7 @@
 				5F85D4B51A8C3B04007CDC0F /* emp_remind.png in Resources */,
 				5F5935BF1AF8669300A5473F /* btn_send_msg.png in Resources */,
 				5FC95C4A1A73874F0000772A /* btn_position_pressed.png in Resources */,
+				2EF480321FAA1904006F2D1F /* HBAdminViewController.xib in Resources */,
 				5FC95C381A73874F0000772A /* btn_date.png in Resources */,
 				5FC95C371A73874F0000772A /* btn_contact_pressed.png in Resources */,
 				5F0E5C891ABFC59000CF8731 /* btn_finish.png in Resources */,
@@ -1617,7 +1634,6 @@
 				5F5935BB1AF8669300A5473F /* bg_admin.png in Resources */,
 				5FC95C571A73874F0000772A /* btn_yellow_pressed.png in Resources */,
 				5F1DDF4F1AC23FE3002290A1 /* icon_attend_query.png in Resources */,
-				5F5935C71AF893E200A5473F /* HBAdminViewController.xib in Resources */,
 				5F7627161AA19A0E0088A4C4 /* HBNewMsgViewController.xib in Resources */,
 				5FC95C3D1A73874F0000772A /* btn_list_pressed.png in Resources */,
 				5FC95C671A73874F0000772A /* icon_locating.png in Resources */,
@@ -1673,6 +1689,7 @@
 				5FBC1B331AA69D63009A8B23 /* HBAttentActViewController.xib in Resources */,
 				5FC95C721A73874F0000772A /* login_title.png in Resources */,
 				5FC95C2C1A73874F0000772A /* btn_bottom_pressed.png in Resources */,
+				2EF480281FAA1780006F2D1F /* Ori_HBAdminViewController.xib in Resources */,
 				5F85D4B11A8C3B04007CDC0F /* emp_contacts.png in Resources */,
 				5F8679A61A75EFCE004D7648 /* btn_user.png in Resources */,
 				5F3E095B1A763A2B004EA9A6 /* btn_remind_pressed.png in Resources */,
@@ -1805,7 +1822,6 @@
 				2ECB9AE31F8F4AAA003859C0 /* HBBugInfo.m in Sources */,
 				5F4B169A1B15AF41005EFC9A /* MJRefreshFooterView.m in Sources */,
 				5F1437A51D5ACF0E00461153 /* HBAuthorityUtil.m in Sources */,
-				5F5935C61AF893E200A5473F /* HBAdminViewController.m in Sources */,
 				2ECB9AF21F8F4AE7003859C0 /* HBUserMeeting.m in Sources */,
 				5FC504DE1AB81FE600C065C6 /* HBMessageViewController.m in Sources */,
 				5F5563421A80B9DE006A4A40 /* HBVerifyViewController.m in Sources */,
@@ -1814,7 +1830,9 @@
 				2E5380E31F98E4A7004FFD80 /* UIView+IBConfiguration.m in Sources */,
 				2ECB9AA71F8F173C003859C0 /* HBAttendInfo.m in Sources */,
 				2ECB9AEF1F8F4AD8003859C0 /* HBMeetingInfo.m in Sources */,
+				2EF480331FAA1904006F2D1F /* HBAdminViewController.m in Sources */,
 				5F7627151AA19A0E0088A4C4 /* HBNewMsgViewController.m in Sources */,
+				2EF480271FAA1780006F2D1F /* Ori_HBAdminViewController.m in Sources */,
 				5F5E58931A7FC3C700422051 /* HBServerInterface.m in Sources */,
 				5F5FACDA1B12D04300503B08 /* UIImage+MultiFormat.m in Sources */,
 				5F5935B41AF8595400A5473F /* HBFirstOpenViewController.m in Sources */,

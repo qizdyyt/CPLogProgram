@@ -11,17 +11,17 @@
 
 @implementation HBUserConfig : NSObject
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     if (self)
     {
         self.clientrole = 0;
-        self.userId     = nil;
-        self.userName   = nil;
-        self.deptId     = nil;
-        self.deptName   = nil;
-        self.certCN     = nil;
+        self.userId     = @"";
+        self.userName   = @"";
+        self.deptId     = @"";
+        self.deptName   = @"";
+        self.certCN     = @"";
         
         HBLocation *location = [[HBLocation alloc] init];
         self.location = location;

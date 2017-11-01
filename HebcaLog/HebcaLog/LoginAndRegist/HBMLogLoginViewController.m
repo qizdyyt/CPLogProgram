@@ -15,12 +15,12 @@
 #import "HBServerInterface.h"
 #import "ToastUIView.h"
 
-
+#import "QMUIKit.h"
 #import "HBAttendInfoViewController.h"
 //#import "HBLocationViewController.h"
 
 @interface HBMLogLoginViewController()
-
+@property (nonatomic, assign) bool loginSuccess;
 
 @end
 
@@ -81,7 +81,7 @@
     //验证用户名
     if (self.loginNameTF.text == nil || 0 == [self.loginNameTF.text length])
     {
-        [self.view makeToast:@"请输入手机号"];
+        [self.view makeToast:@"请输入用户名"];
         return;
     }
     //本地验证密码
@@ -91,15 +91,23 @@
         return;
     }
     //开始登陆
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
+    HBUserConfig *user = [[HBUserConfig alloc] init];
+    user.userName = self.loginNameTF.text;
+    user.password = self.passwordTF.text;
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"正在登录";
-    [hud showAnimated:YES whileExecutingBlock:^{
-        //发起登录请求
-        
-    } completionBlock:^{
-        //跳转或者提示
-        [hud hide:YES];
+    [user login:^(bool isOK, NSString *msg) {
+        if (isOK) {
+            self.loginSuccess = isOK;
+            [hud hide:YES];
+            [QMUITips showWithText:@"登录成功" inView:self.view hideAfterDelay:1];
+        }else {
+            self.loginSuccess = isOK;
+            [hud hide:YES];
+            [QMUITips showWithText:@"登录失败" inView:self.view hideAfterDelay:1];
+        }
     }];
+    
     [UserDefaultTool recordPasswordToDefaults:self.passwordTF.text];
     
     //登录

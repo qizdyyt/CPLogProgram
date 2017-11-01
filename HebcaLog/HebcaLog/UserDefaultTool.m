@@ -46,44 +46,44 @@
     return password;
 }
 
-//从用户默认配置获取用户信息
-+ (void)loadUserConfigFromDefaults:(NSString *)certCN
-{
-    NSUserDefaults * _userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *userInfoDic = [_userDefaults objectForKey:USER_DEFAULTS_USER_CONFIG];
-    if (userInfoDic == nil || [userInfoDic count] == 0) {
-        return;
-    }
-    NSDictionary *recordsByCert = [userInfoDic objectForKey:certCN];
-    if (recordsByCert == nil || [recordsByCert count] == 0)
-    {
-        return;
-    }
-    
-    HBUserConfig *userConfig = [[HBUserConfig alloc] init];
-    userConfig.attendState =[[recordsByCert objectForKey:@"attendState"] boolValue];
-    userConfig.hasHeadImg  =[[recordsByCert objectForKey:@"hasHeadImg"] boolValue];
-    userConfig.clientrole  =[[recordsByCert objectForKey:@"clientrole"] integerValue];
-    NSNumber *useridNum = [recordsByCert objectForKey:@"userId"];
-    userConfig.userId      = [NSString stringWithFormat:@"%d", useridNum.intValue];
-    userConfig.userName    = [recordsByCert objectForKey:@"userName"];
-    userConfig.deptId      = [recordsByCert objectForKey:@"deptId"];
-    userConfig.deptName    = [recordsByCert objectForKey:@"deptName"];
-    userConfig.certCN      = [recordsByCert objectForKey:@"certCN"];
-    userConfig.lastUpdate  = [recordsByCert objectForKey:@"lastUpdate"];
-    
-    HBLocation *location = [[HBLocation alloc] init];
-    location.latitude  = [recordsByCert objectForKey:@"latitude"];
-    location.longitude = [recordsByCert objectForKey:@"longitude"];
-    location.address   = [recordsByCert objectForKey:@"address"];
-    
-    userConfig.location = location;
-    
-    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    appDelegate.userConfig = userConfig;
-    
-    return;
-}
+//从用户默认配置获取用户信息，涉及证书去掉
+//+ (void)loadUserConfigFromDefaults:(NSString *)certCN
+//{
+//    NSUserDefaults * _userDefaults = [NSUserDefaults standardUserDefaults];
+//    NSDictionary *userInfoDic = [_userDefaults objectForKey:USER_DEFAULTS_USER_CONFIG];
+//    if (userInfoDic == nil || [userInfoDic count] == 0) {
+//        return;
+//    }
+//    NSDictionary *recordsByCert = [userInfoDic objectForKey:certCN];
+//    if (recordsByCert == nil || [recordsByCert count] == 0)
+//    {
+//        return;
+//    }
+//
+//    HBUserConfig *userConfig = [[HBUserConfig alloc] init];
+//    userConfig.attendState =[[recordsByCert objectForKey:@"attendState"] boolValue];
+//    userConfig.hasHeadImg  =[[recordsByCert objectForKey:@"hasHeadImg"] boolValue];
+//    userConfig.clientrole  =[[recordsByCert objectForKey:@"clientrole"] integerValue];
+//    NSNumber *useridNum = [recordsByCert objectForKey:@"userId"];
+//    userConfig.userId      = [NSString stringWithFormat:@"%d", useridNum.intValue];
+//    userConfig.userName    = [recordsByCert objectForKey:@"userName"];
+//    userConfig.deptId      = [recordsByCert objectForKey:@"deptId"];
+//    userConfig.deptName    = [recordsByCert objectForKey:@"deptName"];
+//    userConfig.certCN      = [recordsByCert objectForKey:@"certCN"];
+//    userConfig.lastUpdate  = [recordsByCert objectForKey:@"lastUpdate"];
+//
+//    HBLocation *location = [[HBLocation alloc] init];
+//    location.latitude  = [recordsByCert objectForKey:@"latitude"];
+//    location.longitude = [recordsByCert objectForKey:@"longitude"];
+//    location.address   = [recordsByCert objectForKey:@"address"];
+//
+//    userConfig.location = location;
+//
+//    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+//    appDelegate.userConfig = userConfig;
+//
+//    return;
+//}
 
 + (void)updateUserConfig:(HBUserConfig *)config
 {
