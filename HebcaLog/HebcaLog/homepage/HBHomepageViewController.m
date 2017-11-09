@@ -76,6 +76,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -102,7 +103,8 @@
         self.navigationController.navigationBar.translucent = NO;
     }
     self.navigationController.navigationBar.hidden = NO;
-    
+//    self.navigationController.navigationItem.hidesBackButton = YES;
+    [self.navigationItem setHidesBackButton:YES];
     //标题颜色
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil]];
     

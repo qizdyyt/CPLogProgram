@@ -109,6 +109,9 @@
             self.loginSuccess = isOK;
             [hud hide:YES];
             [QMUITips showWithText:@"登录成功" inView:self.view hideAfterDelay:1];
+            //登录
+            HBHomepageViewController *homepageControl = [[HBHomepageViewController alloc] init];
+            [self.navigationController pushViewController:homepageControl animated:YES];
         }else {
             self.loginSuccess = isOK;
             [hud hide:YES];
@@ -118,8 +121,7 @@
     
     [UserDefaultTool recordPasswordToDefaults:self.passwordTF.text];
     
-    //登录
-    HBHomepageViewController *homepageControl = [[HBHomepageViewController alloc] init];
+    
     
 
 //    [self.view addSubview:hud];

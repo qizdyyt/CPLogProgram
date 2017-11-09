@@ -960,7 +960,6 @@
 			children = (
 				2EF4802E1FAA18A8006F2D1F /* LoginAndRegist */,
 				2EBB20EF1F8E55850099B150 /* Tools */,
-				5F55633E1A80B2CC006A4A40 /* Rest */,
 				5F7DA46A1A77272C00E3754A /* HomePage */,
 				5F85F8161A7893440002341B /* ServerConnection */,
 				5F5E588D1A7FB5CA00422051 /* lib */,
@@ -1070,13 +1069,6 @@
 				5F4B16961B15AF41005EFC9A /* UIView+MJExtension.m */,
 			);
 			path = MJRefresh;
-			sourceTree = "<group>";
-		};
-		5F55633E1A80B2CC006A4A40 /* Rest */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Rest;
 			sourceTree = "<group>";
 		};
 		5F5E58831A7FB58900422051 /* include */ = {
@@ -2062,7 +2054,7 @@
 					"-all_load",
 				);
 				OTHER_LIBTOOLFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zidong.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = zidong.SimpleDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/base $(PROJECT_DIR)/base/baiduMap $(PROJECT_DIR)/base/MBProgressHUD $(PROJECT_DIR)/base/HBPopover $(PROJECT_DIR)/base/PopListView $(PROJECT_DIR)/HBSeverConnect";
@@ -2098,7 +2090,7 @@
 					"-all_load",
 				);
 				OTHER_LIBTOOLFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zidong.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = zidong.SimpleDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/base $(PROJECT_DIR)/base/baiduMap $(PROJECT_DIR)/base/MBProgressHUD $(PROJECT_DIR)/base/HBPopover $(PROJECT_DIR)/base/PopListView $(PROJECT_DIR)/HBSeverConnect";
