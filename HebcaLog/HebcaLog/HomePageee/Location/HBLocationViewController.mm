@@ -7,7 +7,7 @@
 //
 
 #import "HBLocationViewController.h"
-#import <BaiduMapAPI/BMKMapView.h>
+#import "BMapKit.h"
 #import "HBCommonUtil.h"
 #import "HBTracksViewController.h"
 #import "HBServerInterface.h"

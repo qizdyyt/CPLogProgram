@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <BaiduMapAPI/BMapKit.h>
+#import "BMapKit.h"
 #import "HBContactViewController.h"
 #import "HBDatepickerView.h"
 #import "MBProgressHUD.h"

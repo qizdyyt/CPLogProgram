@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <BaiduMapAPI/BMapKit.h>
+#import "BMapKit.h"
 #import "HBContactViewController.h"
 
 @interface HBLocationViewController : UIViewController <BMKMapViewDelegate,BMKLocationServiceDelegate, BMKGeoCodeSearchDelegate, UISearchBarDelegate, HBContactSelectDelegate>

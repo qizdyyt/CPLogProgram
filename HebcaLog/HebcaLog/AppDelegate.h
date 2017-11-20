@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HBCommonUtil.h"
-#import <BaiduMapAPI/BMapKit.h>
+#import "BMapKit.h"
 #import "HBLocationService.h"
 
 

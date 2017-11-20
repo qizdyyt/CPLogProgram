@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <BaiduMapAPI/BMapKit.h>
+
+#import "BMapKit.h"
 #import "HBCommonUtil.h"
 
 @protocol HBLocationServiceDelegate <NSObject>

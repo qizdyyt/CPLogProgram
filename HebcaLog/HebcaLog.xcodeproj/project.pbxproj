@@ -99,7 +99,6 @@
 		5F51AA6C1AB976020052FF03 /* HBReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F51AA6A1AB976020052FF03 /* HBReplyCell.m */; };
 		5F51AA6D1AB976020052FF03 /* HBReplyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F51AA6B1AB976020052FF03 /* HBReplyCell.xib */; };
 		5F52929A1B344CB600178F56 /* list_checkbox_sl.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F5292991B344CB600178F56 /* list_checkbox_sl.png */; };
-		5F55633C1A80A959006A4A40 /* libhbmiddlewarearm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F55633A1A80A959006A4A40 /* libhbmiddlewarearm.a */; };
 		5F55633D1A80A959006A4A40 /* libhbmiddlewarei386.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F55633B1A80A959006A4A40 /* libhbmiddlewarei386.a */; };
 		5F5563421A80B9DE006A4A40 /* HBVerifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F5563401A80B9DE006A4A40 /* HBVerifyViewController.m */; };
 		5F5563431A80B9DE006A4A40 /* HBVerifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F5563411A80B9DE006A4A40 /* HBVerifyViewController.xib */; };
@@ -145,7 +144,6 @@
 		5F7627151AA19A0E0088A4C4 /* HBNewMsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7627131AA19A0E0088A4C4 /* HBNewMsgViewController.m */; };
 		5F7627161AA19A0E0088A4C4 /* HBNewMsgViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F7627141AA19A0E0088A4C4 /* HBNewMsgViewController.xib */; };
 		5F7627181AA1A18B0088A4C4 /* btn_accept_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7627171AA1A18B0088A4C4 /* btn_accept_press.png */; };
-		5F7856BE1AE648270048DDEF /* BaiduMapAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F7856BD1AE648270048DDEF /* BaiduMapAPI.framework */; };
 		5F78F17C1AE7776D005B4071 /* btn_journal_team_select.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F78F1781AE7776D005B4071 /* btn_journal_team_select.png */; };
 		5F78F17D1AE7776D005B4071 /* btn_journal_team_unselect.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F78F1791AE7776D005B4071 /* btn_journal_team_unselect.png */; };
 		5F78F17E1AE7776D005B4071 /* btn_journal_user_select.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F78F17A1AE7776D005B4071 /* btn_journal_user_select.png */; };
@@ -300,6 +298,7 @@
 		060B1B3F62DBE81D53576431 /* Pods-HebcaLog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HebcaLog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HebcaLog/Pods-HebcaLog.debug.xcconfig"; sourceTree = "<group>"; };
 		2E064F421FC2BAE200FCCE0E /* UIViewController+Navi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Navi.h"; sourceTree = "<group>"; };
 		2E064F431FC2BAE200FCCE0E /* UIViewController+Navi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Navi.m"; sourceTree = "<group>"; };
+		2E064F451FC2C19400FCCE0E /* BMapKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMapKit.h; sourceTree = "<group>"; };
 		2E5380E11F98E4A7004FFD80 /* UIView+IBConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+IBConfiguration.h"; sourceTree = "<group>"; };
 		2E5380E21F98E4A7004FFD80 /* UIView+IBConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+IBConfiguration.m"; sourceTree = "<group>"; };
 		2E5ABC341F9CD74900EF1366 /* Ori_HBCommonUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ori_HBCommonUtil.h; sourceTree = "<group>"; };
@@ -459,7 +458,6 @@
 		5F51AA6A1AB976020052FF03 /* HBReplyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBReplyCell.m; sourceTree = "<group>"; };
 		5F51AA6B1AB976020052FF03 /* HBReplyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HBReplyCell.xib; sourceTree = "<group>"; };
 		5F5292991B344CB600178F56 /* list_checkbox_sl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_checkbox_sl.png; sourceTree = "<group>"; };
-		5F55633A1A80A959006A4A40 /* libhbmiddlewarearm.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libhbmiddlewarearm.a; path = lib/libhbmiddlewarearm.a; sourceTree = "<group>"; };
 		5F55633B1A80A959006A4A40 /* libhbmiddlewarei386.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libhbmiddlewarei386.a; path = lib/libhbmiddlewarei386.a; sourceTree = "<group>"; };
 		5F55633F1A80B9DE006A4A40 /* HBVerifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBVerifyViewController.h; sourceTree = "<group>"; };
 		5F5563401A80B9DE006A4A40 /* HBVerifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBVerifyViewController.m; sourceTree = "<group>"; };
@@ -548,7 +546,6 @@
 		5F7627131AA19A0E0088A4C4 /* HBNewMsgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBNewMsgViewController.m; sourceTree = "<group>"; };
 		5F7627141AA19A0E0088A4C4 /* HBNewMsgViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HBNewMsgViewController.xib; sourceTree = "<group>"; };
 		5F7627171AA1A18B0088A4C4 /* btn_accept_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_accept_press.png; sourceTree = "<group>"; };
-		5F7856BD1AE648270048DDEF /* BaiduMapAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI.framework; path = lib/BaiduMapAPI.framework; sourceTree = "<group>"; };
 		5F78F1781AE7776D005B4071 /* btn_journal_team_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_journal_team_select.png; sourceTree = "<group>"; };
 		5F78F1791AE7776D005B4071 /* btn_journal_team_unselect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_journal_team_unselect.png; sourceTree = "<group>"; };
 		5F78F17A1AE7776D005B4071 /* btn_journal_user_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_journal_user_select.png; sourceTree = "<group>"; };
@@ -721,8 +718,6 @@
 				5F32D0D51A9E1B6900C86F87 /* SystemConfiguration.framework in Frameworks */,
 				5F32D0D31A9E1B5C00C86F87 /* OpenGLES.framework in Frameworks */,
 				5F32D0D11A9E1B4D00C86F87 /* QuartzCore.framework in Frameworks */,
-				5F55633C1A80A959006A4A40 /* libhbmiddlewarearm.a in Frameworks */,
-				5F7856BE1AE648270048DDEF /* BaiduMapAPI.framework in Frameworks */,
 				5F55633D1A80A959006A4A40 /* libhbmiddlewarei386.a in Frameworks */,
 				163E5EEDED1EF61C461C7778 /* Pods_HebcaLog.framework in Frameworks */,
 			);
@@ -1218,11 +1213,10 @@
 		5F5E588D1A7FB5CA00422051 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				5F55633A1A80A959006A4A40 /* libhbmiddlewarearm.a */,
 				5F55633B1A80A959006A4A40 /* libhbmiddlewarei386.a */,
 				5FB969F71AFA4D0C00EFF99C /* AddressBook.framework */,
 				5FB969F81AFA4D0C00EFF99C /* AddressBookUI.framework */,
-				5F7856BD1AE648270048DDEF /* BaiduMapAPI.framework */,
+				2E064F451FC2C19400FCCE0E /* BMapKit.h */,
 			);
 			name = lib;
 			sourceTree = "<group>";
@@ -1753,9 +1747,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HebcaLog/Pods-HebcaLog-resources.sh",
+				"${PODS_ROOT}/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/Resources/mapapi.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
