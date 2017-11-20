@@ -64,7 +64,7 @@
     //百度地图初始化
     _mapView = self.baidumapView;
     _mapView.showMapScaleBar = YES;
-    _mapView.zoomLevel = 13;
+//    _mapView.zoomLevel = 13;
     _mapView.showsUserLocation = NO;    //先关闭显示的定位图层
     _mapView.showsUserLocation = YES;   //显示定位图层
     

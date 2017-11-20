@@ -20,7 +20,7 @@
 
 @implementation HBLocationViewController
 {
-    BMKLocationService* _locService;
+    BMKLocationService* _locationService;
     BMKLocationViewDisplayParam* _testParam;
     BMKGeoCodeSearch *_geocodesearch;
     
@@ -28,6 +28,7 @@
     NSArray *_authUserList;
     
     HBServerConnect *serverConnect;
+    BOOL firstShow;
 }
 
 - (void)viewDidLoad {
@@ -35,18 +36,25 @@
     // Do any additional setup after loading the view from its nib.
     
     [self configNavigationBar];
-    [self addTrackButton];
+    //右边按钮，暂时去掉
+//    [self addTrackButton];
+    //目前只是隐藏掉搜索框
     [self initSearchBar];
     
+    [_mapView setMapType:BMKMapTypeStandard]; //切换为标准地图
+    //打开实时路况图层
+//    [_mapView setTrafficEnabled:YES];
+    firstShow = YES;
     _mapView.showMapScaleBar = YES;
-    _mapView.zoomLevel = 13;
-    _mapView.showsUserLocation = NO;//先关闭显示的定位图层
+    _mapView.zoomLevel = 17.9;
+    _mapView.maxZoomLevel = 20;
+    _mapView.minZoomLevel = 5;
+    _mapView.showsUserLocation = YES;//先关闭显示的定位图层
     _mapView.userTrackingMode = BMKUserTrackingModeNone;//设置定位的状态
-    _mapView.showsUserLocation = YES;//显示定位图层
-    _mapView.delegate = self;
+//    _mapView.showsUserLocation = YES;//显示定位图层
     
-    _locService = [[BMKLocationService alloc] init];
-    _locService.delegate = self;
+    _locationService = [[BMKLocationService alloc] init];
+    _locationService.delegate = self;
     _geocodesearch = [[BMKGeoCodeSearch alloc] init];
     _geocodesearch.delegate = self;
     
@@ -55,21 +63,24 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [_mapView viewWillAppear];
+    _mapView.delegate = self;
     
     HBLocation *location = [HBCommonUtil getUserLocation];
     NSString *longitude = location.longitude;
     NSString *latitude  = location.latitude;
     CLLocationCoordinate2D coordinate = {[latitude floatValue], [longitude floatValue]};
-    _mapView.centerCoordinate = coordinate;
+//    _mapView.centerCoordinate = coordinate;
     
-    [_locService startUserLocationService];
+    [_locationService startUserLocationService];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [_mapView viewWillDisappear];
-    [_locService stopUserLocationService];
-    _locService.delegate = nil;
+    _mapView.delegate = nil;
+    
+    [_locationService stopUserLocationService];
+    _locationService.delegate = nil;
     _geocodesearch.delegate = nil;
 }
 
@@ -79,17 +90,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+//地图状态发生改变
+-(void)mapStatusDidChanged:(BMKMapView *)mapView {
+    
+}
+
+//处理位置坐标更新
 - (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
 {
     //    NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
     
     CLLocationCoordinate2D coordinate = userLocation.location.coordinate;
-    BMKCoordinateRegion viewRegion = BMKCoordinateRegionMake(coordinate, BMKCoordinateSpanMake(0.15, 0.15));
-    BMKCoordinateRegion adjustRegion = [_mapView regionThatFits:viewRegion];
-    [_mapView setRegion:adjustRegion animated:YES];
-    
-    [_mapView updateLocationData:userLocation];
-    
+    if (firstShow) {
+        BMKCoordinateRegion viewRegion = BMKCoordinateRegionMake(coordinate, BMKCoordinateSpanMake(0.15, 0.15));
+        BMKCoordinateRegion adjustRegion = [_mapView regionThatFits:viewRegion];
+        [_mapView setRegion:adjustRegion animated:YES];
+        [_mapView updateLocationData:userLocation];
+        firstShow = NO;
+    }
     [self updateUserLocation:coordinate];
 }
 
@@ -122,38 +140,38 @@
     }
 }
 
-- (void)addTrackButton
-{
-    UIBarButtonItem *naviButton = nil;
-    
-    UIImage *trackImage  = [UIImage imageNamed:@"btn_track"];
-    UIButton *trackButton  = [[UIButton alloc] initWithFrame:CGRectMake(0, 5, 20, 20)];
-    [trackButton setImage:trackImage forState:UIControlStateNormal];
-    
-    [trackButton addTarget:self action:@selector(openTrackRecordsView) forControlEvents:UIControlEventTouchDown];
-    
-    naviButton = [[UIBarButtonItem alloc] initWithCustomView:trackButton];
-    
-    self.navigationItem.rightBarButtonItem = naviButton;
-}
+//- (void)addTrackButton
+//{
+//    UIBarButtonItem *naviButton = nil;
+//
+//    UIImage *trackImage  = [UIImage imageNamed:@"btn_track"];
+//    UIButton *trackButton  = [[UIButton alloc] initWithFrame:CGRectMake(0, 5, 20, 20)];
+//    [trackButton setImage:trackImage forState:UIControlStateNormal];
+//
+//    [trackButton addTarget:self action:@selector(openTrackRecordsView) forControlEvents:UIControlEventTouchDown];
+//
+//    naviButton = [[UIBarButtonItem alloc] initWithCustomView:trackButton];
+//
+//    self.navigationItem.rightBarButtonItem = naviButton;
+//}
 
-- (void)openTrackRecordsView
-{
-    HBTracksViewController *tracksVC = [[HBTracksViewController alloc] init];
-    tracksVC.title = @"我的轨迹";
-    tracksVC.authUserList = _authUserList;
-    [self.navigationController pushViewController:tracksVC animated:YES];
-}
+//- (void)openTrackRecordsView
+//{
+//    HBTracksViewController *tracksVC = [[HBTracksViewController alloc] init];
+//    tracksVC.title = @"我的轨迹";
+//    tracksVC.authUserList = _authUserList;
+//    [self.navigationController pushViewController:tracksVC animated:YES];
+//}
 
 
 - (void)initSearchBar
 {
-    HB_AUTHOR_STATUS status = [HBAuthorityUtil getTeamAuthority:HB_LOCATION];
-    if (status == HB_AUTHORIZED) {
-        [self.searchBar setBackgroundImage:[UIImage new]];
-        self.searchBar.hidden = NO;
-        return;
-    }
+//    HB_AUTHOR_STATUS status = [HBAuthorityUtil getTeamAuthority:HB_LOCATION];
+//    if (status == HB_AUTHORIZED) {
+//        [self.searchBar setBackgroundImage:[UIImage new]];
+//        self.searchBar.hidden = NO;
+//        return;
+//    }
     
     self.searchBar.hidden = YES;
 }

@@ -30,9 +30,9 @@
 		<true/>
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>YES</string>
+	<string>默认当APP在前台时更新您的位置</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>YES</string>
+	<string>需要获取您的位置为您提供更好的服务</string>
 	<key>NSMainNibFile</key>
 	<string>LaunchScreen</string>
 	<key>UIBackgroundModes</key>
