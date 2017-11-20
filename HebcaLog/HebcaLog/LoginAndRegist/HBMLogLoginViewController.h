@@ -18,7 +18,7 @@
 #import "QMUIKit.h"
 #import "HBAdminViewController.h"
 
-@interface HBMLogLoginViewController : UIViewController <UITextFieldDelegate, HBPopListViewDelegate, MBProgressHUDDelegate, HBAdminViewControllerDelegate>
+@interface HBMLogLoginViewController : UIViewController <UITextFieldDelegate, MBProgressHUDDelegate, HBAdminViewControllerDelegate>
 @property(nonatomic,weak) UIWindow *window;
 @property (weak, nonatomic) IBOutlet QMUITextField *loginNameTF;
 @property (weak, nonatomic) IBOutlet QMUITextField *passwordTF;//证书密码

@@ -23,6 +23,8 @@
 #import "ToastUIView.h"
 #import "HBAuthorityUtil.h"
 
+#import <AVOSCloud/AVOSCloud.h>
+
 
 @interface HBHomepageViewController ()
 
@@ -34,7 +36,7 @@
     HBServerConnect *_serverConnect;
     HBFileManager *fm;
     
-    BOOL  firstLogin;
+//    BOOL  firstLogin;
     HB_AUTHOR_STATUS journalTeamAuthorStatus;
     
 }
@@ -43,8 +45,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self userNewNavigatorBar];
-    
-    firstLogin = YES;
+//    firstLogin = YES;
     _userId = [UserDefaultTool getUserId];
     journalTeamAuthorStatus = HB_UNDETERMINED;
     
@@ -53,7 +54,7 @@
         g_mapManager = [[BMKMapManager alloc]init];
     }
     // 如果要关注网络及授权验证事件，请设定     generalDelegate参数
-    BOOL ret = [g_mapManager start:@"gGFUFzheGbWF9MdZjCw7OZEE"  generalDelegate:nil];
+    BOOL ret = [g_mapManager start:@"U4geXQpQ6v98TUCD230f0tOe6ufUU14Y"  generalDelegate:nil];
     if (!ret) {
         NSLog(@"manager start failed!");
     }
@@ -61,15 +62,17 @@
     fm = [[HBFileManager alloc] init];
     _serverConnect = [[HBServerConnect alloc] init];
     
-    //获取上班状态
-    BOOL  attendStatus = [HBCommonUtil getAttendState:_userId];
-    [HBCommonUtil updateAttendState:attendStatus];
-    //上班状态启动自动定位
-    if (attendStatus) {
-        HBLocationService *location = [HBLocationService locationService];
-        [location startAutoLocating];
-    }
+//    //获取上班状态
+//    BOOL  attendStatus = [HBCommonUtil getAttendState:_userId];
+//    [HBCommonUtil updateAttendState:attendStatus];
+//    //上班状态启动自动定位
+//    if (attendStatus) {
+//        HBLocationService *location = [HBLocationService locationService];
+//        [location startAutoLocating];
+//    }
     
+    
+    //
     [self getServerDataAsync];
 }
 

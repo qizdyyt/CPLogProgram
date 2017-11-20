@@ -7,4 +7,5 @@ pod 'AVOSCloudIM'             # 实时通信模块
 pod 'AVOSCloudCrashReporting' # 错误报告模块
 pod 'QMUIKit'
 pod 'IQKeyboardManager'
+
 end

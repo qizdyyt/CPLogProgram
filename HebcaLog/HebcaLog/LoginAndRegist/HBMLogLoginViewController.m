@@ -112,6 +112,9 @@
             //登录
             HBHomepageViewController *homepageControl = [[HBHomepageViewController alloc] init];
             [self.navigationController pushViewController:homepageControl animated:YES];
+            [UserDefaultTool recordPasswordToDefaults:self.passwordTF.text];
+            [UserDefaultTool upDateUserLoginState:YES];
+            [UserDefaultTool updateUserConfig:self.user];
         }else {
             self.loginSuccess = isOK;
             [hud hide:YES];
@@ -119,32 +122,10 @@
         }
     }];
     
-    [UserDefaultTool recordPasswordToDefaults:self.passwordTF.text];
-    
-    
-    
-
-//    [self.view addSubview:hud];
-//    __block NSString *error = nil;
-//    [hud showAnimated:YES whileExecutingBlock:^{
-//        error = [self certLogin];   //登录系统
-//    } completionBlock:^{
-//        [hud removeFromSuperview];
-//        if (nil != error) {
-//            [HBCommonUtil showAttention:error sender:self];
-//            return;
-//        }
-//
-//        HBHomepageViewController *homepageControl = [[HBHomepageViewController alloc] init];
-//        UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:homepageControl];
-//        self.window.rootViewController = navi;
-//
-//        //[self.navigationController pushViewController:homepageControl animated:YES];
-//
-//    }];
 }
 
 - (IBAction)resetButtonPressed:(id)sender {
+    
 }
 
 - (NSString *)certLogin {
@@ -189,34 +170,6 @@
     [UserDefaultTool recordUSerConfigToDefaults];
     
     return nil;
-}
-
-
-#pragma mark - LeveyPopListView delegates
-- (void)myPopListView:(HBPopListView *)popListView didSelectedIndex:(NSInteger)anIndex
-{
-    if ([[popListView title] isEqualToString:@"选择证书"])
-    {
-        self.loginNameTF.text = [[_popViewOptions objectAtIndex:anIndex] objectForKey:@"text"];
-    }
-    
-//    _chooseItem = anIndex;
-}
-
-- (void)myPopListViewDidCancel
-{
-    
-}
-
-- (NSString *)getRandomString
-{
-    //获取时间
-    NSDate *date = [NSDate date];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyyMMddhhmmss"];
-    NSString *dateStr = [formatter stringFromDate:date];
-    
-    return dateStr;
 }
 
 

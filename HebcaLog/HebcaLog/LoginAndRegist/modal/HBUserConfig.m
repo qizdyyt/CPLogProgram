@@ -57,6 +57,7 @@
                 complete(NO, [NSString stringWithFormat:@"登录失败%@", error]);
             } else {
                 complete(YES, @"登录成功");
+                self.userId = user.objectId;
             }
         }];
     } else {
