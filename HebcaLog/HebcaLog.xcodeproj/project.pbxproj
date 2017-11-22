@@ -18,6 +18,7 @@
 		2EBB20FA1F8E60550099B150 /* HBUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBB20F91F8E60550099B150 /* HBUserInfo.m */; };
 		2EBB20FD1F8E614E0099B150 /* HBLoginParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBB20FC1F8E614E0099B150 /* HBLoginParam.m */; };
 		2EBB21001F8E61740099B150 /* HBLoginReply.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBB20FF1F8E61740099B150 /* HBLoginReply.m */; };
+		2EC065411FC4054F00CA5510 /* HBMessageViewController_Ori.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC0653F1FC4054F00CA5510 /* HBMessageViewController_Ori.m */; };
 		2EC3B6F81F93480400D93072 /* Ori_HBMLogLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC3B6F51F93480400D93072 /* Ori_HBMLogLoginViewController.m */; };
 		2EC3B6F91F93480400D93072 /* Ori_HBMLogLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EC3B6F71F93480400D93072 /* Ori_HBMLogLoginViewController.xib */; };
 		2ECB9AA71F8F173C003859C0 /* HBAttendInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECB9AA61F8F173C003859C0 /* HBAttendInfo.m */; };
@@ -318,6 +319,8 @@
 		2EBB20FC1F8E614E0099B150 /* HBLoginParam.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HBLoginParam.m; sourceTree = "<group>"; };
 		2EBB20FE1F8E61740099B150 /* HBLoginReply.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HBLoginReply.h; sourceTree = "<group>"; };
 		2EBB20FF1F8E61740099B150 /* HBLoginReply.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HBLoginReply.m; sourceTree = "<group>"; };
+		2EC0653E1FC4054F00CA5510 /* HBMessageViewController_Ori.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HBMessageViewController_Ori.h; sourceTree = "<group>"; };
+		2EC0653F1FC4054F00CA5510 /* HBMessageViewController_Ori.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HBMessageViewController_Ori.m; sourceTree = "<group>"; };
 		2EC3B6F51F93480400D93072 /* Ori_HBMLogLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ori_HBMLogLoginViewController.m; sourceTree = "<group>"; };
 		2EC3B6F61F93480400D93072 /* Ori_HBMLogLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ori_HBMLogLoginViewController.h; sourceTree = "<group>"; };
 		2EC3B6F71F93480400D93072 /* Ori_HBMLogLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Ori_HBMLogLoginViewController.xib; sourceTree = "<group>"; };
@@ -747,10 +750,10 @@
 		2E064F3A1FC26F8800FCCE0E /* HomePageeeee */ = {
 			isa = PBXGroup;
 			children = (
+				2E064F3E1FC27FD700FCCE0E /* Location */,
 				2E064F411FC2809000FCCE0E /* setting */,
 				2E064F401FC2807000FCCE0E /* remind */,
 				2E064F3F1FC27FFC00FCCE0E /* contacts */,
-				2E064F3E1FC27FD700FCCE0E /* Location */,
 				2E064F3D1FC27FA600FCCE0E /* attendInfo */,
 				2E064F3C1FC27F5B00FCCE0E /* message */,
 				2E064F3B1FC27F3400FCCE0E /* doorlist */,
@@ -775,6 +778,7 @@
 		2E064F3C1FC27F5B00FCCE0E /* message */ = {
 			isa = PBXGroup;
 			children = (
+				2EC0653D1FC4053000CA5510 /* ori */,
 				5FC504DB1AB81FE600C065C6 /* HBMessageViewController.h */,
 				5FC504DC1AB81FE600C065C6 /* HBMessageViewController.m */,
 				5FC504DD1AB81FE600C065C6 /* HBMessageViewController.xib */,
@@ -794,6 +798,7 @@
 		2E064F3D1FC27FA600FCCE0E /* attendInfo */ = {
 			isa = PBXGroup;
 			children = (
+				2EA053961FC55FF1006A5C81 /* modal */,
 				5FBC1B2F1AA69D63009A8B23 /* HBAttentActViewController.h */,
 				5FBC1B301AA69D63009A8B23 /* HBAttentActViewController.m */,
 				5FBC1B311AA69D63009A8B23 /* HBAttentActViewController.xib */,
@@ -924,6 +929,15 @@
 			path = HBCommentBarView;
 			sourceTree = "<group>";
 		};
+		2EA053961FC55FF1006A5C81 /* modal */ = {
+			isa = PBXGroup;
+			children = (
+				2ECB9AA51F8F173C003859C0 /* HBAttendInfo.h */,
+				2ECB9AA61F8F173C003859C0 /* HBAttendInfo.m */,
+			);
+			path = modal;
+			sourceTree = "<group>";
+		};
 		2EBB20EF1F8E55850099B150 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -946,8 +960,6 @@
 				2EBB20FC1F8E614E0099B150 /* HBLoginParam.m */,
 				2EBB20FE1F8E61740099B150 /* HBLoginReply.h */,
 				2EBB20FF1F8E61740099B150 /* HBLoginReply.m */,
-				2ECB9AA51F8F173C003859C0 /* HBAttendInfo.h */,
-				2ECB9AA61F8F173C003859C0 /* HBAttendInfo.m */,
 				2ECB9AA81F8F1755003859C0 /* HBDoorListInfo.h */,
 				2ECB9AA91F8F1755003859C0 /* HBDoorListInfo.m */,
 				2ECB9AAB1F8F1769003859C0 /* HBSendDoorOpenInfo.h */,
@@ -1002,6 +1014,15 @@
 				2ECB9AF41F8F4AF3003859C0 /* HBMeetRequestInfo.m */,
 			);
 			name = Modal;
+			sourceTree = "<group>";
+		};
+		2EC0653D1FC4053000CA5510 /* ori */ = {
+			isa = PBXGroup;
+			children = (
+				2EC0653E1FC4054F00CA5510 /* HBMessageViewController_Ori.h */,
+				2EC0653F1FC4054F00CA5510 /* HBMessageViewController_Ori.m */,
+			);
+			path = ori;
 			sourceTree = "<group>";
 		};
 		2EC3B6F21F91FC7600D93072 /* Del */ = {
@@ -1844,6 +1865,7 @@
 				5F1A5FD41AC4EE530049ECC6 /* HBLocationViewController.mm in Sources */,
 				2ECB9AC21F8F4950003859C0 /* HBMsgRequestInfo.m in Sources */,
 				2ECB9ADD1F8F4A8E003859C0 /* HBContactInfo.m in Sources */,
+				2EC065411FC4054F00CA5510 /* HBMessageViewController_Ori.m in Sources */,
 				5F1A40761ADE31CE00C96856 /* HBRemindViewController.m in Sources */,
 				2ECB9AB91F8F4807003859C0 /* HBMessageInfo.m in Sources */,
 				5F5FACDC1B12D04300503B08 /* UIImageView+HighlightedWebCache.m in Sources */,

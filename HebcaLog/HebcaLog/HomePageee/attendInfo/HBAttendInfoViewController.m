@@ -156,7 +156,7 @@
         NSString *attendAddr = @" ";
         if (i < [attendRecord.attendlist count]) {
             HBAttendInfo *attendInfo = [attendRecord.attendlist objectAtIndex:i];
-            attendTime = [self getTimeFromDate:attendInfo.time];
+//            attendTime = [self getTimeFromDate:attendInfo.time];
             attendAddr = attendInfo.address;
             if ([attendAddr isEqualToString:@"null"]) {
                 attendAddr = @" ";

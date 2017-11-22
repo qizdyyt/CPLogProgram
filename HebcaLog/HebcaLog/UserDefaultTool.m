@@ -45,6 +45,41 @@
     
     return password;
 }
+
++ (BOOL) getUserCheckStatus {
+    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *lastRecordStr = [userDefaults objectForKey:@"lastRecordStr"];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.locale = [NSLocale currentLocale];
+    formatter.dateStyle = NSDateFormatterLongStyle;
+    if (lastRecordStr.length == 0) {//上次没有打卡时间的记录
+        return NO;
+    }
+    //上次有开始和今天的时间比较,只比较日期
+    NSDate *recordDate = [formatter dateFromString:lastRecordStr];
+    NSDate *today = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    calendar.locale = [NSLocale currentLocale];
+    
+//    NSDateComponents *recordComponents = [calendar components:(NSCalendarUnitDay | NSCalendarUnitHour) fromDate:recordDate];
+    NSInteger recordDayNum = [calendar component:NSCalendarUnitDay fromDate:recordDate];
+    NSInteger todayNum = [calendar component:NSCalendarUnitDay fromDate:today];
+    if (todayNum > recordDayNum) {//今天的日期大于记录日期
+        return NO;
+    }else {
+        return YES;
+    }
+}
+///更新本地用户打卡记录时间
++(void) updateLocalUserCheckDate: (NSDate *)date {
+    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.locale = [NSLocale currentLocale];
+    formatter.dateStyle = NSDateFormatterLongStyle;
+    NSString *lastRecordStr = [formatter stringFromDate:date];
+    [userDefaults setObject:lastRecordStr forKey:@"lastRecordStr"];
+    [userDefaults synchronize];
+}
 ///保存用户信息到用户默认配置
 + (void)updateUserConfig:(HBUserConfig *)config
 {

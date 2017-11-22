@@ -12,7 +12,7 @@
 @interface HBUserConfig : NSObject
 
 
-@property (nonatomic, copy)NSString *userId; //用户id
+@property (nonatomic, copy)NSString *userId; //用户id,实际是服务端的objectID
 @property (nonatomic, copy)NSString *userName; //用户名
 @property (nonatomic, copy)NSString *password; //用户密码
 @property (nonatomic, copy)NSString *phoneNumber; //手机号

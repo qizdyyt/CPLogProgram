@@ -36,4 +36,10 @@
 + (NSString *)getDeptName;
 + (NSString *)getCertCN;
 
+//获取用户打卡信息
++ (BOOL) getUserCheckStatus;
+//更新用户打卡信息
++ (void) updateUserCheckStatus: (BOOL)status;
+
+
 @end

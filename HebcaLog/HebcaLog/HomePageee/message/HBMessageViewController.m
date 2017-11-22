@@ -45,10 +45,10 @@ static NSString *cellIdentifier = @"messageCellIdentifier";
     NSMutableDictionary *_cellHeighList;
     NSMutableDictionary *_imageDic;
     
-    HBUserMessage *userMsg;
-    HBUserJournal *userJnl;
-    HBUserMeeting *userMeet;
-    HBReplyContent *replyContent;
+    HBUserMessage *userMsg;//消息
+    HBUserJournal *userJnl;//日志
+    HBUserMeeting *userMeet;//会议
+    HBReplyContent *replyContent;//
     
     UIToolbar *_toolbar;
     HBCommentBarView *_commentBar;

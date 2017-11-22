@@ -121,7 +121,7 @@
     [paramDic addObject: MAKE_PARAM(@"longitude", attendInfo.longitude)];
     [paramDic addObject: MAKE_PARAM(@"latitude",  attendInfo.latitude)];
     [paramDic addObject: MAKE_PARAM(@"address",   attendInfo.address)];
-    [paramDic addObject: MAKE_INT_PARAM(@"type",  attendInfo.type)];
+//    [paramDic addObject: MAKE_INT_PARAM(@"type",  attendInfo.type)];
     NSString *param = [paramDic componentsJoinedByString:@"&"];
 
     NSHTTPURLResponse *response = nil;
@@ -159,11 +159,11 @@
     
     
     HBAttendInfo *attendInfo = [[HBAttendInfo alloc] init];
-    attendInfo.time = [retnDic objectForKey:@"time"];
+//    attendInfo.time = [retnDic objectForKey:@"time"];
     attendInfo.longitude = [retnDic objectForKey:@"longitude"];
     attendInfo.latitude = [retnDic objectForKey:@"latitude"];
     attendInfo.address = [retnDic objectForKey:@"address"];
-    attendInfo.type = [[retnDic objectForKey:@"type"] integerValue];
+//    attendInfo.type = [[retnDic objectForKey:@"type"] integerValue];
     
     return attendInfo;
 }
@@ -297,8 +297,8 @@
             
             for (NSDictionary *attendItem in retnAttendList) {
                 HBAttendInfo *attendInfo = [[HBAttendInfo alloc] init];
-                attendInfo.type = [[attendItem objectForKey:@"type"] integerValue];
-                attendInfo.time = [attendItem objectForKey:@"time"];
+//                attendInfo.type = [[attendItem objectForKey:@"type"] integerValue];
+//                attendInfo.time = [attendItem objectForKey:@"time"];
                 attendInfo.longitude = [attendItem objectForKey:@"longitude"];
                 attendInfo.latitude = [attendItem objectForKey:@"latitude"];
                 attendInfo.address = [attendItem objectForKey:@"address"];

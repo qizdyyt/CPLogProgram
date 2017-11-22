@@ -380,17 +380,17 @@ NSString *g_updateUrl = nil;
 
 
 //获取更新上班状态
-+ (BOOL)getAttendState:(NSString *)userid
-{
-    HBServerConnect *serverConnect = [[HBServerConnect alloc] init];
-    
-    HBAttendInfo *attendInfo = [serverConnect getLastAttendInfo:userid];
-    BOOL attendIn = (nil == attendInfo.time ? NO : YES);
-    
-    [HBCommonUtil updateAttendState:attendIn];
-    
-    return attendIn;
-}
+//+ (BOOL)getAttendState:(NSString *)userid
+//{
+//    HBServerConnect *serverConnect = [[HBServerConnect alloc] init];
+//    
+//    HBAttendInfo *attendInfo = [serverConnect getLastAttendInfo:userid];
+//    BOOL attendIn = (nil == attendInfo.time ? NO : YES);
+//    
+//    [HBCommonUtil updateAttendState:attendIn];
+//    
+//    return attendIn;
+//}
 
 + (void)updateAttendState:(BOOL)state
 {

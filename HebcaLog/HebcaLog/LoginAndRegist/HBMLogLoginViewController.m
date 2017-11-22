@@ -28,6 +28,7 @@
 @implementation HBMLogLoginViewController
 {
     NSMutableArray *_popViewOptions;
+    MBProgressHUD *hud;
 }
 
 - (void)viewDidLoad {
@@ -102,7 +103,9 @@
     //开始登陆
     self.user.userName = self.loginNameTF.text;
     self.user.password = self.passwordTF.text;
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    if (hud == nil) {
+        hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    }
     hud.labelText = @"正在登录";
     [self.user login:^(bool isOK, NSString *msg) {
         if (isOK) {
@@ -128,47 +131,7 @@
     
 }
 
-- (NSString *)certLogin {
-    //准备登录参数
-    HBLoginParam *loginParam = [[HBLoginParam alloc] init];
-//    NSString *certCN = [logCert getSubjectItem:HB_DN_GIVEN_NAME];
-//    loginParam.cert = [logCert getBase64CertData];
-//
-//    NSString *randomStr = [self getRandomString];
-//    [logCert signDataInit:HB_SHA1];
-//    NSData *signedData = [logCert signData:[randomStr dataUsingEncoding:NSUTF8StringEncoding]];
-    
-//    loginParam.random = randomStr;
-//    loginParam.randomSign = [HBMiddleWare base64Encode:signedData];
-//    loginParam.deviceId = [HBCommonUtil getDeviceIdentifier];
-//    loginParam.pkgVersion = [NSString stringWithFormat:@"v%@", [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey]];
-    
-    HBServerConnect *serverConnect = [[HBServerConnect alloc] init];
-//    HBLoginReply *logReply = [serverConnect loginWithParam:loginParam];
-//    if (nil == logReply) {
-//        if (HM_NETWORK_UNREACHABLE == [serverConnect getLastError]) {
-//            return @"无法连接服务器，请检查您的网络状态";
-//        }
-//        return [serverConnect getLastErrorMessage];
-//    }
-    
-//    if (-1 == [logReply.userName intValue]) {
-//        return @"证书未绑定用户";
-//    }
-    
-//    [HBCommonUtil upDateUserLoginState:certCN state:YES];
-    
-    HBUserConfig *userConfig = [[HBUserConfig alloc] init];
-//    userConfig.userId   = logReply.userId;
-//    userConfig.userName = logReply.userName;
-//    userConfig.deptId   = logReply.deptId;
-//    userConfig.deptName = logReply.deptName;
-//    userConfig.clientrole = [logReply.clientRole integerValue];   //TODO：当前服务端未使用；若后续使用此字段，注意返回值类型
-//    userConfig.certCN   = certCN;
-    
-    [UserDefaultTool updateUserConfig:userConfig];
-    [UserDefaultTool recordUSerConfigToDefaults];
-    
+- (NSString *)certLogin {//方法已删
     return nil;
 }
 

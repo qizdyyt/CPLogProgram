@@ -20,8 +20,10 @@
 @implementation HBAttentActViewController
 {
     NSString *_userId;
-    HBServerConnect *_serverConnect;
+//    HBServerConnect *_serverConnect;
     HBLocationService *locationService;
+    
+    MBProgressHUD *hud;
 }
 
 - (void)viewDidLoad {
@@ -30,7 +32,7 @@
     [self configNavigationBar2];
     [self arrageViewItemsLayout];
     
-    _serverConnect = [[HBServerConnect alloc] init];
+//    _serverConnect = [[HBServerConnect alloc] init];
     locationService = [HBLocationService locationService];
     
     _userId = [UserDefaultTool getUserId];
@@ -72,15 +74,6 @@
     return currTime;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 - (void)arrageViewItemsLayout {
     self.title = @"考勤打卡";
     
@@ -106,11 +99,12 @@
         return;
     }
     
-    
-    MBProgressHUD *hud = [[MBProgressHUD alloc] init];
+    if (hud == nil) {
+        hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    }
     hud.labelText = @"正在打卡...";
-    [self.view addSubview:hud];
-    
+//    [self.view addSubview:hud];
+    //开始打卡
     __block NSString *errorMsg = nil;
     [hud showAnimated:YES whileExecutingBlock:^{
         errorMsg = [self attendActCheckin];
@@ -143,12 +137,12 @@
     attendInfo.longitude = location.longitude;
     attendInfo.latitude  = location.latitude;
     attendInfo.address   = location.address;
-    attendInfo.type      = 1; //上班打卡
+//    attendInfo.type      = 1; //上班打卡
     
-    NSInteger result = [_serverConnect attendAct:attendInfo];
-    if (result != HM_OK) {
-        return [_serverConnect getLastErrorMessage];
-    }
+//    NSInteger result = [_serverConnect attendAct:attendInfo];
+//    if (result != HM_OK) {
+//        return [_serverConnect getLastErrorMessage];
+//    }
     
     return nil;
 }
