@@ -392,12 +392,12 @@ NSString *g_updateUrl = nil;
 //    return attendIn;
 //}
 
-+ (void)updateAttendState:(BOOL)state
-{
-    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
-    appDelegate.userConfig.attendState = state;
-}
+//+ (void)updateAttendState:(BOOL)state
+//{
+//    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+//    
+//    appDelegate.userConfig.attendState = state;
+//}
 
 
 //是否有头像

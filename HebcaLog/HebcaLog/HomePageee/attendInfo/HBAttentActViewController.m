@@ -44,8 +44,8 @@
     [super viewWillAppear:animated];
     
     [self showCurrTime];
-    BOOL onwork = [HBCommonUtil getAttendState:_userId];
-    [self setCheckButtonStatus:onwork];
+//    BOOL onwork = [HBCommonUtil getAttendState:_userId];
+    [self setCheckButtonStatus:NO];//TODO
     
     //为节省时间，将点击按钮再定位，改为进入此界面后就开始执行定位
     [locationService locateUserCurrentPosition];
@@ -117,7 +117,7 @@
         }
         
         [self setCheckButtonStatus:YES];
-        [HBCommonUtil updateAttendState:YES];
+//        [HBCommonUtil updateAttendState:YES];
         
         //开始定位 上传位置
         [locationService startAutoLocating];

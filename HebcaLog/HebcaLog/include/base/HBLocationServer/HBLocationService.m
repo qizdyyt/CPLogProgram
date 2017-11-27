@@ -123,7 +123,7 @@
         }
         
         [HBCommonUtil updateLocation:location];
-        [HBCommonUtil updateAttendState:attendIn];
+//        [HBCommonUtil updateAttendState:attendIn];
         
         [_locService stopUserLocationService];
         

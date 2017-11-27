@@ -213,10 +213,10 @@
 
 - (IBAction)exitAccount:(id)sender {
     //上班状态 不能退出登录
-    if ([HBCommonUtil getAttendState:userid]) {
-        [self.view makeToast:@"您现在为上班状态，请打卡下班再退出登录"];
-        return;
-    }
+//    if ([HBCommonUtil getAttendState:userid]) {
+//        [self.view makeToast:@"您现在为上班状态，请打卡下班再退出登录"];
+//        return;
+//    }
     
     //更改登录状态
     [HBCommonUtil upDateUserLoginState:[UserDefaultTool getCertCN] state:NO];

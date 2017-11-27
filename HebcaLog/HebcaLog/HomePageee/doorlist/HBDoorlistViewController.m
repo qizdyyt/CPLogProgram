@@ -88,7 +88,7 @@
             return;
         }
 
-        [HBCommonUtil updateAttendState:NO];
+//        [HBCommonUtil updateAttendState:NO];
         [self.view makeToast:@"获取列表成功"];
     }];
 }
@@ -162,7 +162,7 @@
                         return;
                     }
                     
-                    [HBCommonUtil updateAttendState:YES];
+//                    [HBCommonUtil updateAttendState:YES];
                     
                     [self.view makeToast:@"指令发送成功"];
                 }];
@@ -368,7 +368,7 @@
                 return;
             }
             
-            [HBCommonUtil updateAttendState:YES];
+//            [HBCommonUtil updateAttendState:YES];
             
             [self.view makeToast:@"指令发送成功"];
         }];

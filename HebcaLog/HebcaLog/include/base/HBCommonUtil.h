@@ -105,8 +105,8 @@
 
 
 //上班状态
-+ (BOOL)getAttendState:(NSString *)userid;
-+ (void)updateAttendState:(BOOL)state;
+//+ (BOOL)getAttendState:(NSString *)userid;
+//+ (void)updateAttendState:(BOOL)state;
 
 //是否有头像
 + (BOOL)hasHeadImage;
